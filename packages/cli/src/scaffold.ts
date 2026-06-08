@@ -66,6 +66,16 @@ export async function scaffold(opts: ScaffoldOptions): Promise<void> {
       path.join(projectDir, "README.md"),
       readmeTemplate.replace(/\{\{PROJECT_NAME\}\}/g, opts.projectName)
     )
+
+    // Replace root AGENTS.md with project template
+    const agentsTemplate = await fs.readFile(
+      path.join(templatesDir, "AGENTS.md"),
+      "utf-8"
+    )
+    await fs.writeFile(
+      path.join(projectDir, "AGENTS.md"),
+      agentsTemplate.replace(/\{\{PROJECT_NAME\}\}/g, opts.projectName)
+    )
     s.stop("Templates applied.")
 
     // 3. Rename
