@@ -188,7 +188,9 @@
       "trash": "Cestino",
       "pages": "Pagine",
       "settings": "Impostazioni",
-      "lockVault": "Blocca vault"
+      "lockVault": "Blocca vault",
+      "latestUpdates": "Ultimi aggiornamenti",
+      "localProfile": "Profilo locale"
     },
     "tree": {
       "expand": "Espandi",

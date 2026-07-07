@@ -84,7 +84,7 @@ export function NoteHeader({ note }: { note: DecryptedNote }) {
     // controls on Windows/Linux; data-tauri-drag-region lets the header be
     // used to move the window (both are inert on web).
     <div
-      className="win-titlebar-pad flex flex-col gap-1 border-border border-b px-4 py-3 md:px-8"
+      className="flex flex-col gap-1 border-border border-b px-4 py-3 md:px-8"
       data-tauri-drag-region={true}
     >
       {breadcrumb.length > 0 && (

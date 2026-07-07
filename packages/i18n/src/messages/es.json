@@ -188,7 +188,9 @@
       "trash": "Papelera",
       "pages": "Páginas",
       "settings": "Ajustes",
-      "lockVault": "Bloquear bóveda"
+      "lockVault": "Bloquear bóveda",
+      "latestUpdates": "Últimas actualizaciones",
+      "localProfile": "Perfil local"
     },
     "tree": {
       "expand": "Expandir",

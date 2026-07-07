@@ -188,7 +188,9 @@
       "trash": "Corbeille",
       "pages": "Pages",
       "settings": "Paramètres",
-      "lockVault": "Verrouiller le coffre"
+      "lockVault": "Verrouiller le coffre",
+      "latestUpdates": "Dernières mises à jour",
+      "localProfile": "Profil local"
     },
     "tree": {
       "expand": "Déplier",

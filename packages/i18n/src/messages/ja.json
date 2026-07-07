@@ -188,7 +188,9 @@
       "trash": "ゴミ箱",
       "pages": "ページ",
       "settings": "設定",
-      "lockVault": "保管庫をロック"
+      "lockVault": "保管庫をロック",
+      "latestUpdates": "最新の更新",
+      "localProfile": "ローカルプロファイル"
     },
     "tree": {
       "expand": "展開",

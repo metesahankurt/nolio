@@ -188,7 +188,9 @@
       "trash": "Papierkorb",
       "pages": "Seiten",
       "settings": "Einstellungen",
-      "lockVault": "Tresor sperren"
+      "lockVault": "Tresor sperren",
+      "latestUpdates": "Neueste Updates",
+      "localProfile": "Lokales Profil"
     },
     "tree": {
       "expand": "Ausklappen",

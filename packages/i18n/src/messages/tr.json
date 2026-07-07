@@ -188,7 +188,9 @@
       "trash": "Çöp kutusu",
       "pages": "Sayfalar",
       "settings": "Ayarlar",
-      "lockVault": "Kasayı kilitle"
+      "lockVault": "Kasayı kilitle",
+      "latestUpdates": "Son Güncellemeler",
+      "localProfile": "Yerel Profil"
     },
     "tree": {
       "expand": "Genişlet",

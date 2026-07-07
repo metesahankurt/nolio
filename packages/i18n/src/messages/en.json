@@ -188,7 +188,9 @@
       "trash": "Trash",
       "pages": "Pages",
       "settings": "Settings",
-      "lockVault": "Lock vault"
+      "lockVault": "Lock vault",
+      "latestUpdates": "Latest Updates",
+      "localProfile": "Local Profile"
     },
     "tree": {
       "expand": "Expand",

@@ -188,7 +188,9 @@
       "trash": "Lixo",
       "pages": "Páginas",
       "settings": "Definições",
-      "lockVault": "Bloquear cofre"
+      "lockVault": "Bloquear cofre",
+      "latestUpdates": "Últimas atualizações",
+      "localProfile": "Perfil local"
     },
     "tree": {
       "expand": "Expandir",

@@ -188,7 +188,9 @@
       "trash": "回收站",
       "pages": "页面",
       "settings": "设置",
-      "lockVault": "锁定保险库"
+      "lockVault": "锁定保险库",
+      "latestUpdates": "最新动态",
+      "localProfile": "本地个人资料"
     },
     "tree": {
       "expand": "展开",

@@ -57,7 +57,7 @@ export function UnlockScreen() {
   return (
     <div className="flex min-h-dvh items-center justify-center bg-background p-4">
       <Card className="w-full max-w-sm">
-        <CardHeader className="items-center text-center">
+        <CardHeader className="!flex !flex-col !items-center !justify-center text-center">
           <div className="mb-2 flex size-12 items-center justify-center rounded-xl bg-muted text-foreground">
             <LockKeyhole aria-hidden="true" className="size-6" />
           </div>

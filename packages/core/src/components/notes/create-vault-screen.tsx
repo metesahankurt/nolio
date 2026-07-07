@@ -69,7 +69,7 @@ export function CreateVaultScreen() {
   return (
     <div className="flex min-h-dvh items-center justify-center bg-background p-4">
       <Card className="w-full max-w-md">
-        <CardHeader className="items-center text-center">
+        <CardHeader className="!flex !flex-col !items-center !justify-center text-center">
           <div className="mb-2 flex size-12 items-center justify-center rounded-xl bg-primary text-primary-foreground">
             <NotebookPen aria-hidden="true" className="size-6" />
           </div>
