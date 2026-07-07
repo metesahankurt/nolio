@@ -1,5 +1,17 @@
 # Changelog
 
+## [2.1.1](https://github.com/metesahankurt/nolio/compare/v2.1.0...v2.1.1) (2026-07-07)
+
+
+### Styles
+
+* replace viewport dvh with full height to avoid bottom clipping in native padded tauri window ([758ac54](https://github.com/metesahankurt/nolio/commit/758ac5415303759a1f6563f9fff04a6f3fa1df07))
+
+
+### Continuous Integration
+
+* fix release-please output keys in release workflow ([35d5b7a](https://github.com/metesahankurt/nolio/commit/35d5b7a52e18c44c33e2f1913d1477c43d5f02c8))
+
 ## [2.1.0](https://github.com/metesahankurt/nolio/compare/v2.0.1...v2.1.0) (2026-07-07)
 
 
