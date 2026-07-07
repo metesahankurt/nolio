@@ -24,6 +24,12 @@ export function AppLayout({ children }: AppLayoutProps) {
   const router = useRouter();
   const pathname = usePathname();
 
+  // The encrypted notes app renders its own full-screen shell (and its own
+  // lock screen), so the dashboard chrome must not wrap it.
+  if (pathname.startsWith("/notes")) {
+    return <>{children}</>;
+  }
+
   return (
     <MainLayout
       LinkComponent={NativeLink}

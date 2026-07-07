@@ -71,7 +71,8 @@
     "billing": "Billing",
     "notifications": "Notifications",
     "logOut": "Log out",
-    "search": "Search..."
+    "search": "Search...",
+    "notes": "Notes"
   },
   "HotkeysDialog": {
     "title": "Keyboard Shortcuts",
@@ -139,5 +140,181 @@
     "versionTitle": "New Version Released",
     "versionDescription": "Check the latest version for new features and improvements.",
     "versionTime": "2 days ago"
+  },
+  "Notes": {
+    "untitled": "Untitled",
+    "common": {
+      "cancel": "Cancel"
+    },
+    "password": {
+      "show": "Show password",
+      "hide": "Hide password",
+      "capsLock": "Caps Lock is on",
+      "strengthWeak": "Weak",
+      "strengthMedium": "Medium",
+      "strengthStrong": "Strong"
+    },
+    "setup": {
+      "title": "Create your local vault",
+      "description": "Your notes are stored encrypted on this device only. No account or internet required.",
+      "vaultName": "Vault name (optional)",
+      "vaultNamePlaceholder": "e.g. Personal Notes",
+      "password": "Master password",
+      "passwordConfirm": "Master password (again)",
+      "passwordMismatch": "Passwords do not match",
+      "recoveryWarning": "Your master password is never stored anywhere. If you forget it, your encrypted notes cannot be recovered.",
+      "consent": "I understand that my data cannot be recovered if I forget my password.",
+      "submit": "Create vault",
+      "creating": "Creating…",
+      "error": "The vault could not be created. Please try again."
+    },
+    "unlock": {
+      "defaultVaultName": "Local Vault",
+      "description": "Enter your master password to open your notes",
+      "password": "Master password",
+      "wrongPassword": "The password could not be verified.",
+      "submit": "Unlock",
+      "unlocking": "Unlocking…",
+      "localOnlyNotice": "This vault is stored only on your device. If you forget your master password, your encrypted notes cannot be accessed.",
+      "forgotPassword": "Forgot your password?"
+    },
+    "sidebar": {
+      "search": "Search",
+      "newNote": "New note",
+      "viewsLabel": "Views",
+      "allNotes": "All notes",
+      "favorites": "Favorites",
+      "recent": "Recent",
+      "trash": "Trash",
+      "pages": "Pages",
+      "settings": "Settings",
+      "lockVault": "Lock vault"
+    },
+    "tree": {
+      "expand": "Expand",
+      "collapse": "Collapse",
+      "addSubpage": "Add subpage",
+      "empty": "No pages yet"
+    },
+    "header": {
+      "breadcrumb": "Breadcrumb",
+      "changeIcon": "Change icon",
+      "removeIcon": "Remove icon",
+      "titleLabel": "Note title",
+      "noteMenu": "Note menu",
+      "addFavorite": "Add to favorites",
+      "removeFavorite": "Remove from favorites",
+      "addSubpage": "Create subpage",
+      "moveToTrash": "Move to trash",
+      "lastUpdated": "Last updated: {date}"
+    },
+    "list": {
+      "emptyTitle": "Nothing here yet",
+      "emptyDescription": "Notes will appear here once you create them."
+    },
+    "trash": {
+      "restore": "Restore",
+      "deleteForever": "Delete permanently",
+      "confirmTitle": "Delete this note permanently?",
+      "confirmDescription": "This cannot be undone. The note and all of its subpages will be permanently deleted."
+    },
+    "save": {
+      "saving": "Saving…",
+      "saved": "Saved",
+      "error": "Save failed"
+    },
+    "settings": {
+      "title": "Notes settings",
+      "description": "Manage your security and locking preferences.",
+      "autoLock": "Auto-lock",
+      "autoLockOff": "Off",
+      "autoLockMinutes": "{minutes} minutes",
+      "autoLockHint": "The vault locks automatically after this period of inactivity.",
+      "changePasswordAction": "Change master password",
+      "language": "Language"
+    },
+    "changePassword": {
+      "title": "Change master password",
+      "description": "Your notes are not re-encrypted; only the vault key is re-protected with your new password.",
+      "current": "Current password",
+      "new": "New password",
+      "confirm": "New password (again)",
+      "submit": "Change password",
+      "changing": "Changing…",
+      "success": "Master password changed",
+      "error": "The password could not be changed. Please try again."
+    },
+    "command": {
+      "title": "Command palette",
+      "placeholder": "Search notes or type a command…",
+      "empty": "No results found",
+      "results": "Search results",
+      "actions": "Actions",
+      "newNote": "Create new note",
+      "newSubpage": "Create subpage",
+      "navigation": "Navigation",
+      "general": "General",
+      "toggleMode": "Toggle dark/light mode"
+    },
+    "shell": {
+      "openSidebar": "Open sidebar",
+      "noNoteTitle": "No note selected",
+      "noNoteDescription": "Select a note from the sidebar or create a new one."
+    },
+    "error": {
+      "storageTitle": "Storage error",
+      "storageDescription": "Local storage could not be accessed. You may be in private browsing mode or out of storage space.",
+      "retry": "Retry",
+      "corruptRecords": "{count} record(s) could not be decrypted and were skipped. They were not deleted."
+    },
+    "editor": {
+      "brokenPageLink": "Broken page link",
+      "slashGroup": "Blocks",
+      "slash": {
+        "text": "Text",
+        "heading1": "Heading 1",
+        "heading2": "Heading 2",
+        "heading3": "Heading 3",
+        "bulletList": "Bullet list",
+        "numberedList": "Numbered list",
+        "checkList": "To-do list",
+        "quote": "Quote",
+        "code": "Code block",
+        "table": "Table",
+        "divider": "Divider",
+        "callout": "Callout",
+        "date": "Date",
+        "page": "Page"
+      }
+    },
+    "language": {
+      "title": "Choose your language",
+      "description": "Select the app language. You can change it later in settings.",
+      "continue": "Continue"
+    },
+    "welcome": {
+      "title": "Welcome to your notebook 👋",
+      "paragraph1": "This is your encrypted notebook, stored entirely on your device. Start by editing this note.",
+      "paragraph2": "Type \"/\" at the start of a line to add blocks: headings, lists, to-dos, tables, code, callouts and more.",
+      "paragraph3": "Use Cmd/Ctrl+K for quick search and commands, and Cmd/Ctrl+Shift+L to lock the vault instantly."
+    },
+    "reset": {
+      "title": "Reset the vault?",
+      "description": "A local vault's password cannot be recovered. If you continue, all encrypted notes on this device are permanently deleted and you can create a new vault. This cannot be undone.",
+      "confirm": "Reset and delete vault"
+    },
+    "backup": {
+      "title": "Backup",
+      "export": "Export",
+      "import": "Import",
+      "hint": "The backup file is encrypted and contains only ciphertext. Your vault password is still required to restore it.",
+      "exportSuccess": "Backup exported",
+      "exportError": "Could not export backup",
+      "importInvalid": "Invalid backup file",
+      "importSuccess": "Backup restored. Locking the vault…",
+      "importError": "Could not restore backup",
+      "importConfirmTitle": "Restore this backup?",
+      "importConfirmDescription": "This replaces your current vault with the backup and overwrites all current notes. After restoring, you must unlock with the backup's master password."
+    }
   }
 }

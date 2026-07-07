@@ -71,7 +71,8 @@
     "billing": "請求",
     "notifications": "通知",
     "logOut": "ログアウト",
-    "search": "検索..."
+    "search": "検索...",
+    "notes": "ノート"
   },
   "HotkeysDialog": {
     "title": "キーボードショートカット",
@@ -139,5 +140,181 @@
     "versionTitle": "新バージョンリリース",
     "versionDescription": "新機能と改善のための最新バージョンを確認してください。",
     "versionTime": "2日前"
+  },
+  "Notes": {
+    "untitled": "無題",
+    "common": {
+      "cancel": "キャンセル"
+    },
+    "password": {
+      "show": "パスワードを表示",
+      "hide": "パスワードを非表示",
+      "capsLock": "Caps Lock がオンです",
+      "strengthWeak": "弱い",
+      "strengthMedium": "普通",
+      "strengthStrong": "強い"
+    },
+    "setup": {
+      "title": "ローカル保管庫を作成",
+      "description": "ノートはこのデバイスにのみ暗号化して保存されます。アカウントもインターネットも不要です。",
+      "vaultName": "保管庫名（任意）",
+      "vaultNamePlaceholder": "例：個人メモ",
+      "password": "マスターパスワード",
+      "passwordConfirm": "マスターパスワード（再入力）",
+      "passwordMismatch": "パスワードが一致しません",
+      "recoveryWarning": "マスターパスワードはどこにも保存されません。忘れた場合、暗号化されたノートは復元できません。",
+      "consent": "パスワードを忘れた場合、データを復元できないことを理解しました。",
+      "submit": "保管庫を作成",
+      "creating": "作成中…",
+      "error": "保管庫を作成できませんでした。もう一度お試しください。"
+    },
+    "unlock": {
+      "defaultVaultName": "ローカル保管庫",
+      "description": "ノートを開くにはマスターパスワードを入力してください",
+      "password": "マスターパスワード",
+      "wrongPassword": "パスワードを確認できませんでした。",
+      "submit": "ロック解除",
+      "unlocking": "解除中…",
+      "localOnlyNotice": "この保管庫はお使いのデバイスにのみ保存されます。マスターパスワードを忘れると、暗号化されたノートにはアクセスできません。",
+      "forgotPassword": "Forgot your password?"
+    },
+    "sidebar": {
+      "search": "検索",
+      "newNote": "新しいノート",
+      "viewsLabel": "ビュー",
+      "allNotes": "すべてのノート",
+      "favorites": "お気に入り",
+      "recent": "最近",
+      "trash": "ゴミ箱",
+      "pages": "ページ",
+      "settings": "設定",
+      "lockVault": "保管庫をロック"
+    },
+    "tree": {
+      "expand": "展開",
+      "collapse": "折りたたむ",
+      "addSubpage": "サブページを追加",
+      "empty": "ページはまだありません"
+    },
+    "header": {
+      "breadcrumb": "パンくずリスト",
+      "changeIcon": "アイコンを変更",
+      "removeIcon": "アイコンを削除",
+      "titleLabel": "ノートのタイトル",
+      "noteMenu": "ノートメニュー",
+      "addFavorite": "お気に入りに追加",
+      "removeFavorite": "お気に入りから削除",
+      "addSubpage": "サブページを作成",
+      "moveToTrash": "ゴミ箱へ移動",
+      "lastUpdated": "最終更新：{date}"
+    },
+    "list": {
+      "emptyTitle": "まだ何もありません",
+      "emptyDescription": "ノートを作成するとここに表示されます。"
+    },
+    "trash": {
+      "restore": "復元",
+      "deleteForever": "完全に削除",
+      "confirmTitle": "このノートを完全に削除しますか？",
+      "confirmDescription": "この操作は元に戻せません。ノートとすべてのサブページが完全に削除されます。"
+    },
+    "save": {
+      "saving": "保存中…",
+      "saved": "保存済み",
+      "error": "保存に失敗しました"
+    },
+    "settings": {
+      "title": "ノート設定",
+      "description": "セキュリティとロックの設定を管理します。",
+      "autoLock": "自動ロック",
+      "autoLockOff": "オフ",
+      "autoLockMinutes": "{minutes}分",
+      "autoLockHint": "この時間操作がないと保管庫は自動的にロックされます。",
+      "changePasswordAction": "マスターパスワードを変更",
+      "language": "Language"
+    },
+    "changePassword": {
+      "title": "マスターパスワードを変更",
+      "description": "ノートは再暗号化されません。保管庫の鍵のみが新しいパスワードで保護されます。",
+      "current": "現在のパスワード",
+      "new": "新しいパスワード",
+      "confirm": "新しいパスワード（再入力）",
+      "submit": "パスワードを変更",
+      "changing": "変更中…",
+      "success": "マスターパスワードを変更しました",
+      "error": "パスワードを変更できませんでした。もう一度お試しください。"
+    },
+    "command": {
+      "title": "コマンドパレット",
+      "placeholder": "ノートを検索またはコマンドを入力…",
+      "empty": "結果が見つかりません",
+      "results": "検索結果",
+      "actions": "操作",
+      "newNote": "新しいノートを作成",
+      "newSubpage": "サブページを作成",
+      "navigation": "ナビゲーション",
+      "general": "一般",
+      "toggleMode": "ダーク/ライトモードを切り替え"
+    },
+    "shell": {
+      "openSidebar": "サイドバーを開く",
+      "noNoteTitle": "ノートが選択されていません",
+      "noNoteDescription": "サイドバーからノートを選択するか、新しく作成してください。"
+    },
+    "error": {
+      "storageTitle": "ストレージエラー",
+      "storageDescription": "ローカルストレージにアクセスできませんでした。プライベートブラウズ中か、容量不足の可能性があります。",
+      "retry": "再試行",
+      "corruptRecords": "{count} record(s) could not be decrypted and were skipped. They were not deleted."
+    },
+    "editor": {
+      "brokenPageLink": "リンク切れのページ",
+      "slashGroup": "ブロック",
+      "slash": {
+        "text": "テキスト",
+        "heading1": "見出し1",
+        "heading2": "見出し2",
+        "heading3": "見出し3",
+        "bulletList": "箇条書き",
+        "numberedList": "番号付きリスト",
+        "checkList": "ToDoリスト",
+        "quote": "引用",
+        "code": "コードブロック",
+        "table": "表",
+        "divider": "区切り線",
+        "callout": "コールアウト",
+        "date": "日付",
+        "page": "ページ"
+      }
+    },
+    "language": {
+      "title": "Choose your language",
+      "description": "Select the app language. You can change it later in settings.",
+      "continue": "Continue"
+    },
+    "welcome": {
+      "title": "Welcome to your notebook 👋",
+      "paragraph1": "This is your encrypted notebook, stored entirely on your device. Start by editing this note.",
+      "paragraph2": "Type \"/\" at the start of a line to add blocks: headings, lists, to-dos, tables, code, callouts and more.",
+      "paragraph3": "Use Cmd/Ctrl+K for quick search and commands, and Cmd/Ctrl+Shift+L to lock the vault instantly."
+    },
+    "reset": {
+      "title": "Reset the vault?",
+      "description": "A local vault's password cannot be recovered. If you continue, all encrypted notes on this device are permanently deleted and you can create a new vault. This cannot be undone.",
+      "confirm": "Reset and delete vault"
+    },
+    "backup": {
+      "title": "Backup",
+      "export": "Export",
+      "import": "Import",
+      "hint": "The backup file is encrypted and contains only ciphertext. Your vault password is still required to restore it.",
+      "exportSuccess": "Backup exported",
+      "exportError": "Could not export backup",
+      "importInvalid": "Invalid backup file",
+      "importSuccess": "Backup restored. Locking the vault…",
+      "importError": "Could not restore backup",
+      "importConfirmTitle": "Restore this backup?",
+      "importConfirmDescription": "This replaces your current vault with the backup and overwrites all current notes. After restoring, you must unlock with the backup's master password."
+    }
   }
 }

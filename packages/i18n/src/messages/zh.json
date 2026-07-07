@@ -71,7 +71,8 @@
     "billing": "账单",
     "notifications": "通知",
     "logOut": "退出登录",
-    "search": "搜索..."
+    "search": "搜索...",
+    "notes": "笔记"
   },
   "HotkeysDialog": {
     "title": "键盘快捷键",
@@ -139,5 +140,181 @@
     "versionTitle": "新版本发布",
     "versionDescription": "检查最新版本以获取新功能和改进。",
     "versionTime": "2 天前"
+  },
+  "Notes": {
+    "untitled": "无标题",
+    "common": {
+      "cancel": "取消"
+    },
+    "password": {
+      "show": "显示密码",
+      "hide": "隐藏密码",
+      "capsLock": "大写锁定已开启",
+      "strengthWeak": "弱",
+      "strengthMedium": "中等",
+      "strengthStrong": "强"
+    },
+    "setup": {
+      "title": "创建本地保险库",
+      "description": "您的笔记仅加密存储在此设备上。无需账户或网络。",
+      "vaultName": "保险库名称（可选）",
+      "vaultNamePlaceholder": "例如：个人笔记",
+      "password": "主密码",
+      "passwordConfirm": "主密码（再次输入）",
+      "passwordMismatch": "两次输入的密码不一致",
+      "recoveryWarning": "您的主密码不会存储在任何地方。如果忘记密码，加密笔记将无法恢复。",
+      "consent": "我了解如果忘记密码，我的数据将无法恢复。",
+      "submit": "创建保险库",
+      "creating": "正在创建…",
+      "error": "无法创建保险库，请重试。"
+    },
+    "unlock": {
+      "defaultVaultName": "本地保险库",
+      "description": "输入主密码以打开您的笔记",
+      "password": "主密码",
+      "wrongPassword": "无法验证密码。",
+      "submit": "解锁",
+      "unlocking": "正在解锁…",
+      "localOnlyNotice": "此保险库仅存储在您的设备上。如果忘记主密码，将无法访问加密笔记。",
+      "forgotPassword": "Forgot your password?"
+    },
+    "sidebar": {
+      "search": "搜索",
+      "newNote": "新建笔记",
+      "viewsLabel": "视图",
+      "allNotes": "全部笔记",
+      "favorites": "收藏",
+      "recent": "最近",
+      "trash": "回收站",
+      "pages": "页面",
+      "settings": "设置",
+      "lockVault": "锁定保险库"
+    },
+    "tree": {
+      "expand": "展开",
+      "collapse": "折叠",
+      "addSubpage": "添加子页面",
+      "empty": "暂无页面"
+    },
+    "header": {
+      "breadcrumb": "面包屑导航",
+      "changeIcon": "更改图标",
+      "removeIcon": "移除图标",
+      "titleLabel": "笔记标题",
+      "noteMenu": "笔记菜单",
+      "addFavorite": "添加到收藏",
+      "removeFavorite": "从收藏中移除",
+      "addSubpage": "创建子页面",
+      "moveToTrash": "移至回收站",
+      "lastUpdated": "最后更新：{date}"
+    },
+    "list": {
+      "emptyTitle": "这里还没有内容",
+      "emptyDescription": "创建笔记后将显示在这里。"
+    },
+    "trash": {
+      "restore": "恢复",
+      "deleteForever": "永久删除",
+      "confirmTitle": "永久删除此笔记？",
+      "confirmDescription": "此操作无法撤销。该笔记及其所有子页面将被永久删除。"
+    },
+    "save": {
+      "saving": "正在保存…",
+      "saved": "已保存",
+      "error": "保存失败"
+    },
+    "settings": {
+      "title": "笔记设置",
+      "description": "管理您的安全与锁定偏好。",
+      "autoLock": "自动锁定",
+      "autoLockOff": "关闭",
+      "autoLockMinutes": "{minutes} 分钟",
+      "autoLockHint": "在此时间内无操作，保险库将自动锁定。",
+      "changePasswordAction": "更改主密码",
+      "language": "Language"
+    },
+    "changePassword": {
+      "title": "更改主密码",
+      "description": "您的笔记不会重新加密；只有保险库密钥会用新密码重新保护。",
+      "current": "当前密码",
+      "new": "新密码",
+      "confirm": "新密码（再次输入）",
+      "submit": "更改密码",
+      "changing": "正在更改…",
+      "success": "主密码已更改",
+      "error": "无法更改密码，请重试。"
+    },
+    "command": {
+      "title": "命令面板",
+      "placeholder": "搜索笔记或输入命令…",
+      "empty": "未找到结果",
+      "results": "搜索结果",
+      "actions": "操作",
+      "newNote": "创建新笔记",
+      "newSubpage": "创建子页面",
+      "navigation": "导航",
+      "general": "通用",
+      "toggleMode": "切换深色/浅色模式"
+    },
+    "shell": {
+      "openSidebar": "打开侧边栏",
+      "noNoteTitle": "未选择笔记",
+      "noNoteDescription": "从侧边栏选择笔记或新建一个。"
+    },
+    "error": {
+      "storageTitle": "存储错误",
+      "storageDescription": "无法访问本地存储。您可能处于隐私浏览模式或存储空间已满。",
+      "retry": "重试",
+      "corruptRecords": "{count} record(s) could not be decrypted and were skipped. They were not deleted."
+    },
+    "editor": {
+      "brokenPageLink": "页面链接已失效",
+      "slashGroup": "块",
+      "slash": {
+        "text": "文本",
+        "heading1": "标题 1",
+        "heading2": "标题 2",
+        "heading3": "标题 3",
+        "bulletList": "无序列表",
+        "numberedList": "有序列表",
+        "checkList": "待办清单",
+        "quote": "引用",
+        "code": "代码块",
+        "table": "表格",
+        "divider": "分割线",
+        "callout": "标注框",
+        "date": "日期",
+        "page": "页面"
+      }
+    },
+    "language": {
+      "title": "Choose your language",
+      "description": "Select the app language. You can change it later in settings.",
+      "continue": "Continue"
+    },
+    "welcome": {
+      "title": "Welcome to your notebook 👋",
+      "paragraph1": "This is your encrypted notebook, stored entirely on your device. Start by editing this note.",
+      "paragraph2": "Type \"/\" at the start of a line to add blocks: headings, lists, to-dos, tables, code, callouts and more.",
+      "paragraph3": "Use Cmd/Ctrl+K for quick search and commands, and Cmd/Ctrl+Shift+L to lock the vault instantly."
+    },
+    "reset": {
+      "title": "Reset the vault?",
+      "description": "A local vault's password cannot be recovered. If you continue, all encrypted notes on this device are permanently deleted and you can create a new vault. This cannot be undone.",
+      "confirm": "Reset and delete vault"
+    },
+    "backup": {
+      "title": "Backup",
+      "export": "Export",
+      "import": "Import",
+      "hint": "The backup file is encrypted and contains only ciphertext. Your vault password is still required to restore it.",
+      "exportSuccess": "Backup exported",
+      "exportError": "Could not export backup",
+      "importInvalid": "Invalid backup file",
+      "importSuccess": "Backup restored. Locking the vault…",
+      "importError": "Could not restore backup",
+      "importConfirmTitle": "Restore this backup?",
+      "importConfirmDescription": "This replaces your current vault with the backup and overwrites all current notes. After restoring, you must unlock with the backup's master password."
+    }
   }
 }

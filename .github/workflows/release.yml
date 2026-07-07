@@ -15,6 +15,11 @@ permissions:
 jobs:
   release:
     runs-on: ubuntu-latest
+    outputs:
+      # Root app (manifest path ".") — release-please prefixes per-package
+      # outputs with the package path.
+      app_released: ${{ steps.release.outputs['.--release_created'] }}
+      app_tag: ${{ steps.release.outputs['.--tag_name'] }}
     steps:
       - name: Release Please
         id: release
@@ -33,3 +38,19 @@ jobs:
           if [ -n "$LATEST_TAG" ]; then
             gh release edit "$LATEST_TAG" --repo ${{ github.repository }} --latest
           fi
+
+  # Automatically build and attach desktop installers (Windows .exe/.msi,
+  # macOS .dmg, Linux packages) to the GitHub Release whenever release-please
+  # cuts a new version of the root app. No manual dispatch needed.
+  build-desktop:
+    needs: release
+    if: ${{ needs.release.outputs.app_released == 'true' }}
+    uses: ./.github/workflows/build-desktop.yml
+    with:
+      tag_name: ${{ needs.release.outputs.app_tag }}
+      build_windows: true
+      build_macos: true
+      build_linux: true
+    secrets: inherit
+    permissions:
+      contents: write

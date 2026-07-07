@@ -3,7 +3,7 @@
   "version": "0.1.2",
   "description": "Scaffolding CLI for Catalyzer",
   "license": "MIT",
-  "author": "odest",
+  "author": "metesahankurt",
   "publishConfig": {
     "access": "public",
     "registry": "https://registry.npmjs.org/"
@@ -21,13 +21,13 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/odest/catalyzer.git",
+    "url": "git+https://github.com/metesahankurt/nolio.git",
     "directory": "packages/cli"
   },
   "bugs": {
-    "url": "https://github.com/odest/catalyzer/issues"
+    "url": "https://github.com/metesahankurt/nolio/issues"
   },
-  "homepage": "https://catalyzer.dev",
+  "homepage": "https://github.com/metesahankurt/nolio",
   "type": "module",
   "files": [
     "dist",

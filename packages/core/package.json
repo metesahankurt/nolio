@@ -5,20 +5,25 @@
   "private": true,
   "scripts": {
     "typecheck": "tsc --noEmit",
+    "test": "vitest run",
     "clean": "rimraf .turbo"
   },
   "dependencies": {
+    "@blocknote/core": "^0.51.4",
+    "@blocknote/react": "^0.51.4",
+    "@blocknote/shadcn": "^0.51.4",
     "@tauri-apps/api": "^2.11.0",
     "@workspace/i18n": "workspace:*",
     "@workspace/ui": "workspace:*",
+    "hash-wasm": "^4.12.0",
     "lucide-react": "^0.577.0",
     "motion": "^12.40.0",
-    "next-themes": "^0.4.6",
     "react": "^19.2.7",
     "react-dom": "^19.2.7",
     "react-hotkeys-hook": "^5.3.2",
     "react-use-measure": "^2.1.7",
     "sonner": "^2.0.7",
+    "zod": "^4.4.3",
     "zustand": "^5.0.14"
   },
   "devDependencies": {
@@ -26,10 +31,13 @@
     "@types/react": "^19.2.17",
     "@types/react-dom": "^19.2.3",
     "@workspace/typescript-config": "workspace:*",
-    "typescript": "~5.9.3"
+    "typescript": "~5.9.3",
+    "vitest": "^4.1.9"
   },
   "exports": {
     "./components/*": "./src/components/*.tsx",
+    "./features/notes/editor/*": "./src/features/notes/editor/*.tsx",
+    "./features/*": "./src/features/*.ts",
     "./providers/*": "./src/providers/*.tsx",
     "./pages/*": "./src/pages/*.tsx",
     "./pages/subpages/*": "./src/pages/subpages/*.tsx",

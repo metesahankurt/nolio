@@ -1,8 +1,8 @@
 {
   "$schema": "https://schema.tauri.app/config/2",
-  "productName": "Catalyzer",
+  "productName": "Nolio",
   "version": "2.0.1",
-  "identifier": "com.catalyzer.app",
+  "identifier": "com.metesahankurt.nolio",
   "build": {
     "beforeDevCommand": "pnpm dev",
     "devUrl": "http://localhost:3000",
@@ -12,9 +12,13 @@
   "app": {
     "windows": [
       {
-        "title": "Catalyzer",
-        "width": 800,
-        "height": 600
+        "title": "Nolio",
+        "width": 1100,
+        "height": 740,
+        "minWidth": 680,
+        "minHeight": 480,
+        "titleBarStyle": "Overlay",
+        "hiddenTitle": true
       }
     ],
     "security": {

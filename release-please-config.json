@@ -7,8 +7,8 @@
   "packages": {
     ".": {
       "release-type": "node",
-      "package-name": "catalyzer",
-      "component": "catalyzer",
+      "package-name": "nolio",
+      "component": "nolio",
       "changelog-path": "CHANGELOG.md",
       "bump-minor-pre-major": true,
       "bump-patch-for-minor-pre-major": true,
@@ -50,16 +50,6 @@
           "jsonpath": "$.package.version"
         }
       ]
-    },
-    "packages/cli": {
-      "release-type": "node",
-      "bump-minor-pre-major": true,
-      "bump-patch-for-minor-pre-major": true,
-      "include-component-in-tag": true,
-      "tag-separator": "@",
-      "version-file": "package.json",
-      "component": "create-catalyzer",
-      "package-name": "create-catalyzer"
     }
   },
   "changelog-sections": [

@@ -71,7 +71,8 @@
     "billing": "Faturalama",
     "notifications": "Bildirimler",
     "logOut": "Çıkış Yap",
-    "search": "Ara..."
+    "search": "Ara...",
+    "notes": "Notlar"
   },
   "HotkeysDialog": {
     "title": "Klavye Kısayolları",
@@ -139,5 +140,181 @@
     "versionTitle": "Yeni Sürüm Yayınlandı",
     "versionDescription": "Yeni özellikler ve iyileştirmeler için en son sürümü kontrol edin.",
     "versionTime": "2 gün önce"
+  },
+  "Notes": {
+    "untitled": "Adsız",
+    "common": {
+      "cancel": "İptal"
+    },
+    "password": {
+      "show": "Şifreyi göster",
+      "hide": "Şifreyi gizle",
+      "capsLock": "Caps Lock açık",
+      "strengthWeak": "Zayıf",
+      "strengthMedium": "Orta",
+      "strengthStrong": "Güçlü"
+    },
+    "setup": {
+      "title": "Yerel kasanızı oluşturun",
+      "description": "Notlarınız yalnızca bu cihazda, şifrelenmiş olarak saklanır. Hesap veya internet gerekmez.",
+      "vaultName": "Kasa adı (isteğe bağlı)",
+      "vaultNamePlaceholder": "Örn. Kişisel Notlar",
+      "password": "Ana şifre",
+      "passwordConfirm": "Ana şifre (tekrar)",
+      "passwordMismatch": "Şifreler eşleşmiyor",
+      "recoveryWarning": "Ana şifreniz hiçbir yerde saklanmaz. Şifrenizi unutursanız şifrelenmiş notlarınız kurtarılamaz.",
+      "consent": "Şifremi unutursam verilerimin kurtarılamayacağını anladım ve kabul ediyorum.",
+      "submit": "Kasayı oluştur",
+      "creating": "Oluşturuluyor…",
+      "error": "Kasa oluşturulamadı. Lütfen tekrar deneyin."
+    },
+    "unlock": {
+      "defaultVaultName": "Yerel Kasa",
+      "description": "Notlarınızı açmak için ana şifrenizi girin",
+      "password": "Ana şifre",
+      "wrongPassword": "Şifre doğrulanamadı.",
+      "submit": "Kilidi aç",
+      "unlocking": "Açılıyor…",
+      "localOnlyNotice": "Bu kasa yalnızca cihazınızda saklanır. Ana şifrenizi unutursanız şifrelenmiş notlarınıza erişilemez.",
+      "forgotPassword": "Şifremi unuttum"
+    },
+    "sidebar": {
+      "search": "Ara",
+      "newNote": "Yeni not",
+      "viewsLabel": "Görünümler",
+      "allNotes": "Tüm notlar",
+      "favorites": "Favoriler",
+      "recent": "Son kullanılanlar",
+      "trash": "Çöp kutusu",
+      "pages": "Sayfalar",
+      "settings": "Ayarlar",
+      "lockVault": "Kasayı kilitle"
+    },
+    "tree": {
+      "expand": "Genişlet",
+      "collapse": "Daralt",
+      "addSubpage": "Alt sayfa ekle",
+      "empty": "Henüz sayfa yok"
+    },
+    "header": {
+      "breadcrumb": "Sayfa yolu",
+      "changeIcon": "İkonu değiştir",
+      "removeIcon": "İkonu kaldır",
+      "titleLabel": "Not başlığı",
+      "noteMenu": "Not menüsü",
+      "addFavorite": "Favorilere ekle",
+      "removeFavorite": "Favorilerden çıkar",
+      "addSubpage": "Alt sayfa oluştur",
+      "moveToTrash": "Çöp kutusuna taşı",
+      "lastUpdated": "Son güncelleme: {date}"
+    },
+    "list": {
+      "emptyTitle": "Burada henüz bir şey yok",
+      "emptyDescription": "Yeni bir not oluşturduğunuzda burada görünür."
+    },
+    "trash": {
+      "restore": "Geri yükle",
+      "deleteForever": "Kalıcı olarak sil",
+      "confirmTitle": "Not kalıcı olarak silinsin mi?",
+      "confirmDescription": "Bu işlem geri alınamaz. Not ve tüm alt sayfaları kalıcı olarak silinecek."
+    },
+    "save": {
+      "saving": "Kaydediliyor…",
+      "saved": "Kaydedildi",
+      "error": "Kaydetme başarısız"
+    },
+    "settings": {
+      "title": "Not ayarları",
+      "description": "Güvenlik ve kilitleme tercihlerinizi yönetin.",
+      "autoLock": "Otomatik kilit",
+      "autoLockOff": "Devre dışı",
+      "autoLockMinutes": "{minutes} dakika",
+      "autoLockHint": "Belirtilen süre boyunca etkinlik olmazsa kasa otomatik kilitlenir.",
+      "changePasswordAction": "Ana şifreyi değiştir",
+      "language": "Dil"
+    },
+    "changePassword": {
+      "title": "Ana şifreyi değiştir",
+      "description": "Notlarınız yeniden şifrelenmez; yalnızca kasa anahtarı yeni şifrenizle korunur.",
+      "current": "Mevcut şifre",
+      "new": "Yeni şifre",
+      "confirm": "Yeni şifre (tekrar)",
+      "submit": "Şifreyi değiştir",
+      "changing": "Değiştiriliyor…",
+      "success": "Ana şifre değiştirildi",
+      "error": "Şifre değiştirilemedi. Lütfen tekrar deneyin."
+    },
+    "command": {
+      "title": "Komut paleti",
+      "placeholder": "Notlarda ara veya komut yaz…",
+      "empty": "Sonuç bulunamadı",
+      "results": "Arama sonuçları",
+      "actions": "İşlemler",
+      "newNote": "Yeni not oluştur",
+      "newSubpage": "Alt sayfa oluştur",
+      "navigation": "Gezinme",
+      "general": "Genel",
+      "toggleMode": "Koyu/açık modu değiştir"
+    },
+    "shell": {
+      "openSidebar": "Kenar çubuğunu aç",
+      "noNoteTitle": "Not seçilmedi",
+      "noNoteDescription": "Kenar çubuğundan bir not seçin veya yeni bir not oluşturun."
+    },
+    "error": {
+      "storageTitle": "Depolama hatası",
+      "storageDescription": "Yerel depolamaya erişilemedi. Gizli gezinme modunda olabilirsiniz veya depolama alanı dolu olabilir.",
+      "retry": "Tekrar dene",
+      "corruptRecords": "{count} kayıt çözülemedi ve atlandı. Bu kayıtlar silinmedi."
+    },
+    "editor": {
+      "brokenPageLink": "Bozuk sayfa bağlantısı",
+      "slashGroup": "Bloklar",
+      "slash": {
+        "text": "Metin",
+        "heading1": "Başlık 1",
+        "heading2": "Başlık 2",
+        "heading3": "Başlık 3",
+        "bulletList": "Madde işaretli liste",
+        "numberedList": "Numaralı liste",
+        "checkList": "Yapılacaklar listesi",
+        "quote": "Alıntı",
+        "code": "Kod bloğu",
+        "table": "Tablo",
+        "divider": "Ayırıcı",
+        "callout": "Uyarı kutusu",
+        "date": "Tarih",
+        "page": "Sayfa"
+      }
+    },
+    "language": {
+      "title": "Dil seçin",
+      "description": "Uygulama dilini seçin. Daha sonra ayarlardan değiştirebilirsiniz.",
+      "continue": "Devam et"
+    },
+    "welcome": {
+      "title": "Not defterinize hoş geldiniz 👋",
+      "paragraph1": "Bu, tamamen cihazınızda saklanan şifreli not defterinizdir. İçerik yazmaya bu notu düzenleyerek başlayabilirsiniz.",
+      "paragraph2": "Blok eklemek için satır başında \"/\" yazın: başlık, liste, yapılacaklar, tablo, kod, uyarı kutusu ve daha fazlası.",
+      "paragraph3": "Hızlı arama ve komutlar için Cmd/Ctrl+K, kasayı anında kilitlemek için Cmd/Ctrl+Shift+L kullanın."
+    },
+    "reset": {
+      "title": "Kasa sıfırlansın mı?",
+      "description": "Yerel kasanın şifresi kurtarılamaz. Devam ederseniz bu cihazdaki tüm şifreli notlar kalıcı olarak silinir ve yeni bir kasa oluşturabilirsiniz. Bu işlem geri alınamaz.",
+      "confirm": "Kasayı sıfırla ve sil"
+    },
+    "backup": {
+      "title": "Yedekleme",
+      "export": "Dışa aktar",
+      "import": "İçe aktar",
+      "hint": "Yedek dosyası şifrelidir ve yalnızca ciphertext içerir. Geri yüklerken kasa şifreniz yine gereklidir.",
+      "exportSuccess": "Yedek dışa aktarıldı",
+      "exportError": "Yedek dışa aktarılamadı",
+      "importInvalid": "Geçersiz yedek dosyası",
+      "importSuccess": "Yedek geri yüklendi. Kasa yeniden kilitleniyor…",
+      "importError": "Yedek geri yüklenemedi",
+      "importConfirmTitle": "Yedek geri yüklensin mi?",
+      "importConfirmDescription": "Bu işlem mevcut kasanın yerine yedeği koyar ve şu anki tüm notlarınızı değiştirir. Geri yükledikten sonra yedeğin ana şifresiyle kilidi açmanız gerekir."
+    }
   }
 }

@@ -1,7 +1,6 @@
 "use client";
 
 import { MainNav } from "@workspace/core/components/navigation/main-nav";
-import { ProjectsNav } from "@workspace/core/components/navigation/projects-nav";
 import { SecondaryNav } from "@workspace/core/components/navigation/secondary-nav";
 import { UserNav } from "@workspace/core/components/navigation/user-nav";
 import { navigationData } from "@workspace/core/config/navigation";
@@ -78,11 +77,6 @@ export function AppSidebar({
           items={navigationData.navMain}
           LinkComponent={LinkComponent}
           pathname={pathname}
-        />
-        <ProjectsNav
-          LinkComponent={LinkComponent}
-          pathname={pathname}
-          projects={navigationData.projects}
         />
         <SecondaryNav
           className="mt-auto"

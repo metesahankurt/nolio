@@ -1,6 +1,6 @@
 "use client";
 
-import { useTheme } from "next-themes";
+import { useTheme } from "@workspace/core/providers/theme-provider";
 
 type ThemeOption = "light" | "dark" | "system";
 

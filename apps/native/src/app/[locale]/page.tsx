@@ -7,7 +7,7 @@ export default function RootRedirect() {
   const router = useRouter();
 
   useEffect(() => {
-    router.replace("/home");
+    router.replace("/notes");
   }, [router]);
 
   return null;

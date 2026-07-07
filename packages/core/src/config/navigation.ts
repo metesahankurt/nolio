@@ -1,18 +1,12 @@
 import { siteConfig } from "@workspace/core/config/site";
 import {
-  BadgeCheck,
-  Bell,
-  CreditCard,
   Github,
-  Home,
-  LayoutDashboard,
   LogOut,
   type LucideIcon,
-  PieChart,
+  NotebookPen,
   Search,
   Send,
   Settings,
-  Sparkles,
   User,
 } from "lucide-react";
 
@@ -54,13 +48,6 @@ export interface SecondaryNavItem {
   url: string;
 }
 
-export interface ProjectNavItem {
-  icon: LucideIcon;
-  name: string;
-  translationKey: string;
-  url: string;
-}
-
 export interface ProfileNavItem {
   icon: LucideIcon;
   title: string;
@@ -78,7 +65,6 @@ export interface NavigationData {
   navMobile: MobileNavItem[];
   navProfile: ProfileNavGroup[];
   navSecondary: SecondaryNavItem[];
-  projects: ProjectNavItem[];
   user: UserNavItem;
 }
 
@@ -90,53 +76,34 @@ export const navigationData: NavigationData = {
   },
   navMain: [
     {
-      title: "Home",
-      url: "/home",
-      icon: Home,
+      title: "Notes",
+      url: "/notes",
+      icon: NotebookPen,
       isActive: true,
       items: [],
-      translationKey: "home",
+      translationKey: "notes",
     },
     {
-      title: "Dashboard",
-      url: "/dashboard",
-      href: "/dashboard/overview",
-      icon: LayoutDashboard,
-      isActive: true,
-      translationKey: "dashboard",
-      items: [
-        {
-          title: "Overview",
-          url: "/dashboard/overview",
-          translationKey: "overview",
-        },
-        {
-          title: "Analytics",
-          url: "/dashboard/analytics",
-          translationKey: "analytics",
-        },
-        {
-          title: "Reports",
-          url: "/dashboard/reports",
-          translationKey: "reports",
-        },
-      ],
+      title: "Settings",
+      url: "/settings",
+      icon: Settings,
+      isActive: false,
+      items: [],
+      translationKey: "settings",
     },
   ],
   navMobile: [
-    { title: "Home", url: "/home", icon: Home, translationKey: "home" },
+    {
+      title: "Notes",
+      url: "/notes",
+      icon: NotebookPen,
+      translationKey: "notes",
+    },
     {
       title: "Search",
       url: "#search",
       icon: Search,
       translationKey: "search",
-    },
-    {
-      title: "Dashboard",
-      url: "/dashboard",
-      href: "/dashboard/overview",
-      icon: LayoutDashboard,
-      translationKey: "dashboard",
     },
     {
       title: "Profile",
@@ -166,58 +133,21 @@ export const navigationData: NavigationData = {
       translationKey: "github",
       external: true,
     },
-    {
-      title: "Settings",
-      url: "/settings",
-      icon: Settings,
-      translationKey: "settings",
-    },
-  ],
-  projects: [
-    {
-      name: "Project Alpha",
-      url: "#",
-      icon: PieChart,
-      translationKey: "projectAlpha",
-    },
   ],
   navProfile: [
     {
       id: "group-1",
       items: [
         {
-          title: "Upgrade to Pro",
-          url: "#upgrade",
-          icon: Sparkles,
-          translationKey: "upgradeToPro",
+          title: "Settings",
+          url: "/settings",
+          icon: Settings,
+          translationKey: "settings",
         },
       ],
     },
     {
       id: "group-2",
-      items: [
-        {
-          title: "Account",
-          url: "#account",
-          icon: BadgeCheck,
-          translationKey: "account",
-        },
-        {
-          title: "Billing",
-          url: "#billing",
-          icon: CreditCard,
-          translationKey: "billing",
-        },
-        {
-          title: "Notifications",
-          url: "#notifications",
-          icon: Bell,
-          translationKey: "notifications",
-        },
-      ],
-    },
-    {
-      id: "group-3",
       items: [
         {
           title: "Log Out",

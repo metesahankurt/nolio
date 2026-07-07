@@ -71,7 +71,8 @@
     "billing": "Выставление счетов",
     "notifications": "Уведомления",
     "logOut": "Выйти",
-    "search": "Поиск..."
+    "search": "Поиск...",
+    "notes": "Заметки"
   },
   "HotkeysDialog": {
     "title": "Горячие клавиши",
@@ -139,5 +140,181 @@
     "versionTitle": "Новая версия",
     "versionDescription": "Проверьте последнюю версию на наличие новых функций и улучшений.",
     "versionTime": "2 дня назад"
+  },
+  "Notes": {
+    "untitled": "Без названия",
+    "common": {
+      "cancel": "Отмена"
+    },
+    "password": {
+      "show": "Показать пароль",
+      "hide": "Скрыть пароль",
+      "capsLock": "Включён Caps Lock",
+      "strengthWeak": "Слабый",
+      "strengthMedium": "Средний",
+      "strengthStrong": "Надёжный"
+    },
+    "setup": {
+      "title": "Создайте локальное хранилище",
+      "description": "Ваши заметки хранятся в зашифрованном виде только на этом устройстве. Аккаунт и интернет не нужны.",
+      "vaultName": "Название хранилища (необязательно)",
+      "vaultNamePlaceholder": "напр. Личные заметки",
+      "password": "Мастер-пароль",
+      "passwordConfirm": "Мастер-пароль (ещё раз)",
+      "passwordMismatch": "Пароли не совпадают",
+      "recoveryWarning": "Ваш мастер-пароль нигде не хранится. Если вы его забудете, зашифрованные заметки восстановить будет невозможно.",
+      "consent": "Я понимаю, что мои данные нельзя восстановить, если я забуду пароль.",
+      "submit": "Создать хранилище",
+      "creating": "Создание…",
+      "error": "Не удалось создать хранилище. Попробуйте ещё раз."
+    },
+    "unlock": {
+      "defaultVaultName": "Локальное хранилище",
+      "description": "Введите мастер-пароль, чтобы открыть заметки",
+      "password": "Мастер-пароль",
+      "wrongPassword": "Не удалось проверить пароль.",
+      "submit": "Разблокировать",
+      "unlocking": "Разблокировка…",
+      "localOnlyNotice": "Это хранилище находится только на вашем устройстве. Если вы забудете мастер-пароль, доступ к зашифрованным заметкам будет невозможен.",
+      "forgotPassword": "Forgot your password?"
+    },
+    "sidebar": {
+      "search": "Поиск",
+      "newNote": "Новая заметка",
+      "viewsLabel": "Виды",
+      "allNotes": "Все заметки",
+      "favorites": "Избранное",
+      "recent": "Недавние",
+      "trash": "Корзина",
+      "pages": "Страницы",
+      "settings": "Настройки",
+      "lockVault": "Заблокировать хранилище"
+    },
+    "tree": {
+      "expand": "Развернуть",
+      "collapse": "Свернуть",
+      "addSubpage": "Добавить подстраницу",
+      "empty": "Пока нет страниц"
+    },
+    "header": {
+      "breadcrumb": "Навигация",
+      "changeIcon": "Изменить значок",
+      "removeIcon": "Убрать значок",
+      "titleLabel": "Заголовок заметки",
+      "noteMenu": "Меню заметки",
+      "addFavorite": "В избранное",
+      "removeFavorite": "Убрать из избранного",
+      "addSubpage": "Создать подстраницу",
+      "moveToTrash": "Переместить в корзину",
+      "lastUpdated": "Обновлено: {date}"
+    },
+    "list": {
+      "emptyTitle": "Здесь пока пусто",
+      "emptyDescription": "Заметки появятся здесь после создания."
+    },
+    "trash": {
+      "restore": "Восстановить",
+      "deleteForever": "Удалить навсегда",
+      "confirmTitle": "Удалить заметку навсегда?",
+      "confirmDescription": "Это действие нельзя отменить. Заметка и все её подстраницы будут удалены навсегда."
+    },
+    "save": {
+      "saving": "Сохранение…",
+      "saved": "Сохранено",
+      "error": "Ошибка сохранения"
+    },
+    "settings": {
+      "title": "Настройки заметок",
+      "description": "Управляйте параметрами безопасности и блокировки.",
+      "autoLock": "Автоблокировка",
+      "autoLockOff": "Выключено",
+      "autoLockMinutes": "{minutes} мин",
+      "autoLockHint": "Хранилище автоматически блокируется после этого периода бездействия.",
+      "changePasswordAction": "Изменить мастер-пароль",
+      "language": "Language"
+    },
+    "changePassword": {
+      "title": "Изменить мастер-пароль",
+      "description": "Заметки не перешифровываются; новым паролем защищается только ключ хранилища.",
+      "current": "Текущий пароль",
+      "new": "Новый пароль",
+      "confirm": "Новый пароль (ещё раз)",
+      "submit": "Изменить пароль",
+      "changing": "Изменение…",
+      "success": "Мастер-пароль изменён",
+      "error": "Не удалось изменить пароль. Попробуйте ещё раз."
+    },
+    "command": {
+      "title": "Палитра команд",
+      "placeholder": "Ищите заметки или введите команду…",
+      "empty": "Ничего не найдено",
+      "results": "Результаты поиска",
+      "actions": "Действия",
+      "newNote": "Создать заметку",
+      "newSubpage": "Создать подстраницу",
+      "navigation": "Навигация",
+      "general": "Общие",
+      "toggleMode": "Переключить тёмную/светлую тему"
+    },
+    "shell": {
+      "openSidebar": "Открыть боковую панель",
+      "noNoteTitle": "Заметка не выбрана",
+      "noNoteDescription": "Выберите заметку на боковой панели или создайте новую."
+    },
+    "error": {
+      "storageTitle": "Ошибка хранилища",
+      "storageDescription": "Нет доступа к локальному хранилищу. Возможно, включён приватный режим или закончилось место.",
+      "retry": "Повторить",
+      "corruptRecords": "{count} record(s) could not be decrypted and were skipped. They were not deleted."
+    },
+    "editor": {
+      "brokenPageLink": "Битая ссылка на страницу",
+      "slashGroup": "Блоки",
+      "slash": {
+        "text": "Текст",
+        "heading1": "Заголовок 1",
+        "heading2": "Заголовок 2",
+        "heading3": "Заголовок 3",
+        "bulletList": "Маркированный список",
+        "numberedList": "Нумерованный список",
+        "checkList": "Список задач",
+        "quote": "Цитата",
+        "code": "Блок кода",
+        "table": "Таблица",
+        "divider": "Разделитель",
+        "callout": "Выноска",
+        "date": "Дата",
+        "page": "Страница"
+      }
+    },
+    "language": {
+      "title": "Choose your language",
+      "description": "Select the app language. You can change it later in settings.",
+      "continue": "Continue"
+    },
+    "welcome": {
+      "title": "Welcome to your notebook 👋",
+      "paragraph1": "This is your encrypted notebook, stored entirely on your device. Start by editing this note.",
+      "paragraph2": "Type \"/\" at the start of a line to add blocks: headings, lists, to-dos, tables, code, callouts and more.",
+      "paragraph3": "Use Cmd/Ctrl+K for quick search and commands, and Cmd/Ctrl+Shift+L to lock the vault instantly."
+    },
+    "reset": {
+      "title": "Reset the vault?",
+      "description": "A local vault's password cannot be recovered. If you continue, all encrypted notes on this device are permanently deleted and you can create a new vault. This cannot be undone.",
+      "confirm": "Reset and delete vault"
+    },
+    "backup": {
+      "title": "Backup",
+      "export": "Export",
+      "import": "Import",
+      "hint": "The backup file is encrypted and contains only ciphertext. Your vault password is still required to restore it.",
+      "exportSuccess": "Backup exported",
+      "exportError": "Could not export backup",
+      "importInvalid": "Invalid backup file",
+      "importSuccess": "Backup restored. Locking the vault…",
+      "importError": "Could not restore backup",
+      "importConfirmTitle": "Restore this backup?",
+      "importConfirmDescription": "This replaces your current vault with the backup and overwrites all current notes. After restoring, you must unlock with the backup's master password."
+    }
   }
 }

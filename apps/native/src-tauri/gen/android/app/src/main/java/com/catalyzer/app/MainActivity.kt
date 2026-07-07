@@ -1,4 +1,4 @@
-package com.catalyzer.app
+package com.metesahankurt.nolio
 
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge

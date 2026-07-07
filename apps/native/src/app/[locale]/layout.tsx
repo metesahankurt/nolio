@@ -1,10 +1,11 @@
+import { ThemeInitializer } from "@workspace/core/components/common/theme-initializer";
 import { siteConfig } from "@workspace/core/config/site";
-import { themeInitScript } from "@workspace/core/scripts/theme-init";
 import { hasLocale, messages, NextIntlClientProvider } from "@workspace/i18n";
 import { routing } from "@workspace/i18n/routing";
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { notFound } from "next/navigation";
+import { NativeTitleBar } from "../../components/native-title-bar";
 import { AppLayout } from "./components/app-layout";
 import "@workspace/ui/globals.css";
 
@@ -50,14 +51,6 @@ export default async function RootLayout({
 
   return (
     <html lang={locale} suppressHydrationWarning={true}>
-      <head>
-        <script
-          // biome-ignore lint/security/noDangerouslySetInnerHtml: Trusted script
-          dangerouslySetInnerHTML={{
-            __html: themeInitScript,
-          }}
-        />
-      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} overflow-hidden antialiased`}
       >
@@ -66,6 +59,8 @@ export default async function RootLayout({
           messages={localeMessages}
           timeZone="UTC"
         >
+          <ThemeInitializer />
+          <NativeTitleBar />
           <AppLayout>{children}</AppLayout>
         </NextIntlClientProvider>
       </body>

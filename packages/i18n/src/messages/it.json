@@ -71,7 +71,8 @@
     "billing": "Fatturazione",
     "notifications": "Notifiche",
     "logOut": "Esci",
-    "search": "Cerca..."
+    "search": "Cerca...",
+    "notes": "Note"
   },
   "HotkeysDialog": {
     "title": "Scorciatoie da Tastiera",
@@ -139,5 +140,181 @@
     "versionTitle": "Nuova versione",
     "versionDescription": "Controlla l'ultima versione per nuove funzionalità e miglioramenti.",
     "versionTime": "2 giorni fa"
+  },
+  "Notes": {
+    "untitled": "Senza titolo",
+    "common": {
+      "cancel": "Annulla"
+    },
+    "password": {
+      "show": "Mostra password",
+      "hide": "Nascondi password",
+      "capsLock": "Bloc Maiusc è attivo",
+      "strengthWeak": "Debole",
+      "strengthMedium": "Media",
+      "strengthStrong": "Forte"
+    },
+    "setup": {
+      "title": "Crea il tuo vault locale",
+      "description": "Le tue note sono archiviate cifrate solo su questo dispositivo. Nessun account o internet richiesto.",
+      "vaultName": "Nome del vault (facoltativo)",
+      "vaultNamePlaceholder": "es. Note personali",
+      "password": "Password principale",
+      "passwordConfirm": "Password principale (ripeti)",
+      "passwordMismatch": "Le password non coincidono",
+      "recoveryWarning": "La tua password principale non viene mai memorizzata. Se la dimentichi, le tue note cifrate non potranno essere recuperate.",
+      "consent": "Capisco che i miei dati non possono essere recuperati se dimentico la password.",
+      "submit": "Crea vault",
+      "creating": "Creazione…",
+      "error": "Impossibile creare il vault. Riprova."
+    },
+    "unlock": {
+      "defaultVaultName": "Vault locale",
+      "description": "Inserisci la password principale per aprire le tue note",
+      "password": "Password principale",
+      "wrongPassword": "Impossibile verificare la password.",
+      "submit": "Sblocca",
+      "unlocking": "Sblocco…",
+      "localOnlyNotice": "Questo vault è archiviato solo sul tuo dispositivo. Se dimentichi la password principale, le tue note cifrate non saranno accessibili.",
+      "forgotPassword": "Forgot your password?"
+    },
+    "sidebar": {
+      "search": "Cerca",
+      "newNote": "Nuova nota",
+      "viewsLabel": "Viste",
+      "allNotes": "Tutte le note",
+      "favorites": "Preferiti",
+      "recent": "Recenti",
+      "trash": "Cestino",
+      "pages": "Pagine",
+      "settings": "Impostazioni",
+      "lockVault": "Blocca vault"
+    },
+    "tree": {
+      "expand": "Espandi",
+      "collapse": "Comprimi",
+      "addSubpage": "Aggiungi sottopagina",
+      "empty": "Nessuna pagina"
+    },
+    "header": {
+      "breadcrumb": "Percorso",
+      "changeIcon": "Cambia icona",
+      "removeIcon": "Rimuovi icona",
+      "titleLabel": "Titolo della nota",
+      "noteMenu": "Menu della nota",
+      "addFavorite": "Aggiungi ai preferiti",
+      "removeFavorite": "Rimuovi dai preferiti",
+      "addSubpage": "Crea sottopagina",
+      "moveToTrash": "Sposta nel cestino",
+      "lastUpdated": "Ultimo aggiornamento: {date}"
+    },
+    "list": {
+      "emptyTitle": "Ancora niente qui",
+      "emptyDescription": "Le note appariranno qui una volta create."
+    },
+    "trash": {
+      "restore": "Ripristina",
+      "deleteForever": "Elimina definitivamente",
+      "confirmTitle": "Eliminare definitivamente questa nota?",
+      "confirmDescription": "Questa azione non può essere annullata. La nota e tutte le sue sottopagine verranno eliminate definitivamente."
+    },
+    "save": {
+      "saving": "Salvataggio…",
+      "saved": "Salvato",
+      "error": "Salvataggio non riuscito"
+    },
+    "settings": {
+      "title": "Impostazioni note",
+      "description": "Gestisci le preferenze di sicurezza e blocco.",
+      "autoLock": "Blocco automatico",
+      "autoLockOff": "Disattivato",
+      "autoLockMinutes": "{minutes} minuti",
+      "autoLockHint": "Il vault si blocca automaticamente dopo questo periodo di inattività.",
+      "changePasswordAction": "Cambia password principale",
+      "language": "Language"
+    },
+    "changePassword": {
+      "title": "Cambia password principale",
+      "description": "Le tue note non vengono ricifrate; solo la chiave del vault viene riprotetta con la nuova password.",
+      "current": "Password attuale",
+      "new": "Nuova password",
+      "confirm": "Nuova password (ripeti)",
+      "submit": "Cambia password",
+      "changing": "Modifica…",
+      "success": "Password principale cambiata",
+      "error": "Impossibile cambiare la password. Riprova."
+    },
+    "command": {
+      "title": "Palette comandi",
+      "placeholder": "Cerca note o digita un comando…",
+      "empty": "Nessun risultato",
+      "results": "Risultati di ricerca",
+      "actions": "Azioni",
+      "newNote": "Crea nuova nota",
+      "newSubpage": "Crea sottopagina",
+      "navigation": "Navigazione",
+      "general": "Generale",
+      "toggleMode": "Attiva/disattiva tema scuro"
+    },
+    "shell": {
+      "openSidebar": "Apri barra laterale",
+      "noNoteTitle": "Nessuna nota selezionata",
+      "noNoteDescription": "Seleziona una nota dalla barra laterale o creane una nuova."
+    },
+    "error": {
+      "storageTitle": "Errore di archiviazione",
+      "storageDescription": "Impossibile accedere all'archiviazione locale. Potresti essere in navigazione privata o senza spazio.",
+      "retry": "Riprova",
+      "corruptRecords": "{count} record(s) could not be decrypted and were skipped. They were not deleted."
+    },
+    "editor": {
+      "brokenPageLink": "Collegamento pagina interrotto",
+      "slashGroup": "Blocchi",
+      "slash": {
+        "text": "Testo",
+        "heading1": "Titolo 1",
+        "heading2": "Titolo 2",
+        "heading3": "Titolo 3",
+        "bulletList": "Elenco puntato",
+        "numberedList": "Elenco numerato",
+        "checkList": "Elenco attività",
+        "quote": "Citazione",
+        "code": "Blocco di codice",
+        "table": "Tabella",
+        "divider": "Divisore",
+        "callout": "Callout",
+        "date": "Data",
+        "page": "Pagina"
+      }
+    },
+    "language": {
+      "title": "Choose your language",
+      "description": "Select the app language. You can change it later in settings.",
+      "continue": "Continue"
+    },
+    "welcome": {
+      "title": "Welcome to your notebook 👋",
+      "paragraph1": "This is your encrypted notebook, stored entirely on your device. Start by editing this note.",
+      "paragraph2": "Type \"/\" at the start of a line to add blocks: headings, lists, to-dos, tables, code, callouts and more.",
+      "paragraph3": "Use Cmd/Ctrl+K for quick search and commands, and Cmd/Ctrl+Shift+L to lock the vault instantly."
+    },
+    "reset": {
+      "title": "Reset the vault?",
+      "description": "A local vault's password cannot be recovered. If you continue, all encrypted notes on this device are permanently deleted and you can create a new vault. This cannot be undone.",
+      "confirm": "Reset and delete vault"
+    },
+    "backup": {
+      "title": "Backup",
+      "export": "Export",
+      "import": "Import",
+      "hint": "The backup file is encrypted and contains only ciphertext. Your vault password is still required to restore it.",
+      "exportSuccess": "Backup exported",
+      "exportError": "Could not export backup",
+      "importInvalid": "Invalid backup file",
+      "importSuccess": "Backup restored. Locking the vault…",
+      "importError": "Could not restore backup",
+      "importConfirmTitle": "Restore this backup?",
+      "importConfirmDescription": "This replaces your current vault with the backup and overwrites all current notes. After restoring, you must unlock with the backup's master password."
+    }
   }
 }

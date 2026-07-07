@@ -71,7 +71,8 @@
     "billing": "Facturation",
     "notifications": "Notifications",
     "logOut": "Se déconnecter",
-    "search": "Rechercher..."
+    "search": "Rechercher...",
+    "notes": "Notes"
   },
   "HotkeysDialog": {
     "title": "Raccourcis Clavier",
@@ -139,5 +140,181 @@
     "versionTitle": "Nouvelle version",
     "versionDescription": "Consultez la dernière version pour découvrir de nouvelles fonctionnalités et améliorations.",
     "versionTime": "il y a 2 jours"
+  },
+  "Notes": {
+    "untitled": "Sans titre",
+    "common": {
+      "cancel": "Annuler"
+    },
+    "password": {
+      "show": "Afficher le mot de passe",
+      "hide": "Masquer le mot de passe",
+      "capsLock": "Verr. Maj est activé",
+      "strengthWeak": "Faible",
+      "strengthMedium": "Moyen",
+      "strengthStrong": "Fort"
+    },
+    "setup": {
+      "title": "Créez votre coffre local",
+      "description": "Vos notes sont stockées chiffrées uniquement sur cet appareil. Aucun compte ni internet requis.",
+      "vaultName": "Nom du coffre (facultatif)",
+      "vaultNamePlaceholder": "p. ex. Notes personnelles",
+      "password": "Mot de passe principal",
+      "passwordConfirm": "Mot de passe principal (confirmer)",
+      "passwordMismatch": "Les mots de passe ne correspondent pas",
+      "recoveryWarning": "Votre mot de passe principal n'est jamais stocké. Si vous l'oubliez, vos notes chiffrées ne pourront pas être récupérées.",
+      "consent": "Je comprends que mes données ne peuvent pas être récupérées si j'oublie mon mot de passe.",
+      "submit": "Créer le coffre",
+      "creating": "Création…",
+      "error": "Le coffre n'a pas pu être créé. Veuillez réessayer."
+    },
+    "unlock": {
+      "defaultVaultName": "Coffre local",
+      "description": "Saisissez votre mot de passe principal pour ouvrir vos notes",
+      "password": "Mot de passe principal",
+      "wrongPassword": "Le mot de passe n'a pas pu être vérifié.",
+      "submit": "Déverrouiller",
+      "unlocking": "Déverrouillage…",
+      "localOnlyNotice": "Ce coffre est stocké uniquement sur votre appareil. Si vous oubliez votre mot de passe principal, vos notes chiffrées seront inaccessibles.",
+      "forgotPassword": "Forgot your password?"
+    },
+    "sidebar": {
+      "search": "Rechercher",
+      "newNote": "Nouvelle note",
+      "viewsLabel": "Vues",
+      "allNotes": "Toutes les notes",
+      "favorites": "Favoris",
+      "recent": "Récents",
+      "trash": "Corbeille",
+      "pages": "Pages",
+      "settings": "Paramètres",
+      "lockVault": "Verrouiller le coffre"
+    },
+    "tree": {
+      "expand": "Déplier",
+      "collapse": "Replier",
+      "addSubpage": "Ajouter une sous-page",
+      "empty": "Pas encore de pages"
+    },
+    "header": {
+      "breadcrumb": "Fil d'Ariane",
+      "changeIcon": "Changer l'icône",
+      "removeIcon": "Supprimer l'icône",
+      "titleLabel": "Titre de la note",
+      "noteMenu": "Menu de la note",
+      "addFavorite": "Ajouter aux favoris",
+      "removeFavorite": "Retirer des favoris",
+      "addSubpage": "Créer une sous-page",
+      "moveToTrash": "Déplacer vers la corbeille",
+      "lastUpdated": "Dernière mise à jour : {date}"
+    },
+    "list": {
+      "emptyTitle": "Rien ici pour l'instant",
+      "emptyDescription": "Les notes apparaîtront ici une fois créées."
+    },
+    "trash": {
+      "restore": "Restaurer",
+      "deleteForever": "Supprimer définitivement",
+      "confirmTitle": "Supprimer définitivement cette note ?",
+      "confirmDescription": "Cette action est irréversible. La note et toutes ses sous-pages seront définitivement supprimées."
+    },
+    "save": {
+      "saving": "Enregistrement…",
+      "saved": "Enregistré",
+      "error": "Échec de l'enregistrement"
+    },
+    "settings": {
+      "title": "Paramètres des notes",
+      "description": "Gérez vos préférences de sécurité et de verrouillage.",
+      "autoLock": "Verrouillage automatique",
+      "autoLockOff": "Désactivé",
+      "autoLockMinutes": "{minutes} minutes",
+      "autoLockHint": "Le coffre se verrouille automatiquement après cette période d'inactivité.",
+      "changePasswordAction": "Changer le mot de passe principal",
+      "language": "Language"
+    },
+    "changePassword": {
+      "title": "Changer le mot de passe principal",
+      "description": "Vos notes ne sont pas rechiffrées ; seule la clé du coffre est reprotégée avec votre nouveau mot de passe.",
+      "current": "Mot de passe actuel",
+      "new": "Nouveau mot de passe",
+      "confirm": "Nouveau mot de passe (confirmer)",
+      "submit": "Changer le mot de passe",
+      "changing": "Modification…",
+      "success": "Mot de passe principal modifié",
+      "error": "Le mot de passe n'a pas pu être modifié. Veuillez réessayer."
+    },
+    "command": {
+      "title": "Palette de commandes",
+      "placeholder": "Rechercher des notes ou saisir une commande…",
+      "empty": "Aucun résultat",
+      "results": "Résultats de recherche",
+      "actions": "Actions",
+      "newNote": "Créer une nouvelle note",
+      "newSubpage": "Créer une sous-page",
+      "navigation": "Navigation",
+      "general": "Général",
+      "toggleMode": "Basculer mode sombre/clair"
+    },
+    "shell": {
+      "openSidebar": "Ouvrir la barre latérale",
+      "noNoteTitle": "Aucune note sélectionnée",
+      "noNoteDescription": "Sélectionnez une note dans la barre latérale ou créez-en une nouvelle."
+    },
+    "error": {
+      "storageTitle": "Erreur de stockage",
+      "storageDescription": "Impossible d'accéder au stockage local. Vous êtes peut-être en navigation privée ou à court d'espace.",
+      "retry": "Réessayer",
+      "corruptRecords": "{count} record(s) could not be decrypted and were skipped. They were not deleted."
+    },
+    "editor": {
+      "brokenPageLink": "Lien de page cassé",
+      "slashGroup": "Blocs",
+      "slash": {
+        "text": "Texte",
+        "heading1": "Titre 1",
+        "heading2": "Titre 2",
+        "heading3": "Titre 3",
+        "bulletList": "Liste à puces",
+        "numberedList": "Liste numérotée",
+        "checkList": "Liste de tâches",
+        "quote": "Citation",
+        "code": "Bloc de code",
+        "table": "Tableau",
+        "divider": "Séparateur",
+        "callout": "Encadré",
+        "date": "Date",
+        "page": "Page"
+      }
+    },
+    "language": {
+      "title": "Choose your language",
+      "description": "Select the app language. You can change it later in settings.",
+      "continue": "Continue"
+    },
+    "welcome": {
+      "title": "Welcome to your notebook 👋",
+      "paragraph1": "This is your encrypted notebook, stored entirely on your device. Start by editing this note.",
+      "paragraph2": "Type \"/\" at the start of a line to add blocks: headings, lists, to-dos, tables, code, callouts and more.",
+      "paragraph3": "Use Cmd/Ctrl+K for quick search and commands, and Cmd/Ctrl+Shift+L to lock the vault instantly."
+    },
+    "reset": {
+      "title": "Reset the vault?",
+      "description": "A local vault's password cannot be recovered. If you continue, all encrypted notes on this device are permanently deleted and you can create a new vault. This cannot be undone.",
+      "confirm": "Reset and delete vault"
+    },
+    "backup": {
+      "title": "Backup",
+      "export": "Export",
+      "import": "Import",
+      "hint": "The backup file is encrypted and contains only ciphertext. Your vault password is still required to restore it.",
+      "exportSuccess": "Backup exported",
+      "exportError": "Could not export backup",
+      "importInvalid": "Invalid backup file",
+      "importSuccess": "Backup restored. Locking the vault…",
+      "importError": "Could not restore backup",
+      "importConfirmTitle": "Restore this backup?",
+      "importConfirmDescription": "This replaces your current vault with the backup and overwrites all current notes. After restoring, you must unlock with the backup's master password."
+    }
   }
 }

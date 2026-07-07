@@ -71,7 +71,8 @@
     "billing": "Facturación",
     "notifications": "Notificaciones",
     "logOut": "Cerrar sesión",
-    "search": "Buscar..."
+    "search": "Buscar...",
+    "notes": "Notas"
   },
   "HotkeysDialog": {
     "title": "Atajos de Teclado",
@@ -139,5 +140,181 @@
     "versionTitle": "Nueva versión lanzada",
     "versionDescription": "Consulte la última versión para conocer las nuevas funciones y mejoras.",
     "versionTime": "hace 2 días"
+  },
+  "Notes": {
+    "untitled": "Sin título",
+    "common": {
+      "cancel": "Cancelar"
+    },
+    "password": {
+      "show": "Mostrar contraseña",
+      "hide": "Ocultar contraseña",
+      "capsLock": "Bloq Mayús está activado",
+      "strengthWeak": "Débil",
+      "strengthMedium": "Media",
+      "strengthStrong": "Fuerte"
+    },
+    "setup": {
+      "title": "Crea tu bóveda local",
+      "description": "Tus notas se guardan cifradas solo en este dispositivo. No se requiere cuenta ni internet.",
+      "vaultName": "Nombre de la bóveda (opcional)",
+      "vaultNamePlaceholder": "p. ej. Notas personales",
+      "password": "Contraseña maestra",
+      "passwordConfirm": "Contraseña maestra (repetir)",
+      "passwordMismatch": "Las contraseñas no coinciden",
+      "recoveryWarning": "Tu contraseña maestra no se guarda en ningún lugar. Si la olvidas, tus notas cifradas no se podrán recuperar.",
+      "consent": "Entiendo que mis datos no se pueden recuperar si olvido mi contraseña.",
+      "submit": "Crear bóveda",
+      "creating": "Creando…",
+      "error": "No se pudo crear la bóveda. Inténtalo de nuevo."
+    },
+    "unlock": {
+      "defaultVaultName": "Bóveda local",
+      "description": "Introduce tu contraseña maestra para abrir tus notas",
+      "password": "Contraseña maestra",
+      "wrongPassword": "No se pudo verificar la contraseña.",
+      "submit": "Desbloquear",
+      "unlocking": "Desbloqueando…",
+      "localOnlyNotice": "Esta bóveda se guarda solo en tu dispositivo. Si olvidas tu contraseña maestra, no se podrá acceder a tus notas cifradas.",
+      "forgotPassword": "Forgot your password?"
+    },
+    "sidebar": {
+      "search": "Buscar",
+      "newNote": "Nueva nota",
+      "viewsLabel": "Vistas",
+      "allNotes": "Todas las notas",
+      "favorites": "Favoritos",
+      "recent": "Recientes",
+      "trash": "Papelera",
+      "pages": "Páginas",
+      "settings": "Ajustes",
+      "lockVault": "Bloquear bóveda"
+    },
+    "tree": {
+      "expand": "Expandir",
+      "collapse": "Contraer",
+      "addSubpage": "Añadir subpágina",
+      "empty": "Aún no hay páginas"
+    },
+    "header": {
+      "breadcrumb": "Ruta de navegación",
+      "changeIcon": "Cambiar icono",
+      "removeIcon": "Quitar icono",
+      "titleLabel": "Título de la nota",
+      "noteMenu": "Menú de la nota",
+      "addFavorite": "Añadir a favoritos",
+      "removeFavorite": "Quitar de favoritos",
+      "addSubpage": "Crear subpágina",
+      "moveToTrash": "Mover a la papelera",
+      "lastUpdated": "Última actualización: {date}"
+    },
+    "list": {
+      "emptyTitle": "Aún no hay nada aquí",
+      "emptyDescription": "Las notas aparecerán aquí cuando las crees."
+    },
+    "trash": {
+      "restore": "Restaurar",
+      "deleteForever": "Eliminar permanentemente",
+      "confirmTitle": "¿Eliminar esta nota permanentemente?",
+      "confirmDescription": "Esto no se puede deshacer. La nota y todas sus subpáginas se eliminarán permanentemente."
+    },
+    "save": {
+      "saving": "Guardando…",
+      "saved": "Guardado",
+      "error": "Error al guardar"
+    },
+    "settings": {
+      "title": "Ajustes de notas",
+      "description": "Gestiona tus preferencias de seguridad y bloqueo.",
+      "autoLock": "Bloqueo automático",
+      "autoLockOff": "Desactivado",
+      "autoLockMinutes": "{minutes} minutos",
+      "autoLockHint": "La bóveda se bloquea automáticamente tras este periodo de inactividad.",
+      "changePasswordAction": "Cambiar contraseña maestra",
+      "language": "Language"
+    },
+    "changePassword": {
+      "title": "Cambiar contraseña maestra",
+      "description": "Tus notas no se vuelven a cifrar; solo la clave de la bóveda se protege con tu nueva contraseña.",
+      "current": "Contraseña actual",
+      "new": "Nueva contraseña",
+      "confirm": "Nueva contraseña (repetir)",
+      "submit": "Cambiar contraseña",
+      "changing": "Cambiando…",
+      "success": "Contraseña maestra cambiada",
+      "error": "No se pudo cambiar la contraseña. Inténtalo de nuevo."
+    },
+    "command": {
+      "title": "Paleta de comandos",
+      "placeholder": "Busca notas o escribe un comando…",
+      "empty": "Sin resultados",
+      "results": "Resultados de búsqueda",
+      "actions": "Acciones",
+      "newNote": "Crear nueva nota",
+      "newSubpage": "Crear subpágina",
+      "navigation": "Navegación",
+      "general": "General",
+      "toggleMode": "Cambiar modo oscuro/claro"
+    },
+    "shell": {
+      "openSidebar": "Abrir barra lateral",
+      "noNoteTitle": "Ninguna nota seleccionada",
+      "noNoteDescription": "Selecciona una nota en la barra lateral o crea una nueva."
+    },
+    "error": {
+      "storageTitle": "Error de almacenamiento",
+      "storageDescription": "No se pudo acceder al almacenamiento local. Puede que estés en modo privado o sin espacio.",
+      "retry": "Reintentar",
+      "corruptRecords": "{count} record(s) could not be decrypted and were skipped. They were not deleted."
+    },
+    "editor": {
+      "brokenPageLink": "Enlace de página roto",
+      "slashGroup": "Bloques",
+      "slash": {
+        "text": "Texto",
+        "heading1": "Encabezado 1",
+        "heading2": "Encabezado 2",
+        "heading3": "Encabezado 3",
+        "bulletList": "Lista con viñetas",
+        "numberedList": "Lista numerada",
+        "checkList": "Lista de tareas",
+        "quote": "Cita",
+        "code": "Bloque de código",
+        "table": "Tabla",
+        "divider": "Separador",
+        "callout": "Nota destacada",
+        "date": "Fecha",
+        "page": "Página"
+      }
+    },
+    "language": {
+      "title": "Choose your language",
+      "description": "Select the app language. You can change it later in settings.",
+      "continue": "Continue"
+    },
+    "welcome": {
+      "title": "Welcome to your notebook 👋",
+      "paragraph1": "This is your encrypted notebook, stored entirely on your device. Start by editing this note.",
+      "paragraph2": "Type \"/\" at the start of a line to add blocks: headings, lists, to-dos, tables, code, callouts and more.",
+      "paragraph3": "Use Cmd/Ctrl+K for quick search and commands, and Cmd/Ctrl+Shift+L to lock the vault instantly."
+    },
+    "reset": {
+      "title": "Reset the vault?",
+      "description": "A local vault's password cannot be recovered. If you continue, all encrypted notes on this device are permanently deleted and you can create a new vault. This cannot be undone.",
+      "confirm": "Reset and delete vault"
+    },
+    "backup": {
+      "title": "Backup",
+      "export": "Export",
+      "import": "Import",
+      "hint": "The backup file is encrypted and contains only ciphertext. Your vault password is still required to restore it.",
+      "exportSuccess": "Backup exported",
+      "exportError": "Could not export backup",
+      "importInvalid": "Invalid backup file",
+      "importSuccess": "Backup restored. Locking the vault…",
+      "importError": "Could not restore backup",
+      "importConfirmTitle": "Restore this backup?",
+      "importConfirmDescription": "This replaces your current vault with the backup and overwrites all current notes. After restoring, you must unlock with the backup's master password."
+    }
   }
 }

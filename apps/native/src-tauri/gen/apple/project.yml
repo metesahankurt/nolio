@@ -1,6 +1,6 @@
-name: catalyzer
+name: nolio
 options:
-  bundleIdPrefix: com.catalyzer.app
+  bundleIdPrefix: com.metesahankurt.nolio
   deploymentTarget:
     iOS: 14.0
 fileGroups: [../../src]
@@ -10,8 +10,8 @@ configs:
 settingGroups:
   app:
     base:
-      PRODUCT_NAME: catalyzer
-      PRODUCT_BUNDLE_IDENTIFIER: com.catalyzer.app
+      PRODUCT_NAME: Nolio
+      PRODUCT_BUNDLE_IDENTIFIER: com.metesahankurt.nolio
 targetTemplates:
   app:
     type: application

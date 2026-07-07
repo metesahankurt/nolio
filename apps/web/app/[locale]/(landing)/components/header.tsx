@@ -46,7 +46,10 @@ export const HeroHeader = () => {
                 className="flex items-center space-x-2"
                 href="/"
               >
-                <Logo />
+                <Logo className="size-8" />
+                <span className="font-semibold text-foreground text-lg">
+                  Nolio
+                </span>
               </Link>
 
               <button

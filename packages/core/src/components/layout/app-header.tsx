@@ -19,7 +19,7 @@ import { Kbd } from "@workspace/ui/components/kbd";
 import { Separator } from "@workspace/ui/components/separator";
 import { SidebarTrigger } from "@workspace/ui/components/sidebar";
 import { Search } from "lucide-react";
-import { type ComponentType, Fragment } from "react";
+import { type ComponentType, Fragment, useEffect, useState } from "react";
 
 function formatSegment(segment: string): string {
   return segment
@@ -41,6 +41,7 @@ interface AppHeaderProps {
 }
 
 export function AppHeader({ pathname, LinkComponent = "a" }: AppHeaderProps) {
+  const [modifierKey, setModifierKey] = useState("Ctrl");
   const segments = pathname
     .split("/")
     .filter((s) => Boolean(s) && s !== "home");
@@ -51,6 +52,10 @@ export function AppHeader({ pathname, LinkComponent = "a" }: AppHeaderProps) {
     return navItem?.href ?? href;
   };
   const toggleCommandPalette = useCommandPaletteStore((s) => s.toggle);
+
+  useEffect(() => {
+    setModifierKey(formatHotkeyDisplay("mod")[0] ?? "Ctrl");
+  }, []);
 
   return (
     <header className="hidden h-12 shrink-0 items-center gap-2 border-b transition-[width,height] ease-linear group-has-data-[collapsible=icon]/sidebar-wrapper:h-12 md:flex">
@@ -114,7 +119,7 @@ export function AppHeader({ pathname, LinkComponent = "a" }: AppHeaderProps) {
               </span>
             </span>
             <span className="flex items-center gap-1">
-              <Kbd>{formatHotkeyDisplay("mod")}</Kbd>
+              <Kbd>{modifierKey}</Kbd>
               <Kbd>K</Kbd>
             </span>
           </Button>

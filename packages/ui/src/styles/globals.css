@@ -257,3 +257,18 @@
 ::view-transition-new(root) {
   animation: reveal 0.4s ease-in-out forwards;
 }
+
+/*
+ * Native window chrome spacing. The native app tags the document with
+ * data-tauri-os so app chrome can make room for the frameless title bar:
+ * the macOS overlay traffic lights (top-left) and the custom Windows/Linux
+ * controls (top-right). These rules are inert on the web (no data-tauri-os).
+ */
+[data-tauri-os="macos"] .mac-titlebar-pad {
+  padding-left: 5rem;
+}
+
+[data-tauri-os="windows"] .win-titlebar-pad,
+[data-tauri-os="linux"] .win-titlebar-pad {
+  padding-right: 8.5rem;
+}

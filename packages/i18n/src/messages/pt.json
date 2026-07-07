@@ -71,7 +71,8 @@
     "billing": "Faturamento",
     "notifications": "Notificações",
     "logOut": "Sair",
-    "search": "Pesquisar..."
+    "search": "Pesquisar...",
+    "notes": "Notas"
   },
   "HotkeysDialog": {
     "title": "Atalhos de Teclado",
@@ -139,5 +140,181 @@
     "versionTitle": "Nova versão lançada",
     "versionDescription": "Verifique a versão mais recente para novos recursos e melhorias.",
     "versionTime": "2 dias atrás"
+  },
+  "Notes": {
+    "untitled": "Sem título",
+    "common": {
+      "cancel": "Cancelar"
+    },
+    "password": {
+      "show": "Mostrar senha",
+      "hide": "Ocultar senha",
+      "capsLock": "Caps Lock está ativado",
+      "strengthWeak": "Fraca",
+      "strengthMedium": "Média",
+      "strengthStrong": "Forte"
+    },
+    "setup": {
+      "title": "Crie o seu cofre local",
+      "description": "As suas notas são guardadas encriptadas apenas neste dispositivo. Não é necessária conta nem internet.",
+      "vaultName": "Nome do cofre (opcional)",
+      "vaultNamePlaceholder": "ex.: Notas pessoais",
+      "password": "Palavra-passe mestra",
+      "passwordConfirm": "Palavra-passe mestra (repetir)",
+      "passwordMismatch": "As palavras-passe não coincidem",
+      "recoveryWarning": "A sua palavra-passe mestra nunca é guardada. Se a esquecer, as suas notas encriptadas não poderão ser recuperadas.",
+      "consent": "Compreendo que os meus dados não podem ser recuperados se esquecer a palavra-passe.",
+      "submit": "Criar cofre",
+      "creating": "A criar…",
+      "error": "Não foi possível criar o cofre. Tente novamente."
+    },
+    "unlock": {
+      "defaultVaultName": "Cofre local",
+      "description": "Introduza a palavra-passe mestra para abrir as suas notas",
+      "password": "Palavra-passe mestra",
+      "wrongPassword": "Não foi possível verificar a palavra-passe.",
+      "submit": "Desbloquear",
+      "unlocking": "A desbloquear…",
+      "localOnlyNotice": "Este cofre é guardado apenas no seu dispositivo. Se esquecer a palavra-passe mestra, as suas notas encriptadas ficarão inacessíveis.",
+      "forgotPassword": "Forgot your password?"
+    },
+    "sidebar": {
+      "search": "Pesquisar",
+      "newNote": "Nova nota",
+      "viewsLabel": "Vistas",
+      "allNotes": "Todas as notas",
+      "favorites": "Favoritos",
+      "recent": "Recentes",
+      "trash": "Lixo",
+      "pages": "Páginas",
+      "settings": "Definições",
+      "lockVault": "Bloquear cofre"
+    },
+    "tree": {
+      "expand": "Expandir",
+      "collapse": "Recolher",
+      "addSubpage": "Adicionar subpágina",
+      "empty": "Ainda não há páginas"
+    },
+    "header": {
+      "breadcrumb": "Caminho",
+      "changeIcon": "Alterar ícone",
+      "removeIcon": "Remover ícone",
+      "titleLabel": "Título da nota",
+      "noteMenu": "Menu da nota",
+      "addFavorite": "Adicionar aos favoritos",
+      "removeFavorite": "Remover dos favoritos",
+      "addSubpage": "Criar subpágina",
+      "moveToTrash": "Mover para o lixo",
+      "lastUpdated": "Última atualização: {date}"
+    },
+    "list": {
+      "emptyTitle": "Ainda não há nada aqui",
+      "emptyDescription": "As notas aparecerão aqui assim que as criar."
+    },
+    "trash": {
+      "restore": "Restaurar",
+      "deleteForever": "Eliminar permanentemente",
+      "confirmTitle": "Eliminar esta nota permanentemente?",
+      "confirmDescription": "Isto não pode ser desfeito. A nota e todas as suas subpáginas serão eliminadas permanentemente."
+    },
+    "save": {
+      "saving": "A guardar…",
+      "saved": "Guardado",
+      "error": "Falha ao guardar"
+    },
+    "settings": {
+      "title": "Definições de notas",
+      "description": "Faça a gestão das preferências de segurança e bloqueio.",
+      "autoLock": "Bloqueio automático",
+      "autoLockOff": "Desativado",
+      "autoLockMinutes": "{minutes} minutos",
+      "autoLockHint": "O cofre bloqueia automaticamente após este período de inatividade.",
+      "changePasswordAction": "Alterar palavra-passe mestra",
+      "language": "Language"
+    },
+    "changePassword": {
+      "title": "Alterar palavra-passe mestra",
+      "description": "As suas notas não são reencriptadas; apenas a chave do cofre é protegida com a nova palavra-passe.",
+      "current": "Palavra-passe atual",
+      "new": "Nova palavra-passe",
+      "confirm": "Nova palavra-passe (repetir)",
+      "submit": "Alterar palavra-passe",
+      "changing": "A alterar…",
+      "success": "Palavra-passe mestra alterada",
+      "error": "Não foi possível alterar a palavra-passe. Tente novamente."
+    },
+    "command": {
+      "title": "Paleta de comandos",
+      "placeholder": "Pesquise notas ou escreva um comando…",
+      "empty": "Sem resultados",
+      "results": "Resultados da pesquisa",
+      "actions": "Ações",
+      "newNote": "Criar nova nota",
+      "newSubpage": "Criar subpágina",
+      "navigation": "Navegação",
+      "general": "Geral",
+      "toggleMode": "Alternar modo escuro/claro"
+    },
+    "shell": {
+      "openSidebar": "Abrir barra lateral",
+      "noNoteTitle": "Nenhuma nota selecionada",
+      "noNoteDescription": "Selecione uma nota na barra lateral ou crie uma nova."
+    },
+    "error": {
+      "storageTitle": "Erro de armazenamento",
+      "storageDescription": "Não foi possível aceder ao armazenamento local. Pode estar em navegação privada ou sem espaço.",
+      "retry": "Tentar novamente",
+      "corruptRecords": "{count} record(s) could not be decrypted and were skipped. They were not deleted."
+    },
+    "editor": {
+      "brokenPageLink": "Ligação de página quebrada",
+      "slashGroup": "Blocos",
+      "slash": {
+        "text": "Texto",
+        "heading1": "Título 1",
+        "heading2": "Título 2",
+        "heading3": "Título 3",
+        "bulletList": "Lista com marcadores",
+        "numberedList": "Lista numerada",
+        "checkList": "Lista de tarefas",
+        "quote": "Citação",
+        "code": "Bloco de código",
+        "table": "Tabela",
+        "divider": "Divisor",
+        "callout": "Destaque",
+        "date": "Data",
+        "page": "Página"
+      }
+    },
+    "language": {
+      "title": "Choose your language",
+      "description": "Select the app language. You can change it later in settings.",
+      "continue": "Continue"
+    },
+    "welcome": {
+      "title": "Welcome to your notebook 👋",
+      "paragraph1": "This is your encrypted notebook, stored entirely on your device. Start by editing this note.",
+      "paragraph2": "Type \"/\" at the start of a line to add blocks: headings, lists, to-dos, tables, code, callouts and more.",
+      "paragraph3": "Use Cmd/Ctrl+K for quick search and commands, and Cmd/Ctrl+Shift+L to lock the vault instantly."
+    },
+    "reset": {
+      "title": "Reset the vault?",
+      "description": "A local vault's password cannot be recovered. If you continue, all encrypted notes on this device are permanently deleted and you can create a new vault. This cannot be undone.",
+      "confirm": "Reset and delete vault"
+    },
+    "backup": {
+      "title": "Backup",
+      "export": "Export",
+      "import": "Import",
+      "hint": "The backup file is encrypted and contains only ciphertext. Your vault password is still required to restore it.",
+      "exportSuccess": "Backup exported",
+      "exportError": "Could not export backup",
+      "importInvalid": "Invalid backup file",
+      "importSuccess": "Backup restored. Locking the vault…",
+      "importError": "Could not restore backup",
+      "importConfirmTitle": "Restore this backup?",
+      "importConfirmDescription": "This replaces your current vault with the backup and overwrites all current notes. After restoring, you must unlock with the backup's master password."
+    }
   }
 }

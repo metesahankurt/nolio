@@ -14,7 +14,6 @@
     "cmdk": "^1.1.1",
     "lucide-react": "^0.577.0",
     "motion": "^12.40.0",
-    "next-themes": "^0.4.6",
     "radix-ui": "^1.6.0",
     "react": "^19.2.7",
     "react-dom": "^19.2.7",
@@ -38,6 +37,7 @@
   },
   "exports": {
     "./globals.css": "./src/styles/globals.css",
+    "./blocknote.css": "./src/styles/blocknote.css",
     "./postcss.config": "./postcss.config.mjs",
     "./components/*": "./src/components/*.tsx",
     "./lib/*": "./src/lib/*.ts",

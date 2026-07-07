@@ -71,7 +71,8 @@
     "billing": "Abrechnung",
     "notifications": "Benachrichtigungen",
     "logOut": "Abmelden",
-    "search": "Suchen..."
+    "search": "Suchen...",
+    "notes": "Notizen"
   },
   "HotkeysDialog": {
     "title": "Tastaturkürzel",
@@ -139,5 +140,181 @@
     "versionTitle": "Neue Version veröffentlicht",
     "versionDescription": "Prüfen Sie die neueste Version auf neue Funktionen und Verbesserungen.",
     "versionTime": "vor 2 Tagen"
+  },
+  "Notes": {
+    "untitled": "Ohne Titel",
+    "common": {
+      "cancel": "Abbrechen"
+    },
+    "password": {
+      "show": "Passwort anzeigen",
+      "hide": "Passwort verbergen",
+      "capsLock": "Feststelltaste ist aktiviert",
+      "strengthWeak": "Schwach",
+      "strengthMedium": "Mittel",
+      "strengthStrong": "Stark"
+    },
+    "setup": {
+      "title": "Erstellen Sie Ihren lokalen Tresor",
+      "description": "Ihre Notizen werden nur auf diesem Gerät verschlüsselt gespeichert. Kein Konto oder Internet erforderlich.",
+      "vaultName": "Tresorname (optional)",
+      "vaultNamePlaceholder": "z. B. Persönliche Notizen",
+      "password": "Master-Passwort",
+      "passwordConfirm": "Master-Passwort (wiederholen)",
+      "passwordMismatch": "Passwörter stimmen nicht überein",
+      "recoveryWarning": "Ihr Master-Passwort wird nirgendwo gespeichert. Wenn Sie es vergessen, können Ihre verschlüsselten Notizen nicht wiederhergestellt werden.",
+      "consent": "Ich verstehe, dass meine Daten nicht wiederhergestellt werden können, wenn ich mein Passwort vergesse.",
+      "submit": "Tresor erstellen",
+      "creating": "Wird erstellt…",
+      "error": "Der Tresor konnte nicht erstellt werden. Bitte versuchen Sie es erneut."
+    },
+    "unlock": {
+      "defaultVaultName": "Lokaler Tresor",
+      "description": "Geben Sie Ihr Master-Passwort ein, um Ihre Notizen zu öffnen",
+      "password": "Master-Passwort",
+      "wrongPassword": "Das Passwort konnte nicht überprüft werden.",
+      "submit": "Entsperren",
+      "unlocking": "Wird entsperrt…",
+      "localOnlyNotice": "Dieser Tresor wird nur auf Ihrem Gerät gespeichert. Wenn Sie Ihr Master-Passwort vergessen, kann auf Ihre verschlüsselten Notizen nicht zugegriffen werden.",
+      "forgotPassword": "Forgot your password?"
+    },
+    "sidebar": {
+      "search": "Suchen",
+      "newNote": "Neue Notiz",
+      "viewsLabel": "Ansichten",
+      "allNotes": "Alle Notizen",
+      "favorites": "Favoriten",
+      "recent": "Zuletzt verwendet",
+      "trash": "Papierkorb",
+      "pages": "Seiten",
+      "settings": "Einstellungen",
+      "lockVault": "Tresor sperren"
+    },
+    "tree": {
+      "expand": "Ausklappen",
+      "collapse": "Einklappen",
+      "addSubpage": "Unterseite hinzufügen",
+      "empty": "Noch keine Seiten"
+    },
+    "header": {
+      "breadcrumb": "Navigationspfad",
+      "changeIcon": "Symbol ändern",
+      "removeIcon": "Symbol entfernen",
+      "titleLabel": "Notiztitel",
+      "noteMenu": "Notizmenü",
+      "addFavorite": "Zu Favoriten hinzufügen",
+      "removeFavorite": "Aus Favoriten entfernen",
+      "addSubpage": "Unterseite erstellen",
+      "moveToTrash": "In den Papierkorb verschieben",
+      "lastUpdated": "Zuletzt aktualisiert: {date}"
+    },
+    "list": {
+      "emptyTitle": "Hier ist noch nichts",
+      "emptyDescription": "Notizen erscheinen hier, sobald Sie welche erstellen."
+    },
+    "trash": {
+      "restore": "Wiederherstellen",
+      "deleteForever": "Endgültig löschen",
+      "confirmTitle": "Notiz endgültig löschen?",
+      "confirmDescription": "Dies kann nicht rückgängig gemacht werden. Die Notiz und alle Unterseiten werden endgültig gelöscht."
+    },
+    "save": {
+      "saving": "Wird gespeichert…",
+      "saved": "Gespeichert",
+      "error": "Speichern fehlgeschlagen"
+    },
+    "settings": {
+      "title": "Notiz-Einstellungen",
+      "description": "Verwalten Sie Ihre Sicherheits- und Sperreinstellungen.",
+      "autoLock": "Automatische Sperre",
+      "autoLockOff": "Aus",
+      "autoLockMinutes": "{minutes} Minuten",
+      "autoLockHint": "Der Tresor wird nach dieser Inaktivitätsdauer automatisch gesperrt.",
+      "changePasswordAction": "Master-Passwort ändern",
+      "language": "Language"
+    },
+    "changePassword": {
+      "title": "Master-Passwort ändern",
+      "description": "Ihre Notizen werden nicht neu verschlüsselt; nur der Tresorschlüssel wird mit Ihrem neuen Passwort geschützt.",
+      "current": "Aktuelles Passwort",
+      "new": "Neues Passwort",
+      "confirm": "Neues Passwort (wiederholen)",
+      "submit": "Passwort ändern",
+      "changing": "Wird geändert…",
+      "success": "Master-Passwort geändert",
+      "error": "Das Passwort konnte nicht geändert werden. Bitte versuchen Sie es erneut."
+    },
+    "command": {
+      "title": "Befehlspalette",
+      "placeholder": "Notizen durchsuchen oder Befehl eingeben…",
+      "empty": "Keine Ergebnisse",
+      "results": "Suchergebnisse",
+      "actions": "Aktionen",
+      "newNote": "Neue Notiz erstellen",
+      "newSubpage": "Unterseite erstellen",
+      "navigation": "Navigation",
+      "general": "Allgemein",
+      "toggleMode": "Dunkel-/Hellmodus umschalten"
+    },
+    "shell": {
+      "openSidebar": "Seitenleiste öffnen",
+      "noNoteTitle": "Keine Notiz ausgewählt",
+      "noNoteDescription": "Wählen Sie eine Notiz aus der Seitenleiste oder erstellen Sie eine neue."
+    },
+    "error": {
+      "storageTitle": "Speicherfehler",
+      "storageDescription": "Auf den lokalen Speicher konnte nicht zugegriffen werden. Möglicherweise sind Sie im privaten Modus oder der Speicherplatz ist voll.",
+      "retry": "Erneut versuchen",
+      "corruptRecords": "{count} record(s) could not be decrypted and were skipped. They were not deleted."
+    },
+    "editor": {
+      "brokenPageLink": "Defekter Seitenlink",
+      "slashGroup": "Blöcke",
+      "slash": {
+        "text": "Text",
+        "heading1": "Überschrift 1",
+        "heading2": "Überschrift 2",
+        "heading3": "Überschrift 3",
+        "bulletList": "Aufzählung",
+        "numberedList": "Nummerierte Liste",
+        "checkList": "Aufgabenliste",
+        "quote": "Zitat",
+        "code": "Codeblock",
+        "table": "Tabelle",
+        "divider": "Trennlinie",
+        "callout": "Hinweisbox",
+        "date": "Datum",
+        "page": "Seite"
+      }
+    },
+    "language": {
+      "title": "Choose your language",
+      "description": "Select the app language. You can change it later in settings.",
+      "continue": "Continue"
+    },
+    "welcome": {
+      "title": "Welcome to your notebook 👋",
+      "paragraph1": "This is your encrypted notebook, stored entirely on your device. Start by editing this note.",
+      "paragraph2": "Type \"/\" at the start of a line to add blocks: headings, lists, to-dos, tables, code, callouts and more.",
+      "paragraph3": "Use Cmd/Ctrl+K for quick search and commands, and Cmd/Ctrl+Shift+L to lock the vault instantly."
+    },
+    "reset": {
+      "title": "Reset the vault?",
+      "description": "A local vault's password cannot be recovered. If you continue, all encrypted notes on this device are permanently deleted and you can create a new vault. This cannot be undone.",
+      "confirm": "Reset and delete vault"
+    },
+    "backup": {
+      "title": "Backup",
+      "export": "Export",
+      "import": "Import",
+      "hint": "The backup file is encrypted and contains only ciphertext. Your vault password is still required to restore it.",
+      "exportSuccess": "Backup exported",
+      "exportError": "Could not export backup",
+      "importInvalid": "Invalid backup file",
+      "importSuccess": "Backup restored. Locking the vault…",
+      "importError": "Could not restore backup",
+      "importConfirmTitle": "Restore this backup?",
+      "importConfirmDescription": "This replaces your current vault with the backup and overwrites all current notes. After restoring, you must unlock with the backup's master password."
+    }
   }
 }
