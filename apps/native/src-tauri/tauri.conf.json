@@ -35,5 +35,13 @@
       "icons/icon.icns",
       "icons/icon.ico"
     ]
+  },
+  "plugins": {
+    "updater": {
+      "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IDIwOTI5QkY2RkQxQTRBOEYKUldTUFNocjk5cHVTSUJOOWppalNWSE1ISGo4cXVrdFhPbS9SL0daQTBqOURCYjRrZlVacDVvakwK",
+      "endpoints": [
+        "https://github.com/metesahankurt/nolio/releases/latest/download/latest.json"
+      ]
+    }
   }
 }

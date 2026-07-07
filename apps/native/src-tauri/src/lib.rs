@@ -1,22 +1,4 @@
-use serde::Serialize;
 use tauri_plugin_sql::{Migration, MigrationKind};
-
-#[derive(Serialize)]
-struct GreetResponse {
-    message_key: String,
-    name: String,
-    source: String,
-}
-
-// Learn more about Tauri commands at https://tauri.app/develop/calling-rust/
-#[tauri::command]
-fn greet(name: &str) -> GreetResponse {
-    GreetResponse {
-        message_key: "successGreeting".to_string(),
-        name: name.to_string(),
-        source: "Tauri".to_string(),
-    }
-}
 
 /// The notes database stores only encrypted material: the wrapped vault
 /// header (JSON, itself containing ciphertext) and per-note AES-GCM
@@ -44,13 +26,16 @@ fn notes_migrations() -> Vec<Migration> {
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
 pub fn run() {
     tauri::Builder::default()
+        .plugin(tauri_plugin_dialog::init())
         .plugin(tauri_plugin_opener::init())
+        .plugin(tauri_plugin_process::init())
+        .plugin(tauri_plugin_updater::Builder::new().build())
         .plugin(
             tauri_plugin_sql::Builder::default()
                 .add_migrations("sqlite:notes.db", notes_migrations())
                 .build(),
         )
-        .invoke_handler(tauri::generate_handler![greet])
+        .invoke_handler(tauri::generate_handler![])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
 }

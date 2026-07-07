@@ -6,6 +6,7 @@ import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { notFound } from "next/navigation";
 import { NativeTitleBar } from "../../components/native-title-bar";
+import { UpdateChecker } from "../../components/update-checker";
 import { AppLayout } from "./components/app-layout";
 import "@workspace/ui/globals.css";
 
@@ -60,6 +61,7 @@ export default async function RootLayout({
           timeZone="UTC"
         >
           <ThemeInitializer />
+          <UpdateChecker />
           <NativeTitleBar />
           <AppLayout>{children}</AppLayout>
         </NextIntlClientProvider>
