@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.3.0](https://github.com/metesahankurt/nolio/compare/v2.2.0...v2.3.0) (2026-07-07)
+
+
+### Features
+
+* **updater:** integrate automatic background and manual check for tauri updater ([83781d8](https://github.com/metesahankurt/nolio/commit/83781d8b4d27081f6c72d9165dd667e738299a19))
+
 ## [2.2.0](https://github.com/metesahankurt/nolio/compare/v2.1.1...v2.2.0) (2026-07-07)
 
 
