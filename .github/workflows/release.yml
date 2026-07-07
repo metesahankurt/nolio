@@ -17,8 +17,8 @@ jobs:
     outputs:
       # Root app (manifest path ".") — release-please prefixes per-package
       # outputs with the package path.
-      app_released: ${{ steps.release.outputs['.--release_created'] }}
-      app_tag: ${{ steps.release.outputs['.--tag_name'] }}
+      app_released: ${{ steps.release.outputs['release_created'] || steps.release.outputs['.--release_created'] }}
+      app_tag: ${{ steps.release.outputs['tag_name'] || steps.release.outputs['.--tag_name'] }}
     steps:
       - name: Release Please
         id: release
