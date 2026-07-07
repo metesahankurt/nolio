@@ -1,5 +1,4 @@
 name: Build Apps
-description: Build desktop and Android apps for a release
 
 on:
   workflow_dispatch:
