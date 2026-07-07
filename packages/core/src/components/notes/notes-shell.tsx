@@ -80,7 +80,7 @@ export function NotesShell() {
     selectedNote && selectedNote.deletedAt === null ? selectedNote : undefined;
 
   return (
-    <div className="flex h-dvh w-full overflow-hidden bg-background text-foreground">
+    <div className="flex h-full w-full overflow-hidden bg-background text-foreground">
       <aside className="hidden w-64 shrink-0 border-border border-r md:block">
         <NoteSidebar
           onOpenSearch={() => setCommandOpen(true)}

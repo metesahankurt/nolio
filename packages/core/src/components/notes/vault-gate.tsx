@@ -21,7 +21,7 @@ export function VaultGate() {
   switch (status) {
     case "initializing":
       return (
-        <div className="flex min-h-dvh items-center justify-center bg-background p-4">
+        <div className="flex min-h-full items-center justify-center bg-background p-4">
           <div className="flex w-full max-w-sm flex-col gap-3">
             <Skeleton className="h-10 w-full" />
             <Skeleton className="h-10 w-full" />
@@ -38,7 +38,7 @@ export function VaultGate() {
       return <NotesShell />;
     default:
       return (
-        <div className="flex min-h-dvh flex-col items-center justify-center gap-4 bg-background p-4 text-center">
+        <div className="flex min-h-full flex-col items-center justify-center gap-4 bg-background p-4 text-center">
           <p className="font-semibold text-lg">{t("error.storageTitle")}</p>
           <p className="max-w-sm text-muted-foreground text-sm">
             {t("error.storageDescription")}
