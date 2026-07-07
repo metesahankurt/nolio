@@ -1,5 +1,22 @@
 # Changelog
 
+## [2.1.0](https://github.com/metesahankurt/nolio/compare/v2.0.1...v2.1.0) (2026-07-07)
+
+
+### Features
+
+* add tauri auto-updater with signed releases and native update dialog ([4cdb9ab](https://github.com/metesahankurt/nolio/commit/4cdb9aba94ebcbfa8eaefc5b55d9e78eef0a8f63))
+
+
+### Styles
+
+* center lock icon and title bar adjustments, customize note sidebar footer to match Passly style ([459f2dc](https://github.com/metesahankurt/nolio/commit/459f2dca4e3e4ea4a449bc77032a0ca819d894ab))
+
+
+### Continuous Integration
+
+* fix invalid description field in workflow YAML files ([6b93a05](https://github.com/metesahankurt/nolio/commit/6b93a05b9b6f0ec0347df7193dc19aa972fbc869))
+
 ## [2.0.1](https://github.com/odest/catalyzer/compare/v2.0.0...v2.0.1) (2026-06-07)
 
 
