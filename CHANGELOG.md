@@ -1,5 +1,17 @@
 # Changelog
 
+## [2.2.0](https://github.com/metesahankurt/nolio/compare/v2.1.1...v2.2.0) (2026-07-07)
+
+
+### Features
+
+* **notes:** integrate tabs layout and theme settings in notes settings dialog ([fe5e2d4](https://github.com/metesahankurt/nolio/commit/fe5e2d4018b13b255e424c4390bfce86c4a64e56))
+
+
+### Bug Fixes
+
+* **ci:** make ubuntu apt-get update robust to transient third-party repository failures ([b3fb36d](https://github.com/metesahankurt/nolio/commit/b3fb36df4827913f2384b26c67173eab662feaf3))
+
 ## [2.1.1](https://github.com/metesahankurt/nolio/compare/v2.1.0...v2.1.1) (2026-07-07)
 
 
