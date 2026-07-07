@@ -6,6 +6,7 @@ import { NoteHeader } from "@workspace/core/components/notes/note-header";
 import { NoteListView } from "@workspace/core/components/notes/note-list-views";
 import { NoteSidebar } from "@workspace/core/components/notes/note-sidebar";
 import { NotesSettingsDialog } from "@workspace/core/components/notes/notes-settings-dialog";
+import { useAppUpdater } from "@workspace/core/hooks/use-app-updater";
 import { useNotesStore } from "@workspace/core/stores/notes-store";
 import { useVaultStore } from "@workspace/core/stores/vault-store";
 import { useTranslations } from "@workspace/i18n";
@@ -47,6 +48,13 @@ export function NotesShell() {
   const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false);
   const [commandOpen, setCommandOpen] = useState(false);
   const [settingsOpen, setSettingsOpen] = useState(false);
+
+  const { checkForUpdates } = useAppUpdater();
+
+  // Run update check on mount in the background
+  useEffect(() => {
+    checkForUpdates(false);
+  }, [checkForUpdates]);
 
   // Warn once per unlock if any stored record failed to decrypt/validate.
   // Corrupted records are never dropped from storage, so this is advisory.

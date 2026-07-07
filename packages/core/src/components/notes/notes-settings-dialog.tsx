@@ -3,6 +3,7 @@
 import { ThemesList } from "@workspace/core/components/common/themes-list";
 import { BackupSection } from "@workspace/core/components/notes/backup-section";
 import { ChangePasswordDialog } from "@workspace/core/components/notes/change-password-dialog";
+import { useAppUpdater } from "@workspace/core/hooks/use-app-updater";
 import { useLanguageSwitcher } from "@workspace/core/hooks/use-language-switcher";
 import { useThemeTransition } from "@workspace/core/hooks/use-theme-transition";
 import type { AutoLockMinutes } from "@workspace/core/stores/notes-settings-store";
@@ -34,7 +35,7 @@ import {
   TabsList,
   TabsTrigger,
 } from "@workspace/ui/components/tabs";
-import { KeyRound, Laptop, Moon, Sun } from "lucide-react";
+import { KeyRound, Laptop, Moon, RefreshCw, Sun } from "lucide-react";
 import { useState } from "react";
 
 const OFF_VALUE = "off";
@@ -60,6 +61,7 @@ export function NotesSettingsDialog({
   const autoLockMinutes = useNotesSettingsStore((s) => s.autoLockMinutes);
   const setAutoLockMinutes = useNotesSettingsStore((s) => s.setAutoLockMinutes);
   const { theme: activeMode, handleThemeChange } = useThemeTransition();
+  const { checkForUpdates } = useAppUpdater();
   const [changePasswordOpen, setChangePasswordOpen] = useState(false);
 
   const optionLabel = (option: AutoLockMinutes) =>
@@ -156,6 +158,23 @@ export function NotesSettingsDialog({
                   >
                     <KeyRound className="size-4" />
                     {t("settings.changePasswordAction")}
+                  </Button>
+                </div>
+
+                <div className="flex flex-col gap-1.5">
+                  <Label>
+                    {locale === "tr" ? "Uygulama Güncellemesi" : "App Update"}
+                  </Label>
+                  <Button
+                    className="cursor-pointer justify-start"
+                    onClick={() => checkForUpdates(true)}
+                    type="button"
+                    variant="outline"
+                  >
+                    <RefreshCw className="size-4" />
+                    {locale === "tr"
+                      ? "Güncellemeleri Denetle"
+                      : "Check for Updates"}
                   </Button>
                 </div>
 
