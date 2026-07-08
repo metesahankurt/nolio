@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.4.0](https://github.com/metesahankurt/nolio/compare/v2.3.0...v2.4.0) (2026-07-08)
+
+
+### Features
+
+* **notes:** align app shell and settings with Catalyzer ([cca0390](https://github.com/metesahankurt/nolio/commit/cca039056fa0a0c962831243830809fd2f01a2e4))
+
 ## [2.3.0](https://github.com/metesahankurt/nolio/compare/v2.2.0...v2.3.0) (2026-07-07)
 
 
