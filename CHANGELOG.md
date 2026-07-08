@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.4.1](https://github.com/metesahankurt/nolio/compare/v2.4.0...v2.4.1) (2026-07-08)
+
+
+### Bug Fixes
+
+* **android:** align generated package path with Nolio identifier ([cfcfbdc](https://github.com/metesahankurt/nolio/commit/cfcfbdca903feeb8e761bf2131730659818672cc))
+
 ## [2.4.0](https://github.com/metesahankurt/nolio/compare/v2.3.0...v2.4.0) (2026-07-08)
 
 
