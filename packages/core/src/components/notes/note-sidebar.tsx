@@ -128,8 +128,11 @@ export function NoteSidebar({
 
   return (
     <Sidebar collapsible="icon" variant={variant} {...props}>
+      {/* titlebar-mac-pad reserves vertical room for the macOS traffic
+          lights (see globals.css); data-tauri-drag-region makes the header a
+          native window drag handle. Both are inert on web. */}
       <SidebarHeader
-        className="border-sidebar-border border-b"
+        className="titlebar-mac-pad border-sidebar-border border-b"
         data-tauri-drag-region={true}
       >
         <SidebarMenu>

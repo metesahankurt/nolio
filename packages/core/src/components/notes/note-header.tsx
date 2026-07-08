@@ -80,9 +80,10 @@ export function NoteHeader({ note }: { note: DecryptedNote }) {
   }).format(new Date(note.updatedAt));
 
   return (
-    // win-titlebar-pad reserves space on the right for the custom window
-    // controls on Windows/Linux; data-tauri-drag-region lets the header be
-    // used to move the window (both are inert on web).
+    // data-tauri-drag-region lets the header move the native window (inert
+    // on web). Room for the Windows/Linux window controls is reserved on the
+    // whole content area via `.titlebar-win-pad`, so no per-header padding is
+    // needed here.
     <div
       className="flex flex-col gap-1 border-border border-b px-4 py-3 md:px-8"
       data-tauri-drag-region={true}

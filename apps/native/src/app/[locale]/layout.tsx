@@ -78,7 +78,7 @@ export default async function RootLayout({
             <ThemeInitializer />
             <UpdateChecker />
             <NativeTitleBar />
-            <div className="h-screen overflow-hidden pt-8">
+            <div className="h-screen overflow-hidden">
               <AppLayout>{children}</AppLayout>
             </div>
           </ThemeProvider>

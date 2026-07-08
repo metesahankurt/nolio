@@ -94,7 +94,7 @@ export function NotesShell() {
           onOpenSettings={openSettings}
         />
 
-        <SidebarInset className="min-w-0 overflow-hidden">
+        <SidebarInset className="titlebar-win-pad min-w-0 overflow-hidden">
           <div className="flex items-center border-border border-b px-2 py-1.5 md:hidden">
             <SidebarTrigger aria-label={t("shell.openSidebar")} />
           </div>
