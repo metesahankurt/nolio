@@ -15,10 +15,11 @@ jobs:
   release:
     runs-on: ubuntu-latest
     outputs:
-      # Root app (manifest path ".") — release-please prefixes per-package
-      # outputs with the package path.
-      app_released: ${{ steps.release.outputs['release_created'] || steps.release.outputs['.--release_created'] }}
-      app_tag: ${{ steps.release.outputs['tag_name'] || steps.release.outputs['.--tag_name'] }}
+      # `releases_created` is the reliable aggregate flag (always set). The
+      # per-package tag output key varies, so the tag is resolved robustly in
+      # the "Resolve release tag" step below.
+      released: ${{ steps.release.outputs.releases_created }}
+      tag: ${{ steps.tag.outputs.tag }}
     steps:
       - name: Release Please
         id: release
@@ -28,14 +29,28 @@ jobs:
           config-file: release-please-config.json
           manifest-file: .release-please-manifest.json
 
+      - name: Resolve release tag
+        id: tag
+        if: ${{ steps.release.outputs.releases_created == 'true' }}
+        env:
+          GH_TOKEN: ${{ secrets.RELEASE_PLEASE_TOKEN || secrets.GITHUB_TOKEN }}
+        run: |
+          TAG="${{ steps.release.outputs.tag_name }}"
+          if [ -z "$TAG" ]; then
+            TAG="${{ steps.release.outputs['.--tag_name'] }}"
+          fi
+          if [ -z "$TAG" ]; then
+            TAG=$(gh release list --repo ${{ github.repository }} --limit 10 --json tagName -q ".[].tagName" | grep -E '^v[0-9]' | head -n 1)
+          fi
+          echo "tag=$TAG" >> "$GITHUB_OUTPUT"
+
       - name: Set correct latest release
         if: ${{ steps.release.outputs.releases_created == 'true' }}
         env:
           GH_TOKEN: ${{ secrets.RELEASE_PLEASE_TOKEN || secrets.GITHUB_TOKEN }}
         run: |
-          LATEST_TAG=$(gh release list --repo ${{ github.repository }} --limit 10 --json tagName -q ".[].tagName" | grep -E '^v[0-9]' | head -n 1)
-          if [ -n "$LATEST_TAG" ]; then
-            gh release edit "$LATEST_TAG" --repo ${{ github.repository }} --latest
+          if [ -n "${{ steps.tag.outputs.tag }}" ]; then
+            gh release edit "${{ steps.tag.outputs.tag }}" --repo ${{ github.repository }} --latest
           fi
 
   # Automatically build and attach desktop installers (Windows .exe/.msi,
@@ -43,10 +58,10 @@ jobs:
   # cuts a new version of the root app. No manual dispatch needed.
   build-desktop:
     needs: release
-    if: ${{ needs.release.outputs.app_released == 'true' }}
+    if: ${{ needs.release.outputs.released == 'true' }}
     uses: ./.github/workflows/build-desktop.yml
     with:
-      tag_name: ${{ needs.release.outputs.app_tag }}
+      tag_name: ${{ needs.release.outputs.tag }}
       build_windows: true
       build_macos: true
       build_linux: true

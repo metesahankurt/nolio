@@ -109,7 +109,12 @@ jobs:
           tagName: ${{ inputs.tag_name }}
           releaseName: ${{ inputs.tag_name }}
           releaseBody: "Desktop release for ${{ inputs.tag_name }}"
-          assetNamePattern: "[name]_${{ inputs.tag_name }}_${{ matrix.os_name }}_[arch][ext]"
+          # NOTE: no custom assetNamePattern. A custom pattern renames the
+          # updater bundle (.app.tar.gz) so tauri-action can no longer match
+          # its .sig file and silently skips generating/uploading latest.json
+          # ("Signature not found for the updater JSON"), which breaks the
+          # in-app auto-updater. Default names keep the .sig <-> bundle link,
+          # so latest.json is produced and the updater works.
           releaseDraft: false
           prerelease: false
           args: ${{ matrix.args }}
