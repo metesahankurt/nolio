@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.4.2](https://github.com/metesahankurt/nolio/compare/v2.4.1...v2.4.2) (2026-07-08)
+
+
+### Bug Fixes
+
+* **native:** integrate frameless window title bar edge-to-edge ([2d97589](https://github.com/metesahankurt/nolio/commit/2d9758981cbd642748f867091f3b951187b7cc1d))
+* **updater:** produce latest.json and enable in-app auto-update ([cc3e2ba](https://github.com/metesahankurt/nolio/commit/cc3e2badd6add4e8661040f4c7cb0ea8f92beb7f))
+
 ## [2.4.1](https://github.com/metesahankurt/nolio/compare/v2.4.0...v2.4.1) (2026-07-08)
 
 
