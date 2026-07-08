@@ -233,7 +233,21 @@
       "autoLockMinutes": "{minutes} dakika",
       "autoLockHint": "Belirtilen süre boyunca etkinlik olmazsa kasa otomatik kilitlenir.",
       "changePasswordAction": "Ana şifreyi değiştir",
-      "language": "Dil"
+      "language": "Dil",
+      "tabGeneral": "Genel",
+      "tabAppearance": "Görünüm",
+      "appUpdate": "Uygulama Güncellemesi",
+      "checkUpdates": "Güncellemeleri Denetle",
+      "themeMode": "Tema Modu",
+      "modeLight": "Açık Tema",
+      "modeDark": "Koyu Tema",
+      "modeSystem": "Sistem Varsayılanı",
+      "languageDescription": "Tercih ettiğiniz dili seçin",
+      "securityTitle": "Güvenlik",
+      "securityDescription": "Ana şifrenizi yönetin",
+      "autoLockTitle": "Otomatik Kilit",
+      "backupDescription": "Şifreli yedeğinizi dışa veya içe aktarın",
+      "updateDescription": "Yeni sürümleri denetleyin"
     },
     "changePassword": {
       "title": "Ana şifreyi değiştir",

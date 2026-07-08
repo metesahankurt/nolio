@@ -1,4 +1,5 @@
 import { useLocale } from "@workspace/i18n";
+import { useCallback } from "react";
 import { toast } from "sonner";
 
 interface UpdateInfo {
@@ -75,25 +76,28 @@ async function runUpdateCheck(manual: boolean, locale: string) {
 export function useAppUpdater() {
   const locale = useLocale();
 
-  const checkForUpdates = async (manual = false) => {
-    try {
-      const { isTauri } = await import("@tauri-apps/api/core");
-      if (!isTauri()) {
-        await handleWebManualCheck(manual, locale);
-        return;
+  const checkForUpdates = useCallback(
+    async (manual = false) => {
+      try {
+        const { isTauri } = await import("@tauri-apps/api/core");
+        if (!isTauri()) {
+          await handleWebManualCheck(manual, locale);
+          return;
+        }
+        await runUpdateCheck(manual, locale);
+      } catch (err) {
+        console.error("Failed to check for updates:", err);
+        if (manual) {
+          toast.error(
+            locale === "tr"
+              ? "Güncelleme kontrolü başarısız oldu."
+              : "Update check failed."
+          );
+        }
       }
-      await runUpdateCheck(manual, locale);
-    } catch (err) {
-      console.error("Failed to check for updates:", err);
-      if (manual) {
-        toast.error(
-          locale === "tr"
-            ? "Güncelleme kontrolü başarısız oldu."
-            : "Update check failed."
-        );
-      }
-    }
-  };
+    },
+    [locale]
+  );
 
   return { checkForUpdates };
 }

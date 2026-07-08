@@ -32,7 +32,7 @@ import { toast } from "sonner";
  * is ciphertext only; importing replaces the current vault and requires the
  * backup's master password to unlock.
  */
-export function BackupSection() {
+export function BackupSection({ hideLabel = false }: { hideLabel?: boolean }) {
   const t = useTranslations("Notes");
   const lock = useVaultStore((s) => s.lock);
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -92,7 +92,7 @@ export function BackupSection() {
 
   return (
     <div className="flex flex-col gap-1.5">
-      <Label>{t("backup.title")}</Label>
+      {!hideLabel && <Label>{t("backup.title")}</Label>}
       <div className="flex gap-2">
         <Button
           className="flex-1 justify-start"

@@ -5,24 +5,21 @@ import { NoteEditor } from "@workspace/core/components/notes/note-editor";
 import { NoteHeader } from "@workspace/core/components/notes/note-header";
 import { NoteListView } from "@workspace/core/components/notes/note-list-views";
 import { NoteSidebar } from "@workspace/core/components/notes/note-sidebar";
-import { NotesSettingsDialog } from "@workspace/core/components/notes/notes-settings-dialog";
-import { useAppUpdater } from "@workspace/core/hooks/use-app-updater";
+import { NotesSettingsView } from "@workspace/core/components/notes/notes-settings-view";
 import { useNotesStore } from "@workspace/core/stores/notes-store";
 import { useVaultStore } from "@workspace/core/stores/vault-store";
 import { useTranslations } from "@workspace/i18n";
-import { Button } from "@workspace/ui/components/button";
 import {
   Empty,
   EmptyDescription,
   EmptyTitle,
 } from "@workspace/ui/components/empty";
 import {
-  Sheet,
-  SheetContent,
-  SheetHeader,
-  SheetTitle,
-} from "@workspace/ui/components/sheet";
-import { PanelLeft } from "lucide-react";
+  SidebarInset,
+  SidebarProvider,
+  SidebarTrigger,
+} from "@workspace/ui/components/sidebar";
+import { TooltipProvider } from "@workspace/ui/components/tooltip";
 import { useEffect, useRef, useState } from "react";
 import { useHotkeys } from "react-hotkeys-hook";
 import { toast } from "sonner";
@@ -41,20 +38,16 @@ export function NotesShell() {
   const t = useTranslations("Notes");
   const lock = useVaultStore((s) => s.lock);
   const view = useNotesStore((s) => s.view);
+  const setView = useNotesStore((s) => s.setView);
   const notes = useNotesStore((s) => s.notes);
   const selectedNoteId = useNotesStore((s) => s.selectedNoteId);
   const corruptedCount = useNotesStore((s) => s.corruptedCount);
 
-  const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false);
   const [commandOpen, setCommandOpen] = useState(false);
-  const [settingsOpen, setSettingsOpen] = useState(false);
 
-  const { checkForUpdates } = useAppUpdater();
-
-  // Run update check on mount in the background
-  useEffect(() => {
-    checkForUpdates(false);
-  }, [checkForUpdates]);
+  // Settings opens as a full page in the main content area (like the
+  // original Catalyzer settings page), not as a modal dialog.
+  const openSettings = () => setView("settings");
 
   // Warn once per unlock if any stored record failed to decrypt/validate.
   // Corrupted records are never dropped from storage, so this is advisory.
@@ -65,6 +58,12 @@ export function NotesShell() {
       toast.error(t("error.corruptRecords", { count: corruptedCount }));
     }
   }, [corruptedCount, t]);
+
+  useEffect(() => {
+    if (view) {
+      window.scrollTo({ top: 0, left: 0 });
+    }
+  }, [view]);
 
   useHotkeys(
     "mod+k",
@@ -88,79 +87,56 @@ export function NotesShell() {
     selectedNote && selectedNote.deletedAt === null ? selectedNote : undefined;
 
   return (
-    <div className="flex h-full w-full overflow-hidden bg-background text-foreground">
-      <aside className="hidden w-64 shrink-0 border-border border-r md:block">
+    <TooltipProvider>
+      <SidebarProvider className="h-full min-h-0 w-full overflow-hidden">
         <NoteSidebar
           onOpenSearch={() => setCommandOpen(true)}
-          onOpenSettings={() => setSettingsOpen(true)}
+          onOpenSettings={openSettings}
         />
-      </aside>
 
-      <Sheet onOpenChange={setMobileSidebarOpen} open={mobileSidebarOpen}>
-        <SheetContent className="w-72 p-0" side="left">
-          <SheetHeader className="sr-only">
-            <SheetTitle>{t("sidebar.pages")}</SheetTitle>
-          </SheetHeader>
-          <NoteSidebar
-            onNavigate={() => setMobileSidebarOpen(false)}
-            onOpenSearch={() => {
-              setMobileSidebarOpen(false);
-              setCommandOpen(true);
-            }}
-            onOpenSettings={() => {
-              setMobileSidebarOpen(false);
-              setSettingsOpen(true);
-            }}
-          />
-        </SheetContent>
-      </Sheet>
-
-      <main className="flex min-w-0 flex-1 flex-col">
-        <div className="flex items-center border-border border-b px-2 py-1.5 md:hidden">
-          <Button
-            aria-label={t("shell.openSidebar")}
-            onClick={() => setMobileSidebarOpen(true)}
-            size="icon"
-            type="button"
-            variant="ghost"
-          >
-            <PanelLeft />
-          </Button>
-        </div>
-
-        {view !== "note" && (
-          <div className="min-h-0 flex-1 overflow-y-auto">
-            <NoteListView view={view} />
+        <SidebarInset className="min-w-0 overflow-hidden">
+          <div className="flex items-center border-border border-b px-2 py-1.5 md:hidden">
+            <SidebarTrigger aria-label={t("shell.openSidebar")} />
           </div>
-        )}
-        {view === "note" && activeNote && (
-          <div className="flex min-h-0 flex-1 flex-col">
-            <NoteHeader note={activeNote} />
+
+          {view === "settings" && (
+            <div className="min-h-0 flex-1 overflow-hidden">
+              <NotesSettingsView />
+            </div>
+          )}
+          {view !== "note" && view !== "settings" && (
             <div className="min-h-0 flex-1 overflow-y-auto">
-              <div className="mx-auto w-full max-w-3xl px-4 py-4 md:px-8">
-                <NoteEditor key={activeNote.id} note={activeNote} />
+              <NoteListView view={view} />
+            </div>
+          )}
+          {view === "note" && activeNote && (
+            <div className="flex min-h-0 flex-1 flex-col">
+              <NoteHeader note={activeNote} />
+              <div className="min-h-0 flex-1 overflow-y-auto">
+                <div className="mx-auto w-full max-w-3xl px-4 py-4 md:px-8">
+                  <NoteEditor key={activeNote.id} note={activeNote} />
+                </div>
               </div>
             </div>
-          </div>
-        )}
-        {view === "note" && !activeNote && (
-          <div className="flex flex-1 items-center justify-center p-8">
-            <Empty>
-              <EmptyTitle>{t("shell.noNoteTitle")}</EmptyTitle>
-              <EmptyDescription>
-                {t("shell.noNoteDescription")}
-              </EmptyDescription>
-            </Empty>
-          </div>
-        )}
-      </main>
+          )}
+          {view === "note" && !activeNote && (
+            <div className="flex flex-1 items-center justify-center p-8">
+              <Empty>
+                <EmptyTitle>{t("shell.noNoteTitle")}</EmptyTitle>
+                <EmptyDescription>
+                  {t("shell.noNoteDescription")}
+                </EmptyDescription>
+              </Empty>
+            </div>
+          )}
+        </SidebarInset>
 
-      <NoteCommandMenu
-        onOpenChange={setCommandOpen}
-        onOpenSettings={() => setSettingsOpen(true)}
-        open={commandOpen}
-      />
-      <NotesSettingsDialog onOpenChange={setSettingsOpen} open={settingsOpen} />
-    </div>
+        <NoteCommandMenu
+          onOpenChange={setCommandOpen}
+          onOpenSettings={openSettings}
+          open={commandOpen}
+        />
+      </SidebarProvider>
+    </TooltipProvider>
   );
 }

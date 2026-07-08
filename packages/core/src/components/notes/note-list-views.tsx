@@ -25,7 +25,9 @@ import { useState } from "react";
 
 const RECENT_LIMIT = 10;
 
-function useViewNotes(view: Exclude<NotesView, "note">): DecryptedNote[] {
+function useViewNotes(
+  view: Exclude<NotesView, "note" | "settings">
+): DecryptedNote[] {
   const notes = useNotesStore((s) => s.notes);
   const all = Object.values(notes);
   switch (view) {
@@ -51,7 +53,11 @@ function useViewNotes(view: Exclude<NotesView, "note">): DecryptedNote[] {
   }
 }
 
-export function NoteListView({ view }: { view: Exclude<NotesView, "note"> }) {
+export function NoteListView({
+  view,
+}: {
+  view: Exclude<NotesView, "note" | "settings">;
+}) {
   const t = useTranslations("Notes");
   const locale = useLocale();
   const listed = useViewNotes(view);

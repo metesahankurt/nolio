@@ -233,7 +233,21 @@
       "autoLockMinutes": "{minutes} minutes",
       "autoLockHint": "The vault locks automatically after this period of inactivity.",
       "changePasswordAction": "Change master password",
-      "language": "Language"
+      "language": "Language",
+      "tabGeneral": "General",
+      "tabAppearance": "Appearance",
+      "appUpdate": "App Update",
+      "checkUpdates": "Check for Updates",
+      "themeMode": "Theme Mode",
+      "modeLight": "Light Mode",
+      "modeDark": "Dark Mode",
+      "modeSystem": "System Default",
+      "languageDescription": "Select your preferred language",
+      "securityTitle": "Security",
+      "securityDescription": "Manage your master password",
+      "autoLockTitle": "Auto-lock",
+      "backupDescription": "Export or import your encrypted backup",
+      "updateDescription": "Check for new versions"
     },
     "changePassword": {
       "title": "Change master password",

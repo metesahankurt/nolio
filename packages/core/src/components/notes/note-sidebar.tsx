@@ -2,14 +2,37 @@
 
 import { NoteTree } from "@workspace/core/components/notes/note-tree";
 import { siteConfig } from "@workspace/core/config/site";
+import { useMounted } from "@workspace/core/hooks/use-mounted";
 import type { NotesView } from "@workspace/core/stores/notes-store";
 import { useNotesStore } from "@workspace/core/stores/notes-store";
+import { useSidebarStore } from "@workspace/core/stores/sidebar-store";
 import { useVaultStore } from "@workspace/core/stores/vault-store";
 import { useTranslations } from "@workspace/i18n";
-import { Button } from "@workspace/ui/components/button";
-import { Logo } from "@workspace/ui/components/landing/logo";
-import { cn } from "@workspace/ui/lib/utils";
 import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuGroup,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@workspace/ui/components/dropdown-menu";
+import { Logo } from "@workspace/ui/components/landing/logo";
+import {
+  Sidebar,
+  SidebarContent,
+  SidebarFooter,
+  SidebarGroupLabel,
+  SidebarHeader,
+  SidebarMenu,
+  SidebarMenuAction,
+  SidebarMenuButton,
+  SidebarMenuItem,
+  SidebarRail,
+  useSidebar,
+} from "@workspace/ui/components/sidebar";
+import {
+  ChevronsUpDown,
   Clock,
   ExternalLink,
   FileStack,
@@ -17,12 +40,14 @@ import {
   Lock,
   Plus,
   Search,
+  Settings,
   Star,
   Tag,
   Trash2,
 } from "lucide-react";
+import type * as React from "react";
 
-interface NoteSidebarProps {
+interface NoteSidebarProps extends React.ComponentProps<typeof Sidebar> {
   onNavigate?: () => void;
   onOpenSearch: () => void;
   onOpenSettings: () => void;
@@ -37,15 +62,26 @@ export function NoteSidebar({
   onOpenSearch,
   onOpenSettings,
   onNavigate,
+  ...props
 }: NoteSidebarProps) {
   const t = useTranslations("Notes");
   const vaultName = useVaultStore((s) => s.vaultName);
   const lock = useVaultStore((s) => s.lock);
+  const { isMobile, setOpenMobile } = useSidebar();
+  const { variant } = useSidebarStore();
+  const mounted = useMounted();
   const view = useNotesStore((s) => s.view);
   const setView = useNotesStore((s) => s.setView);
   const createNote = useNotesStore((s) => s.createNote);
 
   const initials = vaultName ? vaultName.slice(0, 2).toUpperCase() : "ME";
+
+  const handleNavigate = () => {
+    if (isMobile) {
+      setOpenMobile(false);
+    }
+    onNavigate?.();
+  };
 
   const openExternal = (url: string) => {
     if (typeof window !== "undefined" && "__TAURI_INTERNALS__" in window) {
@@ -67,154 +103,208 @@ export function NoteSidebar({
   };
 
   const viewItem = (
-    target: Exclude<NotesView, "note">,
+    target: Exclude<NotesView, "note" | "settings">,
     icon: React.ReactNode,
     label: string
   ) => (
-    <button
-      className={cn(
-        "flex w-full items-center gap-2 rounded-md px-2 py-1.5 text-left text-sm outline-none transition-colors hover:bg-sidebar-accent hover:text-sidebar-accent-foreground focus-visible:ring-2 focus-visible:ring-ring",
-        view === target && "bg-sidebar-accent text-sidebar-accent-foreground"
-      )}
-      onClick={() => {
-        setView(target);
-        onNavigate?.();
-      }}
-      type="button"
-    >
-      {icon}
-      {label}
-    </button>
+    <SidebarMenuItem>
+      <SidebarMenuButton
+        isActive={view === target}
+        onClick={() => {
+          setView(target);
+          handleNavigate();
+        }}
+        tooltip={label}
+      >
+        {icon}
+        <span>{label}</span>
+      </SidebarMenuButton>
+    </SidebarMenuItem>
   );
 
+  if (!mounted) {
+    return null;
+  }
+
   return (
-    <div className="flex h-full flex-col bg-sidebar text-sidebar-foreground">
-      {/* data-tauri-drag-region makes this strip a native window drag handle
-          (ignored on web). The mac-titlebar-pad class leaves room for the
-          macOS traffic lights under the overlay title bar. */}
-      <div
-        className="flex items-center gap-2 border-sidebar-border border-b p-3"
+    <Sidebar collapsible="icon" variant={variant} {...props}>
+      <SidebarHeader
+        className="border-sidebar-border border-b"
         data-tauri-drag-region={true}
       >
-        <Logo className="size-8" />
-        <div className="min-w-0 flex-1">
-          <p className="font-semibold text-sm leading-5">Nolio</p>
-          <p className="truncate text-muted-foreground text-xs leading-4">
-            {vaultName ?? t("unlock.defaultVaultName")}
-          </p>
+        <SidebarMenu>
+          <SidebarMenuItem>
+            <SidebarMenuButton
+              className="data-[slot=sidebar-menu-button]:!p-1.5"
+              tooltip="Nolio"
+            >
+              <Logo className="size-8 group-data-[collapsible=icon]:size-5!" />
+              <div className="grid min-w-0 flex-1 text-left">
+                <span className="truncate font-semibold text-sm leading-5">
+                  Nolio
+                </span>
+                <span className="truncate text-muted-foreground text-xs leading-4">
+                  {vaultName ?? t("unlock.defaultVaultName")}
+                </span>
+              </div>
+            </SidebarMenuButton>
+            <SidebarMenuAction
+              aria-label={t("sidebar.lockVault")}
+              onClick={() => lock()}
+              title={t("sidebar.lockVault")}
+            >
+              <Lock />
+            </SidebarMenuAction>
+          </SidebarMenuItem>
+        </SidebarMenu>
+      </SidebarHeader>
+
+      <SidebarContent className="gap-0">
+        <SidebarMenu className="px-2 py-1">
+          <SidebarMenuItem>
+            <SidebarMenuButton
+              onClick={() => {
+                onOpenSearch();
+                handleNavigate();
+              }}
+              tooltip={t("sidebar.search")}
+            >
+              <Search aria-hidden="true" />
+              <span>{t("sidebar.search")}</span>
+              <kbd className="ml-auto rounded border border-sidebar-border px-1 text-[10px] text-muted-foreground group-data-[collapsible=icon]:hidden">
+                ⌘K
+              </kbd>
+            </SidebarMenuButton>
+          </SidebarMenuItem>
+          <SidebarMenuItem>
+            <SidebarMenuButton
+              onClick={() => {
+                createNote(null).catch(() => {
+                  // Surfaced through saveStatus.
+                });
+                handleNavigate();
+              }}
+              tooltip={t("sidebar.newNote")}
+            >
+              <Plus aria-hidden="true" />
+              <span>{t("sidebar.newNote")}</span>
+            </SidebarMenuButton>
+          </SidebarMenuItem>
+        </SidebarMenu>
+
+        <SidebarMenu aria-label={t("sidebar.viewsLabel")} className="px-2">
+          {viewItem(
+            "all",
+            <FileStack aria-hidden="true" />,
+            t("sidebar.allNotes")
+          )}
+          {viewItem(
+            "favorites",
+            <Star aria-hidden="true" />,
+            t("sidebar.favorites")
+          )}
+          {viewItem(
+            "recent",
+            <Clock aria-hidden="true" />,
+            t("sidebar.recent")
+          )}
+          {viewItem("trash", <Trash2 aria-hidden="true" />, t("sidebar.trash"))}
+        </SidebarMenu>
+
+        <div className="mt-2 min-h-0 flex-1 overflow-y-auto px-2 group-data-[collapsible=icon]:hidden">
+          <SidebarGroupLabel className="px-2 py-1">
+            {t("sidebar.pages")}
+          </SidebarGroupLabel>
+          <NoteTree />
         </div>
-        <Button
-          aria-label={t("sidebar.lockVault")}
-          className="size-8 cursor-pointer rounded-lg"
-          onClick={() => lock()}
-          size="icon"
-          title={t("sidebar.lockVault")}
-          variant="ghost"
-        >
-          <Lock className="size-4 text-muted-foreground hover:text-foreground" />
-        </Button>
-      </div>
+      </SidebarContent>
 
-      <div className="flex flex-col gap-0.5 p-2">
-        <button
-          className="flex w-full items-center gap-2 rounded-md px-2 py-1.5 text-left text-muted-foreground text-sm outline-none transition-colors hover:bg-sidebar-accent hover:text-sidebar-accent-foreground focus-visible:ring-2 focus-visible:ring-ring"
-          onClick={onOpenSearch}
-          type="button"
-        >
-          <Search aria-hidden="true" className="size-4" />
-          {t("sidebar.search")}
-          <kbd className="ml-auto rounded border border-sidebar-border px-1 text-[10px] text-muted-foreground">
-            ⌘K
-          </kbd>
-        </button>
-        <button
-          className="flex w-full items-center gap-2 rounded-md px-2 py-1.5 text-left text-sm outline-none transition-colors hover:bg-sidebar-accent hover:text-sidebar-accent-foreground focus-visible:ring-2 focus-visible:ring-ring"
-          onClick={() => {
-            createNote(null).catch(() => {
-              // Surfaced through saveStatus.
-            });
-            onNavigate?.();
-          }}
-          type="button"
-        >
-          <Plus aria-hidden="true" className="size-4" />
-          {t("sidebar.newNote")}
-        </button>
-      </div>
-
-      <nav
-        aria-label={t("sidebar.viewsLabel")}
-        className="flex flex-col gap-0.5 px-2"
-      >
-        {viewItem(
-          "all",
-          <FileStack aria-hidden="true" className="size-4" />,
-          t("sidebar.allNotes")
-        )}
-        {viewItem(
-          "favorites",
-          <Star aria-hidden="true" className="size-4" />,
-          t("sidebar.favorites")
-        )}
-        {viewItem(
-          "recent",
-          <Clock aria-hidden="true" className="size-4" />,
-          t("sidebar.recent")
-        )}
-        {viewItem(
-          "trash",
-          <Trash2 aria-hidden="true" className="size-4" />,
-          t("sidebar.trash")
-        )}
-      </nav>
-
-      <div className="mt-2 min-h-0 flex-1 overflow-y-auto px-2">
-        <p className="px-2 py-1 font-medium text-[11px] text-muted-foreground uppercase tracking-wide">
-          {t("sidebar.pages")}
-        </p>
-        <NoteTree />
-      </div>
-
-      <div className="flex flex-col gap-0.5 border-sidebar-border border-t p-2">
-        <div className="flex flex-col gap-0.5 px-2 pt-1 pb-1.5">
-          <button
-            className="flex w-full cursor-pointer items-center gap-1.5 rounded-md px-2 py-1 text-[11px] text-muted-foreground/75 transition-colors hover:bg-sidebar-accent hover:text-sidebar-accent-foreground"
+      <SidebarFooter>
+        <div className="flex flex-col gap-0.5 px-2 pt-1 pb-1.5 group-data-[collapsible=icon]:hidden">
+          <SidebarMenuButton
+            className="h-7 text-[11px] text-muted-foreground/75"
             onClick={() => openExternal("https://github.com/metesahankurt")}
-            type="button"
           >
-            <Github className="size-3.5 shrink-0" />
-            <span className="truncate">@metesahankurt</span>
-            <ExternalLink className="ml-auto size-2.5 shrink-0 opacity-50" />
-          </button>
-          <button
-            className="flex w-full cursor-pointer items-center gap-1.5 rounded-md px-2 py-1 text-[11px] text-muted-foreground/75 transition-colors hover:bg-sidebar-accent hover:text-sidebar-accent-foreground"
+            <Github className="size-3.5" />
+            <span>@metesahankurt</span>
+            <ExternalLink className="ml-auto size-2.5 opacity-50" />
+          </SidebarMenuButton>
+          <SidebarMenuButton
+            className="h-7 text-[11px] text-muted-foreground/75"
             onClick={() => openExternal(siteConfig.links.releases)}
-            type="button"
           >
-            <Tag className="size-3.5 shrink-0" />
-            <span className="truncate">{t("sidebar.latestUpdates")}</span>
-            <ExternalLink className="ml-auto size-2.5 shrink-0 opacity-50" />
-          </button>
+            <Tag className="size-3.5" />
+            <span>{t("sidebar.latestUpdates")}</span>
+            <ExternalLink className="ml-auto size-2.5 opacity-50" />
+          </SidebarMenuButton>
         </div>
 
-        <button
-          className="flex w-full cursor-pointer items-center gap-3 rounded-lg px-2 py-1.5 text-left text-sm outline-none transition-colors hover:bg-sidebar-accent hover:text-sidebar-accent-foreground"
-          onClick={onOpenSettings}
-          type="button"
-        >
-          <div className="flex size-8 shrink-0 items-center justify-center rounded-lg bg-emerald-600 font-bold text-sm text-white">
-            {initials}
-          </div>
-          <div className="grid flex-1 text-left text-sm leading-tight">
-            <span className="truncate font-semibold text-foreground">
-              {vaultName || t("unlock.defaultVaultName")}
-            </span>
-            <span className="truncate font-normal text-muted-foreground text-xs">
-              {t("sidebar.localProfile")}
-            </span>
-          </div>
-        </button>
-      </div>
-    </div>
+        <SidebarMenu>
+          <SidebarMenuItem>
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild={true}>
+                <SidebarMenuButton
+                  className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
+                  size="lg"
+                  tooltip={vaultName || t("unlock.defaultVaultName")}
+                >
+                  <div className="flex size-8 shrink-0 items-center justify-center rounded-lg bg-emerald-600 font-bold text-sm text-white">
+                    {initials}
+                  </div>
+                  <div className="grid flex-1 text-left text-sm leading-tight">
+                    <span className="truncate font-semibold">
+                      {vaultName || t("unlock.defaultVaultName")}
+                    </span>
+                    <span className="truncate font-normal text-muted-foreground text-xs">
+                      {t("sidebar.localProfile")}
+                    </span>
+                  </div>
+                  <ChevronsUpDown className="ml-auto size-4 text-muted-foreground" />
+                </SidebarMenuButton>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent
+                align="end"
+                className="w-(--radix-dropdown-menu-trigger-width) min-w-56 rounded-lg"
+                side="right"
+                sideOffset={4}
+              >
+                <DropdownMenuLabel className="p-0 font-normal">
+                  <div className="flex items-center gap-2 px-1 py-1.5 text-left text-sm">
+                    <div className="flex size-8 shrink-0 items-center justify-center rounded-lg bg-emerald-600 font-bold text-sm text-white">
+                      {initials}
+                    </div>
+                    <div className="grid flex-1 text-left text-sm">
+                      <span className="truncate font-medium">
+                        {vaultName || t("unlock.defaultVaultName")}
+                      </span>
+                      <span className="truncate text-muted-foreground text-xs">
+                        {t("sidebar.localProfile")}
+                      </span>
+                    </div>
+                  </div>
+                </DropdownMenuLabel>
+                <DropdownMenuSeparator />
+                <DropdownMenuGroup>
+                  <DropdownMenuItem
+                    onSelect={() => {
+                      onOpenSettings();
+                      handleNavigate();
+                    }}
+                  >
+                    <Settings />
+                    {t("sidebar.settings")}
+                  </DropdownMenuItem>
+                  <DropdownMenuItem onSelect={() => lock()}>
+                    <Lock />
+                    {t("sidebar.lockVault")}
+                  </DropdownMenuItem>
+                </DropdownMenuGroup>
+              </DropdownMenuContent>
+            </DropdownMenu>
+          </SidebarMenuItem>
+        </SidebarMenu>
+      </SidebarFooter>
+      <SidebarRail />
+    </Sidebar>
   );
 }

@@ -16,7 +16,13 @@ import {
 } from "@workspace/core/features/notes/services/search-service";
 import { create } from "zustand";
 
-export type NotesView = "note" | "all" | "favorites" | "recent" | "trash";
+export type NotesView =
+  | "note"
+  | "all"
+  | "favorites"
+  | "recent"
+  | "trash"
+  | "settings";
 export type SaveStatus = "idle" | "saving" | "saved" | "error";
 
 export interface WelcomeNoteSpec {

@@ -1,5 +1,7 @@
 import { ThemeInitializer } from "@workspace/core/components/common/theme-initializer";
 import { siteConfig } from "@workspace/core/config/site";
+import { ThemeProvider } from "@workspace/core/providers/theme-provider";
+import { themeInitScript } from "@workspace/core/scripts/theme-init";
 import { hasLocale, messages, NextIntlClientProvider } from "@workspace/i18n";
 import { routing } from "@workspace/i18n/routing";
 import type { Metadata, Viewport } from "next";
@@ -52,6 +54,12 @@ export default async function RootLayout({
 
   return (
     <html lang={locale} suppressHydrationWarning={true}>
+      <head>
+        <script
+          // biome-ignore lint/security/noDangerouslySetInnerHtml: trusted, static no-FOUC theme script
+          dangerouslySetInnerHTML={{ __html: themeInitScript }}
+        />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} overflow-hidden antialiased`}
       >
@@ -60,12 +68,20 @@ export default async function RootLayout({
           messages={localeMessages}
           timeZone="UTC"
         >
-          <ThemeInitializer />
-          <UpdateChecker />
-          <NativeTitleBar />
-          <div className="h-screen overflow-hidden pt-8">
-            <AppLayout>{children}</AppLayout>
-          </div>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            disableTransitionOnChange={true}
+            enableColorScheme={true}
+            enableSystem={true}
+          >
+            <ThemeInitializer />
+            <UpdateChecker />
+            <NativeTitleBar />
+            <div className="h-screen overflow-hidden pt-8">
+              <AppLayout>{children}</AppLayout>
+            </div>
+          </ThemeProvider>
         </NextIntlClientProvider>
       </body>
     </html>

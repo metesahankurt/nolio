@@ -5,5 +5,9 @@ interface NotesGroupLayoutProps {
 }
 
 export default function NotesGroupLayout({ children }: NotesGroupLayoutProps) {
-  return <WebNotesProvider>{children}</WebNotesProvider>;
+  return (
+    <WebNotesProvider>
+      <div className="h-svh overflow-hidden">{children}</div>
+    </WebNotesProvider>
+  );
 }

@@ -13,9 +13,9 @@ export function NotesPage() {
   const languageChosen = useNotesSettingsStore((s) => s.languageChosen);
 
   return (
-    <>
+    <div className="h-full min-h-0 overflow-hidden bg-background">
       {mounted && !languageChosen ? <LanguageSelectScreen /> : <VaultGate />}
       <Toaster />
-    </>
+    </div>
   );
 }
