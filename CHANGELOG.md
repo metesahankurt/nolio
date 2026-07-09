@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.6.0](https://github.com/metesahankurt/nolio/compare/v2.5.0...v2.6.0) (2026-07-09)
+
+
+### Features
+
+* use plate editor for notes app ([88150a1](https://github.com/metesahankurt/nolio/commit/88150a137891658fa2626043953fc908dbf3ebf0))
+
 ## [2.5.0](https://github.com/metesahankurt/nolio/compare/v2.4.2...v2.5.0) (2026-07-09)
 
 
