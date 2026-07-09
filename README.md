@@ -21,7 +21,7 @@ Nolio, notlarını cihazında şifreli biçimde saklar. Bulut yoktur, üçüncü
 ## Özellikler
 
 - **Şifreli not kasası** — AES-256 tabanlı şifreleme, ana parola ile korunur
-- **Zengin metin editörü** — BlockNote tabanlı, başlık / madde / alıntı desteği
+- **Zengin metin editörü** — Plate tabanlı, başlık / madde / alıntı desteği
 - **Web depolama** — IndexedDB üzerinden tarayıcıda çalışır
 - **Masaüstü depolama** — Şifreli SQLite kayıtları (Tauri + Rust)
 - **Yedekleme / geri yükleme** — JSON dosyasına dışa aktar, içe aktar

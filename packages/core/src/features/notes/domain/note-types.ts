@@ -1,21 +1,19 @@
-/**
- * The persisted note content is the BlockNote block tree, stored as JSON.
- * This structural type mirrors the serialized shape of BlockNote's `Block`
- * so the domain layer stays decoupled from the editor schema module, while
- * remaining assignable from the editor's typed document.
- */
-export interface NoteContentBlock {
-  children: NoteContentBlock[];
-  content?: unknown;
-  id: string;
-  props: Record<string, boolean | number | string>;
-  type: string;
+export interface NoteTextNode {
+  text: string;
+  [key: string]: unknown;
 }
 
-export type BlockNoteDocument = NoteContentBlock[];
+export interface NoteElementNode {
+  children: NoteNode[];
+  type?: string;
+  [key: string]: unknown;
+}
+
+export type NoteNode = NoteElementNode | NoteTextNode;
+export type NoteDocument = NoteElementNode[];
 
 export interface DecryptedNote {
-  content: BlockNoteDocument;
+  content: NoteDocument;
   cover?: string;
   createdAt: string;
   deletedAt: string | null;

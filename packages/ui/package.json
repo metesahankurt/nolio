@@ -45,7 +45,6 @@
   },
   "exports": {
     "./globals.css": "./src/styles/globals.css",
-    "./blocknote.css": "./src/styles/blocknote.css",
     "./postcss.config": "./postcss.config.mjs",
     "./components/*": "./src/components/*.tsx",
     "./lib/*": "./src/lib/*.ts",

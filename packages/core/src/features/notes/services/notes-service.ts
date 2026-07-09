@@ -8,8 +8,8 @@ import {
   StorageError,
 } from "@workspace/core/features/notes/domain/errors";
 import type {
-  BlockNoteDocument,
   DecryptedNote,
+  NoteDocument,
 } from "@workspace/core/features/notes/domain/note-types";
 import { getNotesRepository } from "@workspace/core/features/notes/repositories/notes-repository";
 import { getSessionDataKey } from "@workspace/core/features/notes/services/session-key-service";
@@ -87,7 +87,7 @@ export async function removeNotePermanently(id: string): Promise<void> {
 export function buildNewNote(
   parentId: string | null,
   title = "",
-  content: BlockNoteDocument = []
+  content: NoteDocument = []
 ): DecryptedNote {
   const now = new Date().toISOString();
   return {
@@ -105,12 +105,9 @@ export function buildNewNote(
 }
 
 /** Builds a single paragraph block for programmatically-authored content. */
-export function paragraphBlock(text: string): BlockNoteDocument[number] {
+export function paragraphBlock(text: string): NoteDocument[number] {
   return {
-    id: randomId(),
-    type: "paragraph",
-    props: {},
-    content: [{ type: "text", text, styles: {} }],
-    children: [],
+    children: [{ text }],
+    type: "p",
   };
 }

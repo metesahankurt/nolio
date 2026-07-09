@@ -9,9 +9,6 @@
     "clean": "rimraf .turbo"
   },
   "dependencies": {
-    "@blocknote/core": "^0.51.4",
-    "@blocknote/react": "^0.51.4",
-    "@blocknote/shadcn": "^0.51.4",
     "@tauri-apps/api": "^2.11.0",
     "@tauri-apps/plugin-dialog": "^2",
     "@tauri-apps/plugin-process": "^2",
@@ -39,7 +36,7 @@
   },
   "exports": {
     "./components/*": "./src/components/*.tsx",
-    "./features/notes/editor/*": "./src/features/notes/editor/*.tsx",
+    "./features/notes/editor/*": "./src/features/notes/editor/*.ts",
     "./features/*": "./src/features/*.ts",
     "./providers/*": "./src/providers/*.tsx",
     "./pages/*": "./src/pages/*.tsx",

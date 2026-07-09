@@ -1,6 +1,6 @@
 import type {
-  BlockNoteDocument,
   DecryptedNote,
+  NoteDocument,
 } from "@workspace/core/features/notes/domain/note-types";
 
 /**
@@ -25,34 +25,35 @@ interface IndexEntry {
 
 let index: IndexEntry[] = [];
 
-interface InlineContentLike {
-  content?: unknown;
-  text?: string;
-  type?: string;
-}
-
-function collectInlineText(content: unknown, out: string[]): void {
-  if (!Array.isArray(content)) {
+function collectText(value: unknown, out: string[]): void {
+  if (typeof value === "string") {
+    out.push(value);
     return;
   }
-  for (const item of content as InlineContentLike[]) {
-    if (typeof item?.text === "string") {
-      out.push(item.text);
-    } else if (item && typeof item === "object" && "content" in item) {
-      collectInlineText(item.content, out);
+  if (Array.isArray(value)) {
+    for (const item of value) {
+      collectText(item, out);
     }
+    return;
+  }
+  if (typeof value !== "object" || value === null) {
+    return;
+  }
+  const record = value as Record<string, unknown>;
+  if (typeof record.text === "string") {
+    out.push(record.text);
+  }
+  if ("content" in record) {
+    collectText(record.content, out);
+  }
+  if ("children" in record) {
+    collectText(record.children, out);
   }
 }
 
-export function extractPlainText(document: BlockNoteDocument): string {
+export function extractPlainText(document: NoteDocument): string {
   const parts: string[] = [];
-  const walk = (blocks: BlockNoteDocument): void => {
-    for (const block of blocks) {
-      collectInlineText(block.content, parts);
-      walk(block.children);
-    }
-  };
-  walk(document);
+  collectText(document, parts);
   return parts.join(" ");
 }
 

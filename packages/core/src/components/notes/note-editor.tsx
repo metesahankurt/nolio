@@ -6,11 +6,10 @@ import { useMounted } from "@workspace/core/hooks/use-mounted";
 import { lazy, Suspense } from "react";
 
 /**
- * BlockNote is client-only and heavy, so it is loaded lazily and only
- * after mount: decrypted note content must never appear in server-rendered
- * HTML, and the editor bundle must not leak into unrelated routes. (This
- * component is only ever mounted while the vault is unlocked, which cannot
- * happen during SSR — the mounted guard is defense in depth.)
+ * The rich text editor is client-only and loaded lazily after mount:
+ * decrypted note content must never appear in server-rendered HTML, and the
+ * editor bundle must not leak into unrelated routes. This component is only
+ * mounted while the vault is unlocked, which cannot happen during SSR.
  */
 const LazyNoteEditor = lazy(() =>
   import("@workspace/core/components/notes/note-editor-client").then((mod) => ({

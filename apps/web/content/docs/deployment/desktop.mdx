@@ -47,16 +47,15 @@ The matrix is not hardcoded. `build-apps.yml` passes boolean flags (`build_windo
 5. Runs `tauri-action` which builds the app and uploads assets to the GitHub Release
 
 ```yaml title="tauri-action step"
-- uses: tauri-apps/tauri-action@v0
+- uses: tauri-apps/tauri-action@action-v1.0.0
   env:
     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   with:
     tagName: ${{ inputs.tag_name }}
     releaseName: ${{ inputs.tag_name }}
-    assetNamePattern: "[name]_${{ inputs.tag_name }}_${{ matrix.os_name }}_[arch][ext]"
     projectPath: "apps/native"
-    includeRelease: true
-    includeUpdaterJson: true
+    uploadUpdaterJson: true
+    uploadUpdaterSignatures: true
 ```
 
 ### Release Assets

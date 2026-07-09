@@ -46,36 +46,44 @@ export const encryptedVaultHeaderSchema: z.ZodType<EncryptedVaultHeader> =
     }),
   });
 
-/**
- * Structural validation of a serialized BlockNote block. BlockNote's own
- * schema types are far richer; this guards the persisted JSON shape without
- * re-modelling the whole editor schema. `content` is intentionally loose:
- * it varies per block type (inline content, table content, none).
- */
-interface BlockShape {
-  children: BlockShape[];
-  content?: unknown;
-  id: string;
-  props: Record<string, boolean | number | string>;
-  type: string;
+interface NoteTextShape {
+  text: string;
+  [key: string]: unknown;
 }
 
-export const noteContentBlockSchema: z.ZodType<BlockShape> = z.lazy(() =>
-  z.object({
-    id: z.string(),
-    type: z.string(),
-    props: z.record(z.string(), z.union([z.boolean(), z.number(), z.string()])),
-    content: z.unknown().optional(),
-    children: z.array(noteContentBlockSchema),
-  })
+interface NoteElementShape {
+  children: NoteNodeShape[];
+  type?: string;
+  [key: string]: unknown;
+}
+
+type NoteNodeShape = NoteElementShape | NoteTextShape;
+
+export const noteNodeSchema: z.ZodType<NoteNodeShape> = z.lazy(() =>
+  z.union([
+    z.object({ text: z.string() }).catchall(z.unknown()),
+    z
+      .object({
+        type: z.string().optional(),
+        children: z.array(noteNodeSchema),
+      })
+      .catchall(z.unknown()),
+  ])
 );
+
+export const noteElementSchema: z.ZodType<NoteElementShape> = z
+  .object({
+    type: z.string().optional(),
+    children: z.array(noteNodeSchema),
+  })
+  .catchall(z.unknown());
 
 export const decryptedNoteSchema = z.object({
   id: z.string().min(1),
   title: z.string(),
   icon: z.string().optional(),
   cover: z.string().optional(),
-  content: z.array(noteContentBlockSchema),
+  content: z.array(noteElementSchema),
   parentId: z.string().nullable(),
   tags: z.array(z.string()),
   isFavorite: z.boolean(),

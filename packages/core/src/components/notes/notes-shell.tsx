@@ -26,7 +26,7 @@ import { toast } from "sonner";
 
 /**
  * Notion-like application shell: sidebar (inline on desktop, Sheet on
- * mobile), note header and BlockNote editor. Only ever mounted while the
+ * mobile), note header and rich text editor. Only ever mounted while the
  * vault is unlocked.
  *
  * Hotkeys: Cmd/Ctrl+K opens the command palette; Cmd/Ctrl+Shift+L locks

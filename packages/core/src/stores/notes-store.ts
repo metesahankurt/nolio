@@ -1,6 +1,6 @@
 import type {
-  BlockNoteDocument,
   DecryptedNote,
+  NoteDocument,
 } from "@workspace/core/features/notes/domain/note-types";
 import {
   buildNewNote,
@@ -51,7 +51,7 @@ interface NotesState {
   selectNote(id: string | null): void;
   setView(view: NotesView): void;
   toggleFavorite(id: string): void;
-  updateNoteContent(id: string, content: BlockNoteDocument): void;
+  updateNoteContent(id: string, content: NoteDocument): void;
   updateNoteIcon(id: string, icon: string | undefined): void;
   updateNoteTitle(id: string, title: string): void;
   view: NotesView;
