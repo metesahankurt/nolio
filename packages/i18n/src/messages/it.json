@@ -1,6 +1,15 @@
 {
   "HomePage": {
-    "title": "Sei nella pagina iniziale."
+    "title": "Note",
+    "noteTitle": "Nota senza titolo",
+    "placeholder": "Scrivi una nota...",
+    "editorLabel": "Editor di note"
+  },
+  "NoteEditorDemoPage": {
+    "title": "Demo funzioni editor",
+    "description": "Una nota di esempio con tutti i blocchi rich text attivi.",
+    "placeholder": "Prova l'editor...",
+    "editorLabel": "Demo editor rich text"
   },
   "OverviewPage": {
     "title": "Sei nella pagina Cruscotto/Panoramica."
@@ -52,6 +61,7 @@
   },
   "Navigation": {
     "home": "Home",
+    "editor-demo": "Demo editor",
     "dashboard": "Cruscotto",
     "overview": "Panoramica",
     "analytics": "Analisi",

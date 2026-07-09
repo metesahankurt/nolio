@@ -1,6 +1,15 @@
 {
   "HomePage": {
-    "title": "ホームページにいます。"
+    "title": "ノート",
+    "noteTitle": "無題のノート",
+    "placeholder": "ノートを書く...",
+    "editorLabel": "ノートエディター"
+  },
+  "NoteEditorDemoPage": {
+    "title": "エディター機能デモ",
+    "description": "有効なリッチテキストブロックをすべて含むサンプルノートです。",
+    "placeholder": "エディターを試す...",
+    "editorLabel": "リッチテキストエディター機能デモ"
   },
   "OverviewPage": {
     "title": "ダッシュボード/概要ページにいます。"
@@ -52,6 +61,7 @@
   },
   "Navigation": {
     "home": "ホーム",
+    "editor-demo": "エディターデモ",
     "dashboard": "ダッシュボード",
     "overview": "概要",
     "analytics": "分析",

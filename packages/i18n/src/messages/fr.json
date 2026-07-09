@@ -1,6 +1,15 @@
 {
   "HomePage": {
-    "title": "Vous êtes sur la page d'accueil."
+    "title": "Notes",
+    "noteTitle": "Note sans titre",
+    "placeholder": "Écrivez une note...",
+    "editorLabel": "Éditeur de notes"
+  },
+  "NoteEditorDemoPage": {
+    "title": "Démo des fonctions de l'éditeur",
+    "description": "Une note exemple avec tous les blocs de texte enrichi activés.",
+    "placeholder": "Essayez l'éditeur...",
+    "editorLabel": "Démo de l'éditeur de texte enrichi"
   },
   "OverviewPage": {
     "title": "Vous êtes sur la page Tableau de bord/Aperçu."
@@ -52,6 +61,7 @@
   },
   "Navigation": {
     "home": "Accueil",
+    "editor-demo": "Démo de l'éditeur",
     "dashboard": "Tableau de bord",
     "overview": "Aperçu",
     "analytics": "Analyse",

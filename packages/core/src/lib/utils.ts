@@ -2,7 +2,6 @@ import { siteConfig } from "@workspace/core/config/site";
 
 const V_PREFIX_DIGIT_REGEX = /^v\d/;
 const V_PREFIX_REGEX = /^v/;
-const MAC_REGEX = /Mac|iPod|iPhone|iPad/;
 const KEY_SPLIT_REGEX = /[+>]+/;
 export async function fetchLatestGithubVersion(): Promise<string | null> {
   try {
@@ -26,22 +25,18 @@ export async function fetchLatestGithubVersion(): Promise<string | null> {
 
 /**
  * Returns a human-readable label for a hotkey key string.
- * Detects macOS to show ⌘ instead of Ctrl.
  * Handles sequence strings (e.g. "g>s") and combinators (e.g. "mod+k").
  */
 export function formatHotkeyDisplay(keys: string): string[] {
-  const isMac =
-    typeof navigator !== "undefined" && MAC_REGEX.test(navigator.userAgent);
-
   // Split by either `+` or `>` to support sequences like "g>s" and chords like "mod+k"
   return keys.split(KEY_SPLIT_REGEX).map((key) => {
     switch (key) {
       case "mod":
-        return isMac ? "⌘" : "Ctrl";
+        return "Ctrl";
       case "shift":
-        return isMac ? "⇧" : "Shift";
+        return "Shift";
       case "alt":
-        return isMac ? "⌥" : "Alt";
+        return "Alt";
       default:
         return key.toUpperCase();
     }

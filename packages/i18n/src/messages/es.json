@@ -1,6 +1,15 @@
 {
   "HomePage": {
-    "title": "Estás en la página de inicio."
+    "title": "Notas",
+    "noteTitle": "Nota sin título",
+    "placeholder": "Escribe una nota...",
+    "editorLabel": "Editor de notas"
+  },
+  "NoteEditorDemoPage": {
+    "title": "Demo de funciones del editor",
+    "description": "Una nota de ejemplo con todos los bloques de texto enriquecido activos.",
+    "placeholder": "Prueba el editor...",
+    "editorLabel": "Demo de funciones del editor de texto enriquecido"
   },
   "OverviewPage": {
     "title": "Estás en la página de Panel de control/Visión general."
@@ -52,6 +61,7 @@
   },
   "Navigation": {
     "home": "Inicio",
+    "editor-demo": "Demo del editor",
     "dashboard": "Panel de control",
     "overview": "Visión General",
     "analytics": "Análisis",

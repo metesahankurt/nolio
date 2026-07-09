@@ -8,7 +8,6 @@ import { AppSidebar } from "@workspace/core/components/layout/app-sidebar";
 import { MobileBottomNav } from "@workspace/core/components/navigation/mobile-bottom-nav";
 import { navigationData } from "@workspace/core/config/navigation";
 import { useAppHotkeys } from "@workspace/core/hooks/use-app-hotkeys";
-import { ThemeProvider } from "@workspace/core/providers/theme-provider";
 import {
   SidebarInset,
   SidebarProvider,
@@ -43,32 +42,24 @@ export function AppLayout({
   LinkComponent,
 }: AppLayoutProps) {
   return (
-    <ThemeProvider
-      attribute="class"
-      defaultTheme="system"
-      disableTransitionOnChange={true}
-      enableColorScheme={true}
-      enableSystem={true}
-    >
-      <TooltipProvider>
-        <SidebarProvider className="h-screen pt-[env(safe-area-inset-top)] pb-[env(safe-area-inset-bottom)]">
-          <HotkeysRegistrar navigate={navigate} />
-          <AppSidebar LinkComponent={LinkComponent} pathname={pathname} />
-          <SidebarInset>
-            <AppHeader LinkComponent={LinkComponent} pathname={pathname} />
-            {children}
-            <Toaster />
-            <MobileBottomNav
-              items={navigationData.navMobile}
-              LinkComponent={LinkComponent}
-              pathname={pathname}
-            />
-          </SidebarInset>
-          <HotkeysDialog />
-          <CommandPalette navigate={navigate} />
-          <ProfileDrawer user={navigationData.user} />
-        </SidebarProvider>
-      </TooltipProvider>
-    </ThemeProvider>
+    <TooltipProvider>
+      <SidebarProvider className="h-screen pt-[env(safe-area-inset-top)] pb-[env(safe-area-inset-bottom)]">
+        <HotkeysRegistrar navigate={navigate} />
+        <AppSidebar LinkComponent={LinkComponent} pathname={pathname} />
+        <SidebarInset>
+          <AppHeader LinkComponent={LinkComponent} pathname={pathname} />
+          {children}
+          <Toaster />
+          <MobileBottomNav
+            items={navigationData.navMobile}
+            LinkComponent={LinkComponent}
+            pathname={pathname}
+          />
+        </SidebarInset>
+        <HotkeysDialog />
+        <CommandPalette navigate={navigate} />
+        <ProfileDrawer user={navigationData.user} />
+      </SidebarProvider>
+    </TooltipProvider>
   );
 }

@@ -1,6 +1,15 @@
 {
   "HomePage": {
-    "title": "您在主页。"
+    "title": "笔记",
+    "noteTitle": "无标题笔记",
+    "placeholder": "写一条笔记...",
+    "editorLabel": "笔记编辑器"
+  },
+  "NoteEditorDemoPage": {
+    "title": "编辑器功能演示",
+    "description": "包含所有已启用富文本块的示例笔记。",
+    "placeholder": "试用编辑器...",
+    "editorLabel": "富文本编辑器功能演示"
   },
   "OverviewPage": {
     "title": "您在仪表板/概览页面。"
@@ -52,6 +61,7 @@
   },
   "Navigation": {
     "home": "主页",
+    "editor-demo": "编辑器演示",
     "dashboard": "仪表板",
     "overview": "概览",
     "analytics": "分析",

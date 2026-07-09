@@ -1,6 +1,15 @@
 {
   "HomePage": {
-    "title": "Você está na página inicial."
+    "title": "Notas",
+    "noteTitle": "Nota sem título",
+    "placeholder": "Escreva uma nota...",
+    "editorLabel": "Editor de notas"
+  },
+  "NoteEditorDemoPage": {
+    "title": "Demo de recursos do editor",
+    "description": "Uma nota de exemplo com todos os blocos rich text ativos.",
+    "placeholder": "Teste o editor...",
+    "editorLabel": "Demo do editor rich text"
   },
   "OverviewPage": {
     "title": "Você está na página Painel de Controle/Visão Geral."
@@ -52,6 +61,7 @@
   },
   "Navigation": {
     "home": "Início",
+    "editor-demo": "Demo do editor",
     "dashboard": "Painel de Controle",
     "overview": "Visão Geral",
     "analytics": "Análise",

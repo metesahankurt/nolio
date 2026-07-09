@@ -1,6 +1,15 @@
 {
   "HomePage": {
-    "title": "Ana Sayfadasınız."
+    "title": "Notlar",
+    "noteTitle": "Başlıksız not",
+    "placeholder": "Bir not yaz...",
+    "editorLabel": "Not editörü"
+  },
+  "NoteEditorDemoPage": {
+    "title": "Editör özellik demosu",
+    "description": "Aktif rich text bloklarının tamamını içeren örnek not.",
+    "placeholder": "Editörü dene...",
+    "editorLabel": "Rich text editör özellik demosu"
   },
   "OverviewPage": {
     "title": "Kontrol Paneli/Genel Bakış Sayfasındasınız."
@@ -52,6 +61,7 @@
   },
   "Navigation": {
     "home": "Ana Sayfa",
+    "editor-demo": "Editör Demosu",
     "dashboard": "Kontrol Paneli",
     "overview": "Genel Bakış",
     "analytics": "Analitik",

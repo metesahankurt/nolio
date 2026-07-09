@@ -1,6 +1,15 @@
 {
   "HomePage": {
-    "title": "You are on the Home Page."
+    "title": "Notes",
+    "noteTitle": "Untitled note",
+    "placeholder": "Write a note...",
+    "editorLabel": "Note editor"
+  },
+  "NoteEditorDemoPage": {
+    "title": "Editor feature demo",
+    "description": "A sample note with every enabled rich text block.",
+    "placeholder": "Try the editor...",
+    "editorLabel": "Rich text editor feature demo"
   },
   "OverviewPage": {
     "title": "You are on the Dashboard/Overview Page."
@@ -52,6 +61,7 @@
   },
   "Navigation": {
     "home": "Home",
+    "editor-demo": "Editor Demo",
     "dashboard": "Dashboard",
     "overview": "Overview",
     "analytics": "Analytics",

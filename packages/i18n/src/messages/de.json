@@ -1,6 +1,15 @@
 {
   "HomePage": {
-    "title": "Sie befinden sich auf der Startseite."
+    "title": "Notizen",
+    "noteTitle": "Unbenannte Notiz",
+    "placeholder": "Schreiben Sie eine Notiz...",
+    "editorLabel": "Notizeditor"
+  },
+  "NoteEditorDemoPage": {
+    "title": "Editor-Funktionsdemo",
+    "description": "Eine Beispielnotiz mit allen aktivierten Rich-Text-Blöcken.",
+    "placeholder": "Editor testen...",
+    "editorLabel": "Rich-Text-Editor-Funktionsdemo"
   },
   "OverviewPage": {
     "title": "Sie befinden sich auf der Dashboard/Übersichtsseite."
@@ -52,6 +61,7 @@
   },
   "Navigation": {
     "home": "Startseite",
+    "editor-demo": "Editor-Demo",
     "dashboard": "Dashboard",
     "overview": "Übersicht",
     "analytics": "Analyse",

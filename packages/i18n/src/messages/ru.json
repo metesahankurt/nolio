@@ -1,6 +1,15 @@
 {
   "HomePage": {
-    "title": "Вы находитесь на главной странице."
+    "title": "Заметки",
+    "noteTitle": "Заметка без названия",
+    "placeholder": "Напишите заметку...",
+    "editorLabel": "Редактор заметок"
+  },
+  "NoteEditorDemoPage": {
+    "title": "Демо функций редактора",
+    "description": "Пример заметки со всеми активными блоками rich text.",
+    "placeholder": "Попробуйте редактор...",
+    "editorLabel": "Демо редактора rich text"
   },
   "OverviewPage": {
     "title": "Вы находитесь на странице Панель управления/Обзор."
@@ -52,6 +61,7 @@
   },
   "Navigation": {
     "home": "Главная",
+    "editor-demo": "Демо редактора",
     "dashboard": "Панель управления",
     "overview": "Обзор",
     "analytics": "Аналитика",
