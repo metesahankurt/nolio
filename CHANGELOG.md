@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.5.0](https://github.com/metesahankurt/nolio/compare/v2.4.2...v2.5.0) (2026-07-09)
+
+
+### Features
+
+* replace notes editor with plate ([8e1dcce](https://github.com/metesahankurt/nolio/commit/8e1dccef9c62abcf50e31549c4a82bc5cb38745d))
+
 ## [2.4.2](https://github.com/metesahankurt/nolio/compare/v2.4.1...v2.4.2) (2026-07-08)
 
 
