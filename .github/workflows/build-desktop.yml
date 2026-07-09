@@ -119,5 +119,5 @@ jobs:
           prerelease: false
           args: ${{ matrix.args }}
           projectPath: "apps/native"
-          includeRelease: true
-          includeUpdaterJson: true
+          uploadUpdaterJson: true
+          uploadUpdaterSignatures: true
