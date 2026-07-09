@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.7.0](https://github.com/metesahankurt/nolio/compare/v2.6.1...v2.7.0) (2026-07-09)
+
+
+### Features
+
+* **notes:** markdown paste + more block types in editor ([#12](https://github.com/metesahankurt/nolio/issues/12)) ([4bafb9b](https://github.com/metesahankurt/nolio/commit/4bafb9b823a2e95ddd2b1f924221e0fc25abe3fb))
+
 ## [2.6.1](https://github.com/metesahankurt/nolio/compare/v2.6.0...v2.6.1) (2026-07-09)
 
 
