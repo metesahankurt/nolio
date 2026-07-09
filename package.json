@@ -1,6 +1,6 @@
 {
   "name": "nolio",
-  "version": "2.6.1",
+  "version": "2.7.0",
   "private": true,
   "scripts": {
     "build": "turbo build",
