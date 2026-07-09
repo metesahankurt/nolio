@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.6.1](https://github.com/metesahankurt/nolio/compare/v2.6.0...v2.6.1) (2026-07-09)
+
+
+### Bug Fixes
+
+* **native:** generate tauri updater artifacts ([4968e2b](https://github.com/metesahankurt/nolio/commit/4968e2bb942988954fee80be83bd5796e3fe17c9))
+
 ## [2.6.0](https://github.com/metesahankurt/nolio/compare/v2.5.0...v2.6.0) (2026-07-09)
 
 
