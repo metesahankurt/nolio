@@ -6,9 +6,12 @@ import {
   CodeRules,
   HeadingRules,
   HighlightRules,
+  HorizontalRuleRules,
   ItalicRules,
   MarkComboRules,
   StrikethroughRules,
+  SubscriptRules,
+  SuperscriptRules,
   UnderlineRules,
 } from "@platejs/basic-nodes";
 import {
@@ -19,8 +22,11 @@ import {
   H2Plugin,
   H3Plugin,
   HighlightPlugin,
+  HorizontalRulePlugin,
   ItalicPlugin,
   StrikethroughPlugin,
+  SubscriptPlugin,
+  SuperscriptPlugin,
   UnderlinePlugin,
 } from "@platejs/basic-nodes/react";
 import { insertCallout } from "@platejs/callout";
@@ -53,6 +59,9 @@ import {
   useTodoListElement,
   useTodoListElementState,
 } from "@platejs/list/react";
+import { MarkdownPlugin } from "@platejs/markdown";
+import { insertImage } from "@platejs/media";
+import { ImagePlugin } from "@platejs/media/react";
 import {
   TableCellHeaderPlugin,
   TableCellPlugin,
@@ -105,16 +114,20 @@ import {
   Grid3X3Icon,
   GripVerticalIcon,
   HighlighterIcon,
+  ImageIcon,
   ItalicIcon,
   LinkIcon,
   ListIcon,
   ListOrderedIcon,
   ListTodoIcon,
   MessageSquareQuoteIcon,
+  MinusIcon,
   PlusIcon,
   QuoteIcon,
   Rows3Icon,
   StrikethroughIcon,
+  SubscriptIcon,
+  SuperscriptIcon,
   TableIcon,
   Trash2Icon,
   UnderlineIcon,
@@ -124,6 +137,7 @@ import {
   KEYS,
   normalizeStaticValue,
   PathApi,
+  type TElement,
   type TLinkElement,
   type TListElement,
   type Value,
@@ -149,6 +163,7 @@ import {
 } from "platejs/react";
 import type * as React from "react";
 import { useState } from "react";
+import remarkGfm from "remark-gfm";
 
 export type RichTextValue = Value;
 
@@ -217,6 +232,14 @@ const editorPlugins = [
   TableRowPlugin.withComponent(TableRowElement),
   TableCellPlugin.withComponent(TableCellElement),
   TableCellHeaderPlugin.withComponent(TableCellHeaderElement),
+  HorizontalRulePlugin.configure({
+    inputRules: [
+      HorizontalRuleRules.markdown({ variant: "-" }),
+      HorizontalRuleRules.markdown({ variant: "_" }),
+    ],
+    node: { component: HrElement },
+  }),
+  ImagePlugin.withComponent(ImageElement),
   LinkPlugin.configure({
     inputRules: [
       LinkRules.markdown(),
@@ -314,6 +337,19 @@ const editorPlugins = [
     node: { component: HighlightLeaf },
     shortcuts: { toggle: { keys: "mod+shift+h" } },
   }),
+  SubscriptPlugin.configure({
+    inputRules: [SubscriptRules.markdown()],
+    node: { component: SubscriptLeaf },
+  }),
+  SuperscriptPlugin.configure({
+    inputRules: [SuperscriptRules.markdown()],
+    node: { component: SuperscriptLeaf },
+  }),
+  MarkdownPlugin.configure({
+    options: {
+      remarkPlugins: [remarkGfm],
+    },
+  }),
 ];
 
 interface RichTextEditorProps {
@@ -333,7 +369,8 @@ export function RichTextEditor({
   placeholder = "Write a note...",
   readOnly = false,
 }: RichTextEditorProps) {
-  const [slashOpen, setSlashOpen] = useState(false);
+  const [slashPosition, setSlashPosition] =
+    useState<SlashCommandPosition | null>(null);
   const editor = usePlateEditor({
     plugins: editorPlugins,
     value: normalizeStaticValue(initialValue ?? emptyValue),
@@ -356,13 +393,16 @@ export function RichTextEditor({
           <EditorContainer>
             <Editor
               aria-label={ariaLabel}
-              onCloseSlashCommand={() => setSlashOpen(false)}
-              onSlashCommand={() => setSlashOpen(true)}
+              onCloseSlashCommand={() => setSlashPosition(null)}
+              onSlashCommand={() => setSlashPosition(getSlashCommandPosition())}
               placeholder={placeholder}
-              slashOpen={slashOpen}
+              slashOpen={slashPosition !== null}
             />
-            {slashOpen ? (
-              <SlashCommandMenu onClose={() => setSlashOpen(false)} />
+            {slashPosition ? (
+              <SlashCommandMenu
+                onClose={() => setSlashPosition(null)}
+                position={slashPosition}
+              />
             ) : null}
           </EditorContainer>
         </Plate>
@@ -452,6 +492,18 @@ function RichTextToolbar({ readOnly }: { readOnly: boolean }) {
         label="Highlight"
         mark={KEYS.highlight}
       />
+      <MarkToolbarButton
+        disabled={readOnly}
+        icon={SubscriptIcon}
+        label="Subscript"
+        mark={KEYS.sub}
+      />
+      <MarkToolbarButton
+        disabled={readOnly}
+        icon={SuperscriptIcon}
+        label="Superscript"
+        mark={KEYS.sup}
+      />
 
       <Separator className="mx-1 h-6" orientation="vertical" />
 
@@ -473,6 +525,7 @@ function RichTextToolbar({ readOnly }: { readOnly: boolean }) {
 
       <BlockquoteToolbarButton disabled={readOnly} />
       <LinkToolbarButton disabled={readOnly} />
+      <ImageToolbarButton disabled={readOnly} />
       <TableToolbarMenu disabled={readOnly} />
     </div>
   );
@@ -712,6 +765,67 @@ function LinkToolbarButton({ disabled }: { disabled?: boolean }) {
   );
 }
 
+function ImageToolbarButton({ disabled }: { disabled?: boolean }) {
+  const editor = useEditorRef();
+  const [open, setOpen] = useState(false);
+  const [url, setUrl] = useState("");
+
+  const submit = () => {
+    const trimmedUrl = url.trim();
+
+    if (!trimmedUrl) {
+      return;
+    }
+
+    insertImage(editor, trimmedUrl, { select: true });
+
+    setOpen(false);
+    setUrl("");
+    editor.tf.focus();
+  };
+
+  return (
+    <Popover onOpenChange={setOpen} open={open}>
+      <Tooltip>
+        <TooltipTrigger asChild>
+          <PopoverTrigger asChild>
+            <Button
+              aria-label="Image"
+              disabled={disabled}
+              onMouseDown={(event) => event.preventDefault()}
+              size="icon-sm"
+              type="button"
+              variant="ghost"
+            >
+              <ImageIcon className="size-4" />
+            </Button>
+          </PopoverTrigger>
+        </TooltipTrigger>
+        <TooltipContent>Image</TooltipContent>
+      </Tooltip>
+      <PopoverContent align="start" className="w-72 gap-2 p-2">
+        <form
+          className="flex gap-2"
+          onSubmit={(event) => {
+            event.preventDefault();
+            submit();
+          }}
+        >
+          <Input
+            autoFocus={true}
+            onChange={(event) => setUrl(event.target.value)}
+            placeholder="https://example.com/image.png"
+            value={url}
+          />
+          <Button type="submit" variant="secondary">
+            Add
+          </Button>
+        </form>
+      </PopoverContent>
+    </Popover>
+  );
+}
+
 function TableToolbarMenu({ disabled }: { disabled?: boolean }) {
   const tableSelected = useEditorSelector(
     (editor) => editor.api.some({ match: { type: KEYS.table } }),
@@ -893,6 +1007,7 @@ type InsertBlockType =
   | "h1"
   | "h2"
   | "h3"
+  | "hr"
   | "ol"
   | "paragraph"
   | "quote"
@@ -948,18 +1063,83 @@ const insertBlockItems: {
     label: "Quote",
     type: "quote",
   },
+  {
+    description: "Separate content with a divider.",
+    icon: MinusIcon,
+    label: "Divider",
+    type: "hr",
+  },
 ];
 
-function SlashCommandMenu({ onClose }: { onClose: () => void }) {
+const SLASH_MENU_WIDTH = 328;
+const SLASH_MENU_MAX_HEIGHT = 420;
+const SLASH_MENU_VIEWPORT_MARGIN = 8;
+
+interface SlashCommandPosition {
+  left: number;
+  top: number;
+}
+
+function getSlashCommandPosition(): SlashCommandPosition {
+  const domSelection = window.getSelection();
+  const range =
+    domSelection && domSelection.rangeCount > 0
+      ? domSelection.getRangeAt(0)
+      : null;
+  const rect = range?.getBoundingClientRect();
+
+  const left = rect?.left ?? 0;
+  const top = rect ? rect.bottom + 6 : 0;
+
+  return {
+    left: Math.min(
+      Math.max(left, SLASH_MENU_VIEWPORT_MARGIN),
+      window.innerWidth - SLASH_MENU_WIDTH - SLASH_MENU_VIEWPORT_MARGIN
+    ),
+    top:
+      top + SLASH_MENU_MAX_HEIGHT > window.innerHeight
+        ? Math.max(
+            SLASH_MENU_VIEWPORT_MARGIN,
+            (rect?.top ?? top) - SLASH_MENU_MAX_HEIGHT - 6
+          )
+        : top,
+  };
+}
+
+function SlashCommandMenu({
+  onClose,
+  position,
+}: {
+  onClose: () => void;
+  position: SlashCommandPosition;
+}) {
   const editor = useEditorRef();
 
   return (
-    <div className="absolute top-5 left-5 z-30 w-82 overflow-hidden rounded-md border bg-popover text-popover-foreground shadow-xl ring-1 ring-foreground/10">
-      <div className="border-b px-3 py-2">
-        <div className="font-medium text-sm">Insert block</div>
-        <div className="text-muted-foreground text-xs">
-          Choose a Notion-style block for this line.
+    <div
+      className="fixed z-30 w-82 overflow-hidden rounded-md border bg-popover text-popover-foreground shadow-xl ring-1 ring-foreground/10"
+      style={{ left: position.left, top: position.top }}
+    >
+      <div className="flex items-start justify-between gap-2 border-b px-3 py-2">
+        <div>
+          <div className="font-medium text-sm">Insert block</div>
+          <div className="text-muted-foreground text-xs">
+            Choose a Notion-style block for this line.
+          </div>
         </div>
+        <Button
+          aria-label="Close"
+          className="size-6 shrink-0 text-muted-foreground hover:text-foreground"
+          onMouseDown={(event) => {
+            event.preventDefault();
+            onClose();
+          }}
+          size="icon-sm"
+          type="button"
+          variant="ghost"
+        >
+          <XIcon className="size-3.5" />
+        </Button>
       </div>
       <div className="max-h-80 overflow-y-auto p-1.5">
         {insertBlockItems.map((item) => (
@@ -987,7 +1167,7 @@ function SlashCommandMenu({ onClose }: { onClose: () => void }) {
         ))}
       </div>
       <div className="border-t px-3 py-2 text-muted-foreground text-xs">
-        Press Esc or pick a block to close.
+        Press Esc, click X, or pick a block to close.
       </div>
     </div>
   );
@@ -1014,6 +1194,13 @@ function insertBlock(
 
   if (type === "callout") {
     insertCallout(editor, { select: true });
+    return;
+  }
+
+  if (type === "hr") {
+    clearList(editor);
+    editor.tf.setNodes({ type: KEYS.hr });
+    editor.tf.insertNodes({ children: [{ text: "" }], type: KEYS.p });
     return;
   }
 
@@ -1488,5 +1675,43 @@ function HighlightLeaf(props: PlateLeafProps) {
     <PlateLeaf {...props} as="mark" className="rounded bg-yellow-300/40 px-0.5">
       {props.children}
     </PlateLeaf>
+  );
+}
+
+function SubscriptLeaf(props: PlateLeafProps) {
+  return <PlateLeaf {...props} as="sub" />;
+}
+
+function SuperscriptLeaf(props: PlateLeafProps) {
+  return <PlateLeaf {...props} as="sup" />;
+}
+
+function HrElement(props: PlateElementProps) {
+  return (
+    <PlateElement {...props} className="group/block relative my-4">
+      <BlockHandle element={props.element} />
+      <hr className="border-border" contentEditable={false} />
+    </PlateElement>
+  );
+}
+
+interface TImageElement extends TElement {
+  alt?: string;
+  url: string;
+}
+
+function ImageElement(props: PlateElementProps<TImageElement>) {
+  return (
+    <PlateElement {...props} className="group/block relative my-2">
+      <BlockHandle element={props.element} />
+      {/* biome-ignore lint/performance/noImgElement: pasted image URLs are arbitrary remote hosts, incompatible with next/image's static domain allowlist */}
+      {/* biome-ignore lint/correctness/useImageSize: source images have unknown intrinsic dimensions and are scaled responsively */}
+      <img
+        alt={props.element.alt ?? ""}
+        className="max-h-[600px] w-full rounded-md object-contain"
+        contentEditable={false}
+        src={props.element.url}
+      />
+    </PlateElement>
   );
 }
