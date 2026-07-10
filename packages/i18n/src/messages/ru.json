@@ -154,7 +154,8 @@
   "Notes": {
     "untitled": "Без названия",
     "common": {
-      "cancel": "Отмена"
+      "cancel": "Отмена",
+      "undo": "Отменить"
     },
     "password": {
       "show": "Показать пароль",
@@ -200,7 +201,8 @@
       "settings": "Настройки",
       "lockVault": "Заблокировать хранилище",
       "latestUpdates": "Последние обновления",
-      "localProfile": "Локальный профиль"
+      "localProfile": "Локальный профиль",
+      "newSticky": "Новая заметка-стикер"
     },
     "tree": {
       "expand": "Развернуть",
@@ -222,13 +224,19 @@
     },
     "list": {
       "emptyTitle": "Здесь пока пусто",
-      "emptyDescription": "Заметки появятся здесь после создания."
+      "emptyDescription": "Заметки появятся здесь после создания.",
+      "selectAll": "Выбрать все",
+      "selectNote": "Выбрать заметку",
+      "selectedCount": "Выбрано: {count}",
+      "deleteSelected": "Переместить в корзину"
     },
     "trash": {
       "restore": "Восстановить",
       "deleteForever": "Удалить навсегда",
       "confirmTitle": "Удалить заметку навсегда?",
-      "confirmDescription": "Это действие нельзя отменить. Заметка и все её подстраницы будут удалены навсегда."
+      "confirmDescription": "Это действие нельзя отменить. Заметка и все её подстраницы будут удалены навсегда.",
+      "movedToTrash": "Заметка перемещена в корзину",
+      "movedToTrashMany": "Заметок перемещено в корзину: {count}"
     },
     "save": {
       "saving": "Сохранение…",
@@ -337,10 +345,31 @@
       "exportSuccess": "Backup exported",
       "exportError": "Could not export backup",
       "importInvalid": "Invalid backup file",
-      "importSuccess": "Backup restored. Locking the vault…",
+      "importSuccess": "Резервная копия восстановлена",
       "importError": "Could not restore backup",
       "importConfirmTitle": "Restore this backup?",
-      "importConfirmDescription": "This replaces your current vault with the backup and overwrites all current notes. After restoring, you must unlock with the backup's master password."
+      "importConfirmDescription": "Это заменит текущее хранилище резервной копией и перезапишет все текущие заметки. Введите мастер-пароль резервной копии, чтобы восстановить и разблокировать её.",
+      "passwordLabel": "Мастер-пароль резервной копии"
+    },
+    "sticky": {
+      "pin": "Поверх всех окон",
+      "unpin": "Открепить",
+      "close": "Закрыть",
+      "loading": "Загрузка…"
     }
+  },
+  "Updater": {
+    "title": "Доступно обновление",
+    "description": "Nolio {version} готов к установке.",
+    "releaseNotes": "Что нового",
+    "later": "Позже",
+    "updateNow": "Обновить сейчас",
+    "downloading": "Загрузка обновления…",
+    "installing": "Установка обновления… Приложение перезапустится.",
+    "installFailed": "Не удалось установить обновление. Попробуйте ещё раз.",
+    "checking": "Проверка обновлений…",
+    "upToDate": "У вас последняя версия.",
+    "checkFailed": "Не удалось проверить обновления.",
+    "webUnsupported": "Проверка обновлений не поддерживается в веб-версии."
   }
 }

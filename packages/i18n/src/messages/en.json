@@ -154,7 +154,8 @@
   "Notes": {
     "untitled": "Untitled",
     "common": {
-      "cancel": "Cancel"
+      "cancel": "Cancel",
+      "undo": "Undo"
     },
     "password": {
       "show": "Show password",
@@ -200,7 +201,8 @@
       "settings": "Settings",
       "lockVault": "Lock vault",
       "latestUpdates": "Latest Updates",
-      "localProfile": "Local Profile"
+      "localProfile": "Local Profile",
+      "newSticky": "New sticky note"
     },
     "tree": {
       "expand": "Expand",
@@ -222,13 +224,19 @@
     },
     "list": {
       "emptyTitle": "Nothing here yet",
-      "emptyDescription": "Notes will appear here once you create them."
+      "emptyDescription": "Notes will appear here once you create them.",
+      "selectAll": "Select all",
+      "selectNote": "Select note",
+      "selectedCount": "{count} selected",
+      "deleteSelected": "Move to trash"
     },
     "trash": {
       "restore": "Restore",
       "deleteForever": "Delete permanently",
       "confirmTitle": "Delete this note permanently?",
-      "confirmDescription": "This cannot be undone. The note and all of its subpages will be permanently deleted."
+      "confirmDescription": "This cannot be undone. The note and all of its subpages will be permanently deleted.",
+      "movedToTrash": "Note moved to trash",
+      "movedToTrashMany": "{count} notes moved to trash"
     },
     "save": {
       "saving": "Saving…",
@@ -337,10 +345,31 @@
       "exportSuccess": "Backup exported",
       "exportError": "Could not export backup",
       "importInvalid": "Invalid backup file",
-      "importSuccess": "Backup restored. Locking the vault…",
+      "importSuccess": "Backup restored",
       "importError": "Could not restore backup",
       "importConfirmTitle": "Restore this backup?",
-      "importConfirmDescription": "This replaces your current vault with the backup and overwrites all current notes. After restoring, you must unlock with the backup's master password."
+      "importConfirmDescription": "This replaces your current vault with the backup and overwrites all current notes. Enter the backup's master password to restore and unlock it.",
+      "passwordLabel": "Backup master password"
+    },
+    "sticky": {
+      "pin": "Pin on top",
+      "unpin": "Unpin",
+      "close": "Close",
+      "loading": "Loading…"
     }
+  },
+  "Updater": {
+    "title": "Update available",
+    "description": "Nolio {version} is ready to install.",
+    "releaseNotes": "What's new",
+    "later": "Later",
+    "updateNow": "Update now",
+    "downloading": "Downloading update…",
+    "installing": "Installing update… The app will restart.",
+    "installFailed": "The update could not be installed. Please try again.",
+    "checking": "Checking for updates…",
+    "upToDate": "You're up to date.",
+    "checkFailed": "Update check failed.",
+    "webUnsupported": "Update check is not supported in the web version."
   }
 }

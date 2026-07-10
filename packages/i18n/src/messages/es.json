@@ -154,7 +154,8 @@
   "Notes": {
     "untitled": "Sin título",
     "common": {
-      "cancel": "Cancelar"
+      "cancel": "Cancelar",
+      "undo": "Deshacer"
     },
     "password": {
       "show": "Mostrar contraseña",
@@ -200,7 +201,8 @@
       "settings": "Ajustes",
       "lockVault": "Bloquear bóveda",
       "latestUpdates": "Últimas actualizaciones",
-      "localProfile": "Perfil local"
+      "localProfile": "Perfil local",
+      "newSticky": "Nueva nota adhesiva"
     },
     "tree": {
       "expand": "Expandir",
@@ -222,13 +224,19 @@
     },
     "list": {
       "emptyTitle": "Aún no hay nada aquí",
-      "emptyDescription": "Las notas aparecerán aquí cuando las crees."
+      "emptyDescription": "Las notas aparecerán aquí cuando las crees.",
+      "selectAll": "Seleccionar todo",
+      "selectNote": "Seleccionar nota",
+      "selectedCount": "{count} seleccionadas",
+      "deleteSelected": "Mover a la papelera"
     },
     "trash": {
       "restore": "Restaurar",
       "deleteForever": "Eliminar permanentemente",
       "confirmTitle": "¿Eliminar esta nota permanentemente?",
-      "confirmDescription": "Esto no se puede deshacer. La nota y todas sus subpáginas se eliminarán permanentemente."
+      "confirmDescription": "Esto no se puede deshacer. La nota y todas sus subpáginas se eliminarán permanentemente.",
+      "movedToTrash": "Nota movida a la papelera",
+      "movedToTrashMany": "{count} notas movidas a la papelera"
     },
     "save": {
       "saving": "Guardando…",
@@ -337,10 +345,31 @@
       "exportSuccess": "Backup exported",
       "exportError": "Could not export backup",
       "importInvalid": "Invalid backup file",
-      "importSuccess": "Backup restored. Locking the vault…",
+      "importSuccess": "Copia de seguridad restaurada",
       "importError": "Could not restore backup",
       "importConfirmTitle": "Restore this backup?",
-      "importConfirmDescription": "This replaces your current vault with the backup and overwrites all current notes. After restoring, you must unlock with the backup's master password."
+      "importConfirmDescription": "Esto reemplaza tu bóveda actual con la copia de seguridad y sobrescribe todas las notas actuales. Introduce la contraseña maestra de la copia para restaurarla y desbloquearla.",
+      "passwordLabel": "Contraseña maestra de la copia"
+    },
+    "sticky": {
+      "pin": "Fijar encima",
+      "unpin": "Dejar de fijar",
+      "close": "Cerrar",
+      "loading": "Cargando…"
     }
+  },
+  "Updater": {
+    "title": "Actualización disponible",
+    "description": "Nolio {version} está listo para instalarse.",
+    "releaseNotes": "Novedades",
+    "later": "Más tarde",
+    "updateNow": "Actualizar ahora",
+    "downloading": "Descargando la actualización…",
+    "installing": "Instalando la actualización… La aplicación se reiniciará.",
+    "installFailed": "No se pudo instalar la actualización. Inténtalo de nuevo.",
+    "checking": "Buscando actualizaciones…",
+    "upToDate": "Estás al día.",
+    "checkFailed": "Error al buscar actualizaciones.",
+    "webUnsupported": "La búsqueda de actualizaciones no está disponible en la versión web."
   }
 }

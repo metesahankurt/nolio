@@ -154,7 +154,8 @@
   "Notes": {
     "untitled": "Sans titre",
     "common": {
-      "cancel": "Annuler"
+      "cancel": "Annuler",
+      "undo": "Annuler"
     },
     "password": {
       "show": "Afficher le mot de passe",
@@ -200,7 +201,8 @@
       "settings": "Paramètres",
       "lockVault": "Verrouiller le coffre",
       "latestUpdates": "Dernières mises à jour",
-      "localProfile": "Profil local"
+      "localProfile": "Profil local",
+      "newSticky": "Nouvelle note adhésive"
     },
     "tree": {
       "expand": "Déplier",
@@ -222,13 +224,19 @@
     },
     "list": {
       "emptyTitle": "Rien ici pour l'instant",
-      "emptyDescription": "Les notes apparaîtront ici une fois créées."
+      "emptyDescription": "Les notes apparaîtront ici une fois créées.",
+      "selectAll": "Tout sélectionner",
+      "selectNote": "Sélectionner la note",
+      "selectedCount": "{count} sélectionnées",
+      "deleteSelected": "Déplacer vers la corbeille"
     },
     "trash": {
       "restore": "Restaurer",
       "deleteForever": "Supprimer définitivement",
       "confirmTitle": "Supprimer définitivement cette note ?",
-      "confirmDescription": "Cette action est irréversible. La note et toutes ses sous-pages seront définitivement supprimées."
+      "confirmDescription": "Cette action est irréversible. La note et toutes ses sous-pages seront définitivement supprimées.",
+      "movedToTrash": "Note déplacée vers la corbeille",
+      "movedToTrashMany": "{count} notes déplacées vers la corbeille"
     },
     "save": {
       "saving": "Enregistrement…",
@@ -337,10 +345,31 @@
       "exportSuccess": "Backup exported",
       "exportError": "Could not export backup",
       "importInvalid": "Invalid backup file",
-      "importSuccess": "Backup restored. Locking the vault…",
+      "importSuccess": "Sauvegarde restaurée",
       "importError": "Could not restore backup",
       "importConfirmTitle": "Restore this backup?",
-      "importConfirmDescription": "This replaces your current vault with the backup and overwrites all current notes. After restoring, you must unlock with the backup's master password."
+      "importConfirmDescription": "Cette action remplace votre coffre actuel par la sauvegarde et écrase toutes les notes actuelles. Saisissez le mot de passe maître de la sauvegarde pour la restaurer et la déverrouiller.",
+      "passwordLabel": "Mot de passe maître de la sauvegarde"
+    },
+    "sticky": {
+      "pin": "Épingler au premier plan",
+      "unpin": "Désépingler",
+      "close": "Fermer",
+      "loading": "Chargement…"
     }
+  },
+  "Updater": {
+    "title": "Mise à jour disponible",
+    "description": "Nolio {version} est prêt à être installé.",
+    "releaseNotes": "Nouveautés",
+    "later": "Plus tard",
+    "updateNow": "Mettre à jour",
+    "downloading": "Téléchargement de la mise à jour…",
+    "installing": "Installation de la mise à jour… L'application va redémarrer.",
+    "installFailed": "La mise à jour n'a pas pu être installée. Veuillez réessayer.",
+    "checking": "Recherche de mises à jour…",
+    "upToDate": "Vous êtes à jour.",
+    "checkFailed": "Échec de la vérification des mises à jour.",
+    "webUnsupported": "La vérification des mises à jour n'est pas prise en charge dans la version web."
   }
 }

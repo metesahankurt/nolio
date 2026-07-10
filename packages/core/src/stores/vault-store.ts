@@ -11,6 +11,10 @@ import type {
   VaultStatus,
 } from "@workspace/core/features/notes/domain/vault-types";
 import { getNotesRepository } from "@workspace/core/features/notes/repositories/notes-repository";
+import {
+  restoreVaultBackup,
+  type VaultBackup,
+} from "@workspace/core/features/notes/services/backup-service";
 import { clearSearchIndex } from "@workspace/core/features/notes/services/search-service";
 import {
   broadcastVaultMessage,
@@ -38,6 +42,12 @@ interface VaultState {
   error: VaultUiError | null;
   failedAttempts: number;
 
+  /**
+   * Verifies `password` against the backup's own header, then replaces the
+   * local vault with the backup and unlocks it in place. Throws
+   * WrongPasswordError (storage untouched) when the password is wrong.
+   */
+  importBackup(backup: VaultBackup, password: string): Promise<void>;
   initialize(): Promise<void>;
   lastActivityAt: number | null;
   lock(): void;
@@ -203,6 +213,38 @@ export const useVaultStore = create<VaultState>()((set, get) => ({
       throw new StorageError();
     }
     cachedHeader = await changeVaultPassword(cachedHeader, input);
+  },
+
+  async importBackup(backup: VaultBackup, password: string) {
+    // Verify against the backup's own header BEFORE touching storage: a
+    // wrong password must leave the current vault fully intact.
+    await unlockVault(backup.header, password);
+    // The session now holds the backup's data key. Drop every timer and
+    // decrypted remnant of the old vault so no pending save can write an
+    // old-key ciphertext into the restored vault.
+    useNotesStore.getState().reset();
+    clearSearchIndex();
+    try {
+      await restoreVaultBackup(backup);
+      cachedHeader = backup.header;
+      const now = Date.now();
+      set({
+        status: "unlocked",
+        vaultName: backup.header.vaultName,
+        error: null,
+        failedAttempts: 0,
+        sessionStartedAt: now,
+        lastActivityAt: now,
+      });
+      await useNotesStore.getState().loadAll();
+      broadcastVaultMessage({ type: "unlocked" });
+    } catch (error) {
+      // Storage failed mid-restore; drop the session and re-read whatever
+      // header is on disk rather than pretending to be unlocked.
+      lockVault();
+      await get().initialize();
+      throw error;
+    }
   },
 
   async resetVault() {

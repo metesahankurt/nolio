@@ -154,7 +154,8 @@
   "Notes": {
     "untitled": "Sem título",
     "common": {
-      "cancel": "Cancelar"
+      "cancel": "Cancelar",
+      "undo": "Desfazer"
     },
     "password": {
       "show": "Mostrar senha",
@@ -200,7 +201,8 @@
       "settings": "Definições",
       "lockVault": "Bloquear cofre",
       "latestUpdates": "Últimas atualizações",
-      "localProfile": "Perfil local"
+      "localProfile": "Perfil local",
+      "newSticky": "Nova nota adesiva"
     },
     "tree": {
       "expand": "Expandir",
@@ -222,13 +224,19 @@
     },
     "list": {
       "emptyTitle": "Ainda não há nada aqui",
-      "emptyDescription": "As notas aparecerão aqui assim que as criar."
+      "emptyDescription": "As notas aparecerão aqui assim que as criar.",
+      "selectAll": "Selecionar tudo",
+      "selectNote": "Selecionar nota",
+      "selectedCount": "{count} selecionadas",
+      "deleteSelected": "Mover para o lixo"
     },
     "trash": {
       "restore": "Restaurar",
       "deleteForever": "Eliminar permanentemente",
       "confirmTitle": "Eliminar esta nota permanentemente?",
-      "confirmDescription": "Isto não pode ser desfeito. A nota e todas as suas subpáginas serão eliminadas permanentemente."
+      "confirmDescription": "Isto não pode ser desfeito. A nota e todas as suas subpáginas serão eliminadas permanentemente.",
+      "movedToTrash": "Nota movida para o lixo",
+      "movedToTrashMany": "{count} notas movidas para o lixo"
     },
     "save": {
       "saving": "A guardar…",
@@ -337,10 +345,31 @@
       "exportSuccess": "Backup exported",
       "exportError": "Could not export backup",
       "importInvalid": "Invalid backup file",
-      "importSuccess": "Backup restored. Locking the vault…",
+      "importSuccess": "Backup restaurado",
       "importError": "Could not restore backup",
       "importConfirmTitle": "Restore this backup?",
-      "importConfirmDescription": "This replaces your current vault with the backup and overwrites all current notes. After restoring, you must unlock with the backup's master password."
+      "importConfirmDescription": "Isso substitui o seu cofre atual pelo backup e sobrescreve todas as notas atuais. Digite a senha mestra do backup para restaurá-lo e desbloqueá-lo.",
+      "passwordLabel": "Senha mestra do backup"
+    },
+    "sticky": {
+      "pin": "Fixar no topo",
+      "unpin": "Desafixar",
+      "close": "Fechar",
+      "loading": "Carregando…"
     }
+  },
+  "Updater": {
+    "title": "Atualização disponível",
+    "description": "Nolio {version} está pronto para instalar.",
+    "releaseNotes": "Novidades",
+    "later": "Mais tarde",
+    "updateNow": "Atualizar agora",
+    "downloading": "Baixando a atualização…",
+    "installing": "Instalando a atualização… O aplicativo será reiniciado.",
+    "installFailed": "Não foi possível instalar a atualização. Tente novamente.",
+    "checking": "Verificando atualizações…",
+    "upToDate": "Você está atualizado.",
+    "checkFailed": "Falha ao verificar atualizações.",
+    "webUnsupported": "A verificação de atualizações não é suportada na versão web."
   }
 }

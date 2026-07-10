@@ -154,7 +154,8 @@
   "Notes": {
     "untitled": "Adsız",
     "common": {
-      "cancel": "İptal"
+      "cancel": "İptal",
+      "undo": "Geri al"
     },
     "password": {
       "show": "Şifreyi göster",
@@ -200,7 +201,8 @@
       "settings": "Ayarlar",
       "lockVault": "Kasayı kilitle",
       "latestUpdates": "Son Güncellemeler",
-      "localProfile": "Yerel Profil"
+      "localProfile": "Yerel Profil",
+      "newSticky": "Yeni yapışkan not"
     },
     "tree": {
       "expand": "Genişlet",
@@ -222,13 +224,19 @@
     },
     "list": {
       "emptyTitle": "Burada henüz bir şey yok",
-      "emptyDescription": "Yeni bir not oluşturduğunuzda burada görünür."
+      "emptyDescription": "Yeni bir not oluşturduğunuzda burada görünür.",
+      "selectAll": "Tümünü seç",
+      "selectNote": "Notu seç",
+      "selectedCount": "{count} seçildi",
+      "deleteSelected": "Çöp kutusuna taşı"
     },
     "trash": {
       "restore": "Geri yükle",
       "deleteForever": "Kalıcı olarak sil",
       "confirmTitle": "Not kalıcı olarak silinsin mi?",
-      "confirmDescription": "Bu işlem geri alınamaz. Not ve tüm alt sayfaları kalıcı olarak silinecek."
+      "confirmDescription": "Bu işlem geri alınamaz. Not ve tüm alt sayfaları kalıcı olarak silinecek.",
+      "movedToTrash": "Not çöp kutusuna taşındı",
+      "movedToTrashMany": "{count} not çöp kutusuna taşındı"
     },
     "save": {
       "saving": "Kaydediliyor…",
@@ -337,10 +345,31 @@
       "exportSuccess": "Yedek dışa aktarıldı",
       "exportError": "Yedek dışa aktarılamadı",
       "importInvalid": "Geçersiz yedek dosyası",
-      "importSuccess": "Yedek geri yüklendi. Kasa yeniden kilitleniyor…",
+      "importSuccess": "Yedek geri yüklendi",
       "importError": "Yedek geri yüklenemedi",
       "importConfirmTitle": "Yedek geri yüklensin mi?",
-      "importConfirmDescription": "Bu işlem mevcut kasanın yerine yedeği koyar ve şu anki tüm notlarınızı değiştirir. Geri yükledikten sonra yedeğin ana şifresiyle kilidi açmanız gerekir."
+      "importConfirmDescription": "Bu işlem mevcut kasanızı yedekle değiştirir ve tüm mevcut notların üzerine yazar. Geri yüklemek ve kilidi açmak için yedeğin ana parolasını girin.",
+      "passwordLabel": "Yedeğin ana parolası"
+    },
+    "sticky": {
+      "pin": "Üstte tut",
+      "unpin": "Sabitlemeyi kaldır",
+      "close": "Kapat",
+      "loading": "Yükleniyor…"
     }
+  },
+  "Updater": {
+    "title": "Güncelleme mevcut",
+    "description": "Nolio {version} kuruluma hazır.",
+    "releaseNotes": "Yenilikler",
+    "later": "Daha sonra",
+    "updateNow": "Şimdi güncelle",
+    "downloading": "Güncelleme indiriliyor…",
+    "installing": "Güncelleme kuruluyor… Uygulama yeniden başlatılacak.",
+    "installFailed": "Güncelleme kurulamadı. Lütfen tekrar deneyin.",
+    "checking": "Güncellemeler denetleniyor…",
+    "upToDate": "Uygulamanız güncel.",
+    "checkFailed": "Güncelleme kontrolü başarısız oldu.",
+    "webUnsupported": "Web sürümünde güncelleme kontrolü desteklenmemektedir."
   }
 }

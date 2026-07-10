@@ -154,7 +154,8 @@
   "Notes": {
     "untitled": "無題",
     "common": {
-      "cancel": "キャンセル"
+      "cancel": "キャンセル",
+      "undo": "元に戻す"
     },
     "password": {
       "show": "パスワードを表示",
@@ -200,7 +201,8 @@
       "settings": "設定",
       "lockVault": "保管庫をロック",
       "latestUpdates": "最新の更新",
-      "localProfile": "ローカルプロファイル"
+      "localProfile": "ローカルプロファイル",
+      "newSticky": "新しい付箋"
     },
     "tree": {
       "expand": "展開",
@@ -222,13 +224,19 @@
     },
     "list": {
       "emptyTitle": "まだ何もありません",
-      "emptyDescription": "ノートを作成するとここに表示されます。"
+      "emptyDescription": "ノートを作成するとここに表示されます。",
+      "selectAll": "すべて選択",
+      "selectNote": "ノートを選択",
+      "selectedCount": "{count}件選択中",
+      "deleteSelected": "ゴミ箱へ移動"
     },
     "trash": {
       "restore": "復元",
       "deleteForever": "完全に削除",
       "confirmTitle": "このノートを完全に削除しますか？",
-      "confirmDescription": "この操作は元に戻せません。ノートとすべてのサブページが完全に削除されます。"
+      "confirmDescription": "この操作は元に戻せません。ノートとすべてのサブページが完全に削除されます。",
+      "movedToTrash": "ノートをゴミ箱へ移動しました",
+      "movedToTrashMany": "{count}件のノートをゴミ箱へ移動しました"
     },
     "save": {
       "saving": "保存中…",
@@ -337,10 +345,31 @@
       "exportSuccess": "Backup exported",
       "exportError": "Could not export backup",
       "importInvalid": "Invalid backup file",
-      "importSuccess": "Backup restored. Locking the vault…",
+      "importSuccess": "バックアップを復元しました",
       "importError": "Could not restore backup",
       "importConfirmTitle": "Restore this backup?",
-      "importConfirmDescription": "This replaces your current vault with the backup and overwrites all current notes. After restoring, you must unlock with the backup's master password."
+      "importConfirmDescription": "この操作は現在のボールトをバックアップで置き換え、すべての既存ノートを上書きします。復元してロックを解除するには、バックアップのマスターパスワードを入力してください。",
+      "passwordLabel": "バックアップのマスターパスワード"
+    },
+    "sticky": {
+      "pin": "最前面に固定",
+      "unpin": "固定を解除",
+      "close": "閉じる",
+      "loading": "読み込み中…"
     }
+  },
+  "Updater": {
+    "title": "アップデートがあります",
+    "description": "Nolio {version} をインストールできます。",
+    "releaseNotes": "新機能",
+    "later": "後で",
+    "updateNow": "今すぐ更新",
+    "downloading": "アップデートをダウンロード中…",
+    "installing": "アップデートをインストール中… アプリは再起動します。",
+    "installFailed": "アップデートをインストールできませんでした。もう一度お試しください。",
+    "checking": "アップデートを確認中…",
+    "upToDate": "最新の状態です。",
+    "checkFailed": "アップデートの確認に失敗しました。",
+    "webUnsupported": "Web版ではアップデートの確認はサポートされていません。"
   }
 }

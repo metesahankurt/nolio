@@ -1,102 +1,86 @@
-import { useLocale } from "@workspace/i18n";
+import { useUpdateStore } from "@workspace/core/stores/update-store";
+import { useTranslations } from "@workspace/i18n";
 import { useCallback } from "react";
 import { toast } from "sonner";
 
-interface UpdateInfo {
-  downloadAndInstall: () => Promise<void>;
-  version: string;
-}
+/**
+ * Checks the Tauri updater endpoint and, when a release is found, offers it
+ * through the update store so the in-app UpdateDialog (design-system
+ * styled) takes over — no native OS prompt. The install closure downloads
+ * with progress reporting, then relaunches the app.
+ */
 
-async function performDownloadAndInstall(update: UpdateInfo, locale: string) {
-  const { relaunch } = await import("@tauri-apps/plugin-process");
-
-  toast.info(
-    locale === "tr"
-      ? "Güncelleme indiriliyor ve kuruluyor. Lütfen bekleyin..."
-      : "Downloading and installing update. Please wait..."
-  );
-
-  await update.downloadAndInstall();
-  await relaunch();
-}
-
-async function promptAndInstall(update: UpdateInfo, locale: string) {
-  const { ask } = await import("@tauri-apps/plugin-dialog");
-
-  const yes = await ask(
-    locale === "tr"
-      ? `Yeni bir sürüm (${update.version}) mevcut. Şimdi indirip yüklemek ister misiniz?`
-      : `A new version (${update.version}) is available. Do you want to download and install it now?`,
-    {
-      title: locale === "tr" ? "Güncelleme Mevcut" : "Update Available",
-      kind: "info",
-      okLabel: locale === "tr" ? "Evet" : "Yes",
-      cancelLabel: locale === "tr" ? "Hayır" : "No",
-    }
-  );
-
-  if (yes) {
-    await performDownloadAndInstall(update, locale);
-  }
-}
-
-function handleWebManualCheck(manual: boolean, locale: string) {
-  if (manual) {
-    toast.info(
-      locale === "tr"
-        ? "Web sürümünde güncelleme kontrolü desteklenmemektedir."
-        : "Update check is not supported in the web version."
-    );
-  }
-}
-
-async function runUpdateCheck(manual: boolean, locale: string) {
+async function runUpdateCheck(
+  manual: boolean,
+  t: (key: string) => string
+): Promise<void> {
   const { check } = await import("@tauri-apps/plugin-updater");
 
   if (manual) {
-    toast.info(
-      locale === "tr"
-        ? "Güncellemeler denetleniyor..."
-        : "Checking for updates..."
-    );
+    toast.info(t("checking"));
   }
 
   const update = await check();
-  if (update) {
-    await promptAndInstall(update, locale);
-  } else if (manual) {
-    toast.success(
-      locale === "tr"
-        ? "Uygulamanız güncel. Son sürümü kullanıyorsunuz."
-        : "Your app is up to date. You are using the latest version."
-    );
+  if (!update) {
+    if (manual) {
+      toast.success(t("upToDate"));
+    }
+    return;
   }
+
+  useUpdateStore.getState().offerUpdate(
+    {
+      version: update.version,
+      body: update.body ?? undefined,
+      date: update.date ?? undefined,
+    },
+    async () => {
+      const store = useUpdateStore.getState();
+      store.setPhase("downloading");
+      store.setProgress(null);
+      let contentLength: number | null = null;
+      let downloaded = 0;
+      await update.downloadAndInstall((event) => {
+        if (event.event === "Started") {
+          contentLength = event.data.contentLength ?? null;
+        } else if (event.event === "Progress") {
+          downloaded += event.data.chunkLength;
+          useUpdateStore
+            .getState()
+            .setProgress(
+              contentLength ? Math.min(downloaded / contentLength, 1) : null
+            );
+        } else {
+          useUpdateStore.getState().setPhase("installing");
+        }
+      });
+      const { relaunch } = await import("@tauri-apps/plugin-process");
+      await relaunch();
+    }
+  );
 }
 
 export function useAppUpdater() {
-  const locale = useLocale();
+  const t = useTranslations("Updater");
 
   const checkForUpdates = useCallback(
     async (manual = false) => {
       try {
         const { isTauri } = await import("@tauri-apps/api/core");
         if (!isTauri()) {
-          await handleWebManualCheck(manual, locale);
+          if (manual) {
+            toast.info(t("webUnsupported"));
+          }
           return;
         }
-        await runUpdateCheck(manual, locale);
-      } catch (err) {
-        console.error("Failed to check for updates:", err);
+        await runUpdateCheck(manual, t);
+      } catch {
         if (manual) {
-          toast.error(
-            locale === "tr"
-              ? "Güncelleme kontrolü başarısız oldu."
-              : "Update check failed."
-          );
+          toast.error(t("checkFailed"));
         }
       }
     },
-    [locale]
+    [t]
   );
 
   return { checkForUpdates };

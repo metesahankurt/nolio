@@ -154,7 +154,8 @@
   "Notes": {
     "untitled": "Ohne Titel",
     "common": {
-      "cancel": "Abbrechen"
+      "cancel": "Abbrechen",
+      "undo": "Rückgängig"
     },
     "password": {
       "show": "Passwort anzeigen",
@@ -200,7 +201,8 @@
       "settings": "Einstellungen",
       "lockVault": "Tresor sperren",
       "latestUpdates": "Neueste Updates",
-      "localProfile": "Lokales Profil"
+      "localProfile": "Lokales Profil",
+      "newSticky": "Neue Haftnotiz"
     },
     "tree": {
       "expand": "Ausklappen",
@@ -222,13 +224,19 @@
     },
     "list": {
       "emptyTitle": "Hier ist noch nichts",
-      "emptyDescription": "Notizen erscheinen hier, sobald Sie welche erstellen."
+      "emptyDescription": "Notizen erscheinen hier, sobald Sie welche erstellen.",
+      "selectAll": "Alle auswählen",
+      "selectNote": "Notiz auswählen",
+      "selectedCount": "{count} ausgewählt",
+      "deleteSelected": "In den Papierkorb verschieben"
     },
     "trash": {
       "restore": "Wiederherstellen",
       "deleteForever": "Endgültig löschen",
       "confirmTitle": "Notiz endgültig löschen?",
-      "confirmDescription": "Dies kann nicht rückgängig gemacht werden. Die Notiz und alle Unterseiten werden endgültig gelöscht."
+      "confirmDescription": "Dies kann nicht rückgängig gemacht werden. Die Notiz und alle Unterseiten werden endgültig gelöscht.",
+      "movedToTrash": "Notiz in den Papierkorb verschoben",
+      "movedToTrashMany": "{count} Notizen in den Papierkorb verschoben"
     },
     "save": {
       "saving": "Wird gespeichert…",
@@ -337,10 +345,31 @@
       "exportSuccess": "Backup exported",
       "exportError": "Could not export backup",
       "importInvalid": "Invalid backup file",
-      "importSuccess": "Backup restored. Locking the vault…",
+      "importSuccess": "Backup wiederhergestellt",
       "importError": "Could not restore backup",
       "importConfirmTitle": "Restore this backup?",
-      "importConfirmDescription": "This replaces your current vault with the backup and overwrites all current notes. After restoring, you must unlock with the backup's master password."
+      "importConfirmDescription": "Dies ersetzt Ihren aktuellen Tresor durch das Backup und überschreibt alle aktuellen Notizen. Geben Sie das Master-Passwort des Backups ein, um es wiederherzustellen und zu entsperren.",
+      "passwordLabel": "Master-Passwort des Backups"
+    },
+    "sticky": {
+      "pin": "Im Vordergrund halten",
+      "unpin": "Nicht mehr im Vordergrund",
+      "close": "Schließen",
+      "loading": "Wird geladen…"
     }
+  },
+  "Updater": {
+    "title": "Update verfügbar",
+    "description": "Nolio {version} ist bereit zur Installation.",
+    "releaseNotes": "Neuigkeiten",
+    "later": "Später",
+    "updateNow": "Jetzt aktualisieren",
+    "downloading": "Update wird heruntergeladen…",
+    "installing": "Update wird installiert… Die App startet neu.",
+    "installFailed": "Das Update konnte nicht installiert werden. Bitte erneut versuchen.",
+    "checking": "Suche nach Updates…",
+    "upToDate": "Sie sind auf dem neuesten Stand.",
+    "checkFailed": "Updateprüfung fehlgeschlagen.",
+    "webUnsupported": "Die Updateprüfung wird in der Webversion nicht unterstützt."
   }
 }

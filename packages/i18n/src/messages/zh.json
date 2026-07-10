@@ -154,7 +154,8 @@
   "Notes": {
     "untitled": "无标题",
     "common": {
-      "cancel": "取消"
+      "cancel": "取消",
+      "undo": "撤销"
     },
     "password": {
       "show": "显示密码",
@@ -200,7 +201,8 @@
       "settings": "设置",
       "lockVault": "锁定保险库",
       "latestUpdates": "最新动态",
-      "localProfile": "本地个人资料"
+      "localProfile": "本地个人资料",
+      "newSticky": "新建便笺"
     },
     "tree": {
       "expand": "展开",
@@ -222,13 +224,19 @@
     },
     "list": {
       "emptyTitle": "这里还没有内容",
-      "emptyDescription": "创建笔记后将显示在这里。"
+      "emptyDescription": "创建笔记后将显示在这里。",
+      "selectAll": "全选",
+      "selectNote": "选择笔记",
+      "selectedCount": "已选择 {count} 项",
+      "deleteSelected": "移至回收站"
     },
     "trash": {
       "restore": "恢复",
       "deleteForever": "永久删除",
       "confirmTitle": "永久删除此笔记？",
-      "confirmDescription": "此操作无法撤销。该笔记及其所有子页面将被永久删除。"
+      "confirmDescription": "此操作无法撤销。该笔记及其所有子页面将被永久删除。",
+      "movedToTrash": "笔记已移至回收站",
+      "movedToTrashMany": "已将 {count} 条笔记移至回收站"
     },
     "save": {
       "saving": "正在保存…",
@@ -337,10 +345,31 @@
       "exportSuccess": "Backup exported",
       "exportError": "Could not export backup",
       "importInvalid": "Invalid backup file",
-      "importSuccess": "Backup restored. Locking the vault…",
+      "importSuccess": "备份已恢复",
       "importError": "Could not restore backup",
       "importConfirmTitle": "Restore this backup?",
-      "importConfirmDescription": "This replaces your current vault with the backup and overwrites all current notes. After restoring, you must unlock with the backup's master password."
+      "importConfirmDescription": "此操作会用备份替换当前保险库并覆盖所有现有笔记。请输入备份的主密码以恢复并解锁。",
+      "passwordLabel": "备份的主密码"
+    },
+    "sticky": {
+      "pin": "置顶",
+      "unpin": "取消置顶",
+      "close": "关闭",
+      "loading": "加载中…"
     }
+  },
+  "Updater": {
+    "title": "有可用更新",
+    "description": "Nolio {version} 已准备好安装。",
+    "releaseNotes": "更新内容",
+    "later": "稍后",
+    "updateNow": "立即更新",
+    "downloading": "正在下载更新…",
+    "installing": "正在安装更新… 应用将重新启动。",
+    "installFailed": "更新安装失败,请重试。",
+    "checking": "正在检查更新…",
+    "upToDate": "已是最新版本。",
+    "checkFailed": "检查更新失败。",
+    "webUnsupported": "网页版不支持检查更新。"
   }
 }

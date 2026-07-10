@@ -154,7 +154,8 @@
   "Notes": {
     "untitled": "Senza titolo",
     "common": {
-      "cancel": "Annulla"
+      "cancel": "Annulla",
+      "undo": "Annulla"
     },
     "password": {
       "show": "Mostra password",
@@ -200,7 +201,8 @@
       "settings": "Impostazioni",
       "lockVault": "Blocca vault",
       "latestUpdates": "Ultimi aggiornamenti",
-      "localProfile": "Profilo locale"
+      "localProfile": "Profilo locale",
+      "newSticky": "Nuova nota adesiva"
     },
     "tree": {
       "expand": "Espandi",
@@ -222,13 +224,19 @@
     },
     "list": {
       "emptyTitle": "Ancora niente qui",
-      "emptyDescription": "Le note appariranno qui una volta create."
+      "emptyDescription": "Le note appariranno qui una volta create.",
+      "selectAll": "Seleziona tutto",
+      "selectNote": "Seleziona nota",
+      "selectedCount": "{count} selezionate",
+      "deleteSelected": "Sposta nel cestino"
     },
     "trash": {
       "restore": "Ripristina",
       "deleteForever": "Elimina definitivamente",
       "confirmTitle": "Eliminare definitivamente questa nota?",
-      "confirmDescription": "Questa azione non può essere annullata. La nota e tutte le sue sottopagine verranno eliminate definitivamente."
+      "confirmDescription": "Questa azione non può essere annullata. La nota e tutte le sue sottopagine verranno eliminate definitivamente.",
+      "movedToTrash": "Nota spostata nel cestino",
+      "movedToTrashMany": "{count} note spostate nel cestino"
     },
     "save": {
       "saving": "Salvataggio…",
@@ -337,10 +345,31 @@
       "exportSuccess": "Backup exported",
       "exportError": "Could not export backup",
       "importInvalid": "Invalid backup file",
-      "importSuccess": "Backup restored. Locking the vault…",
+      "importSuccess": "Backup ripristinato",
       "importError": "Could not restore backup",
       "importConfirmTitle": "Restore this backup?",
-      "importConfirmDescription": "This replaces your current vault with the backup and overwrites all current notes. After restoring, you must unlock with the backup's master password."
+      "importConfirmDescription": "Questa operazione sostituisce il tuo vault attuale con il backup e sovrascrive tutte le note correnti. Inserisci la password principale del backup per ripristinarlo e sbloccarlo.",
+      "passwordLabel": "Password principale del backup"
+    },
+    "sticky": {
+      "pin": "Fissa in primo piano",
+      "unpin": "Sblocca",
+      "close": "Chiudi",
+      "loading": "Caricamento…"
     }
+  },
+  "Updater": {
+    "title": "Aggiornamento disponibile",
+    "description": "Nolio {version} è pronto per l'installazione.",
+    "releaseNotes": "Novità",
+    "later": "Più tardi",
+    "updateNow": "Aggiorna ora",
+    "downloading": "Download dell'aggiornamento…",
+    "installing": "Installazione dell'aggiornamento… L'app verrà riavviata.",
+    "installFailed": "Impossibile installare l'aggiornamento. Riprova.",
+    "checking": "Ricerca aggiornamenti…",
+    "upToDate": "Sei aggiornato.",
+    "checkFailed": "Verifica aggiornamenti non riuscita.",
+    "webUnsupported": "La verifica degli aggiornamenti non è supportata nella versione web."
   }
 }

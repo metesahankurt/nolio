@@ -1,4 +1,5 @@
 import { ThemeInitializer } from "@workspace/core/components/common/theme-initializer";
+import { UpdateDialog } from "@workspace/core/components/common/update-dialog";
 import { siteConfig } from "@workspace/core/config/site";
 import { ThemeProvider } from "@workspace/core/providers/theme-provider";
 import { themeInitScript } from "@workspace/core/scripts/theme-init";
@@ -77,6 +78,7 @@ export default async function RootLayout({
           >
             <ThemeInitializer />
             <UpdateChecker />
+            <UpdateDialog />
             <NativeTitleBar />
             <div className="h-screen overflow-hidden">
               <AppLayout>{children}</AppLayout>
