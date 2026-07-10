@@ -1,5 +1,19 @@
 # Changelog
 
+## [2.8.0](https://github.com/metesahankurt/nolio/compare/v2.7.0...v2.8.0) (2026-07-10)
+
+
+### Features
+
+* **native:** add floating sticky note widgets ([51b7571](https://github.com/metesahankurt/nolio/commit/51b7571263ac7427390f2b424d2674ce941cd1c0))
+* **notes:** native backup dialogs, password-verified import and in-app updater ([1ff2fa0](https://github.com/metesahankurt/nolio/commit/1ff2fa09ee6cf847095b25b85b28bac8922f9987))
+* **notes:** trash notes from the sidebar with undo and bulk delete in All Notes ([3ae1dcb](https://github.com/metesahankurt/nolio/commit/3ae1dcb411feb01ba9c323f4910544c773dd8c97))
+
+
+### Bug Fixes
+
+* **native:** improve frameless window dragging, text selection and hover states ([f8fd20d](https://github.com/metesahankurt/nolio/commit/f8fd20d82687d4889c0d6ba700ee39a924a58d33))
+
 ## [2.7.0](https://github.com/metesahankurt/nolio/compare/v2.6.1...v2.7.0) (2026-07-09)
 
 
