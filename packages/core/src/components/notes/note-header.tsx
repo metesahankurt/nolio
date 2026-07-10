@@ -25,6 +25,7 @@ import {
   StarOff,
   Trash2,
 } from "lucide-react";
+import { toast } from "sonner";
 
 const ICON_CHOICES = [
   "📝",
@@ -70,6 +71,7 @@ export function NoteHeader({ note }: { note: DecryptedNote }) {
   const updateNoteIcon = useNotesStore((s) => s.updateNoteIcon);
   const toggleFavorite = useNotesStore((s) => s.toggleFavorite);
   const moveToTrash = useNotesStore((s) => s.moveToTrash);
+  const restoreFromTrash = useNotesStore((s) => s.restoreFromTrash);
   const createNote = useNotesStore((s) => s.createNote);
   const selectNote = useNotesStore((s) => s.selectNote);
 
@@ -191,7 +193,15 @@ export function NoteHeader({ note }: { note: DecryptedNote }) {
             </DropdownMenuItem>
             <DropdownMenuSeparator />
             <DropdownMenuItem
-              onClick={() => moveToTrash(note.id)}
+              onClick={() => {
+                moveToTrash(note.id);
+                toast(t("trash.movedToTrash"), {
+                  action: {
+                    label: t("common.undo"),
+                    onClick: () => restoreFromTrash(note.id),
+                  },
+                });
+              }}
               variant="destructive"
             >
               <Trash2 />

@@ -5,8 +5,9 @@ import { useNotesStore } from "@workspace/core/stores/notes-store";
 import { useTranslations } from "@workspace/i18n";
 import { Button } from "@workspace/ui/components/button";
 import { cn } from "@workspace/ui/lib/utils";
-import { ChevronRight, FileText, Plus } from "lucide-react";
+import { ChevronRight, FileText, Plus, Trash2 } from "lucide-react";
 import { useState } from "react";
+import { toast } from "sonner";
 
 function childrenOf(
   notes: Record<string, DecryptedNote>,
@@ -29,7 +30,19 @@ function NoteTreeItem({ note, depth }: NoteTreeItemProps) {
   const view = useNotesStore((s) => s.view);
   const selectNote = useNotesStore((s) => s.selectNote);
   const createNote = useNotesStore((s) => s.createNote);
+  const moveToTrash = useNotesStore((s) => s.moveToTrash);
+  const restoreFromTrash = useNotesStore((s) => s.restoreFromTrash);
   const [expanded, setExpanded] = useState(false);
+
+  const handleMoveToTrash = () => {
+    moveToTrash(note.id);
+    toast(t("trash.movedToTrash"), {
+      action: {
+        label: t("common.undo"),
+        onClick: () => restoreFromTrash(note.id),
+      },
+    });
+  };
 
   const children = childrenOf(notes, note.id);
   const isSelected = view === "note" && selectedNoteId === note.id;
@@ -90,6 +103,16 @@ function NoteTreeItem({ note, depth }: NoteTreeItemProps) {
           variant="ghost"
         >
           <Plus />
+        </Button>
+        <Button
+          aria-label={t("header.moveToTrash")}
+          className="size-5 shrink-0 text-muted-foreground opacity-0 hover:text-destructive focus-visible:opacity-100 group-hover/tree-item:opacity-100"
+          onClick={handleMoveToTrash}
+          size="icon-xs"
+          type="button"
+          variant="ghost"
+        >
+          <Trash2 />
         </Button>
       </div>
       {expanded && children.length > 0 && (
