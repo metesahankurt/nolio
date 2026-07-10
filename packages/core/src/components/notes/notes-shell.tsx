@@ -88,13 +88,24 @@ export function NotesShell() {
 
   return (
     <TooltipProvider>
-      <SidebarProvider className="h-full min-h-0 w-full overflow-hidden">
+      {/* select-none: app chrome is not selectable text; the editor body and
+          form fields opt back in (see the input/contenteditable rule in
+          globals.css and select-text on the editor wrapper below). */}
+      <SidebarProvider className="h-full min-h-0 w-full select-none overflow-hidden">
         <NoteSidebar
           onOpenSearch={() => setCommandOpen(true)}
           onOpenSettings={openSettings}
         />
 
         <SidebarInset className="titlebar-win-pad min-w-0 overflow-hidden">
+          {/* Grab bar over the space titlebar-win-pad reserves for the
+              Windows/Linux window controls (see globals.css). Inert on web
+              and macOS. */}
+          <div
+            aria-hidden="true"
+            className="titlebar-drag-strip"
+            data-tauri-drag-region={true}
+          />
           <div className="flex items-center border-border border-b px-2 py-1.5 md:hidden">
             <SidebarTrigger aria-label={t("shell.openSidebar")} />
           </div>
@@ -113,7 +124,7 @@ export function NotesShell() {
             <div className="flex min-h-0 flex-1 flex-col">
               <NoteHeader note={activeNote} />
               <div className="min-h-0 flex-1 overflow-y-auto">
-                <div className="mx-auto w-full max-w-3xl px-4 py-4 md:px-8">
+                <div className="mx-auto w-full max-w-3xl select-text px-4 py-4 md:px-8">
                   <NoteEditor key={activeNote.id} note={activeNote} />
                 </div>
               </div>

@@ -209,24 +209,34 @@
   }
 }
 
-[data-slot="sidebar-menu-button"][data-active="true"] {
-  color: var(--primary-foreground) !important;
-  background-color: var(--primary) !important;
+/*
+ * App chrome (sidebar, headers, list views) opts out of text selection via
+ * `select-none` on the notes shell; only content meant for editing stays
+ * selectable. This rule wins over the inherited `user-select: none` so form
+ * fields and the rich text editor always behave like text.
+ */
+input,
+textarea,
+[contenteditable="true"] {
+  -webkit-user-select: text;
+  user-select: text;
 }
 
+/*
+ * The active sidebar item keeps its primary pill on hover too: hovering the
+ * open view must not gray it out like an inactive item (the hover affordance
+ * only belongs to items that can still be navigated to).
+ */
+[data-slot="sidebar-menu-button"][data-active="true"],
 [data-slot="sidebar-menu-button"][data-active="true"]:hover {
-  color: var(--primary) !important;
-  background-color: var(--accent) !important;
-}
-
-[data-slot="sidebar-menu-sub-button"][data-active="true"] {
   color: var(--primary-foreground) !important;
   background-color: var(--primary) !important;
 }
 
+[data-slot="sidebar-menu-sub-button"][data-active="true"],
 [data-slot="sidebar-menu-sub-button"][data-active="true"]:hover {
-  color: var(--primary) !important;
-  background-color: var(--accent) !important;
+  color: var(--primary-foreground) !important;
+  background-color: var(--primary) !important;
 }
 
 ::view-transition-old(root),
@@ -275,4 +285,23 @@
 [data-tauri-os="windows"] .titlebar-win-pad,
 [data-tauri-os="linux"] .titlebar-win-pad {
   padding-top: 2rem;
+}
+
+/*
+ * Invisible grab bar over the room `.titlebar-win-pad` reserves at the top
+ * of the main content. Carries data-tauri-drag-region so the whole strip
+ * moves the window; sits below the floating window controls (z-60) so
+ * min/max/close stay clickable. Hidden outside the Windows/Linux app.
+ */
+.titlebar-drag-strip {
+  display: none;
+}
+
+[data-tauri-os="windows"] .titlebar-drag-strip,
+[data-tauri-os="linux"] .titlebar-drag-strip {
+  position: absolute;
+  inset: 0 0 auto 0;
+  z-index: 50;
+  display: block;
+  height: 2rem;
 }

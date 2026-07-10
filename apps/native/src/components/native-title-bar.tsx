@@ -21,8 +21,58 @@ import { useEffect, useState } from "react";
  *   (`.titlebar-win-pad`).
  *
  * The window is dragged via the app chrome (sidebar/note headers carry
- * `data-tauri-drag-region`).
+ * `data-tauri-drag-region`). Tauri's built-in drag-region listener only
+ * fires when the mousedown target is the *exact* element carrying the
+ * attribute, so headers full of buttons/text would only be draggable in the
+ * thin gaps between children. The delegated mousedown listener below fixes
+ * that: any press inside a drag region that is not on an interactive
+ * element starts a native drag (double press toggles maximize).
  */
+
+// Elements that must keep normal pointer behavior inside a drag region.
+const INTERACTIVE_SELECTOR =
+  "button, a, input, select, textarea, [contenteditable='true'], [role='button'], [role='menuitem'], [data-no-drag]";
+
+// The WebView's native context menu (Look Up / Translate / Inspect…) only
+// makes sense where text is actually editable; on app chrome it exposes
+// browser internals, so it is suppressed there.
+function onContextMenu(event: MouseEvent) {
+  const target = event.target;
+  if (
+    target instanceof Element &&
+    target.closest("input, textarea, [contenteditable='true']")
+  ) {
+    return;
+  }
+  event.preventDefault();
+}
+
+function onDragRegionMouseDown(event: MouseEvent) {
+  if (event.button !== 0) {
+    return;
+  }
+  const target = event.target;
+  if (!(target instanceof Element)) {
+    return;
+  }
+  // Direct hits on the region are handled by Tauri's injected listener.
+  if (target.hasAttribute("data-tauri-drag-region")) {
+    return;
+  }
+  if (
+    !target.closest("[data-tauri-drag-region]") ||
+    target.closest(INTERACTIVE_SELECTOR)
+  ) {
+    return;
+  }
+  event.preventDefault();
+  const appWindow = getCurrentWindow();
+  const action =
+    event.detail === 2 ? appWindow.toggleMaximize() : appWindow.startDragging();
+  action.catch(() => {
+    // Dragging is cosmetic; ignore missing permissions.
+  });
+}
 
 type DesktopOs = "macos" | "windows" | "linux" | "other";
 
@@ -46,6 +96,7 @@ function detectOs(): DesktopOs {
 export function NativeTitleBar() {
   const [os, setOs] = useState<DesktopOs>("other");
   const [isTauri, setIsTauri] = useState(false);
+  const [isMainWindow, setIsMainWindow] = useState(false);
 
   useEffect(() => {
     const inTauri =
@@ -55,23 +106,37 @@ export function NativeTitleBar() {
       return;
     }
 
+    // Secondary windows (sticky-note widgets) are created frameless with
+    // their own chrome; they still get the delegated drag / context-menu
+    // handling below, but not the main window's floating controls.
+    const isMain = getCurrentWindow().label === "main";
+    setIsMainWindow(isMain);
+
     const detected = detectOs();
     setOs(detected);
     // Tagging the document lets app chrome reserve room for the frameless
     // title bar. Only set inside Tauri so a browser never picks up the rule.
     document.documentElement.dataset.tauriOs = detected;
 
-    if (detected === "windows" || detected === "linux") {
+    if (isMain && (detected === "windows" || detected === "linux")) {
       getCurrentWindow()
         .setDecorations(false)
         .catch(() => {
           // If the permission is missing we keep native decorations.
         });
     }
+
+    document.addEventListener("mousedown", onDragRegionMouseDown);
+    document.addEventListener("contextmenu", onContextMenu);
+    return () => {
+      document.removeEventListener("mousedown", onDragRegionMouseDown);
+      document.removeEventListener("contextmenu", onContextMenu);
+    };
   }, []);
 
-  // macOS uses native traffic lights; mobile/web have no custom controls.
-  if (!isTauri || (os !== "windows" && os !== "linux")) {
+  // macOS uses native traffic lights; mobile/web have no custom controls;
+  // widget windows draw their own.
+  if (!(isTauri && isMainWindow) || (os !== "windows" && os !== "linux")) {
     return null;
   }
 
