@@ -25,8 +25,9 @@ export function AppLayout({ children }: AppLayoutProps) {
   const pathname = usePathname();
 
   // The encrypted notes app renders its own full-screen shell (and its own
-  // lock screen), so the dashboard chrome must not wrap it.
-  if (pathname.startsWith("/notes")) {
+  // lock screen), so the dashboard chrome must not wrap it. Sticky-note
+  // widget windows render bare too.
+  if (pathname.startsWith("/notes") || pathname.startsWith("/sticky")) {
     return <>{children}</>;
   }
 

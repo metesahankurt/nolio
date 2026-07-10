@@ -2,6 +2,7 @@
 
 import { NoteTree } from "@workspace/core/components/notes/note-tree";
 import { siteConfig } from "@workspace/core/config/site";
+import { useStickyAdapterStore } from "@workspace/core/features/notes/sticky/sticky-adapter";
 import { useMounted } from "@workspace/core/hooks/use-mounted";
 import type { NotesView } from "@workspace/core/stores/notes-store";
 import { useNotesStore } from "@workspace/core/stores/notes-store";
@@ -42,6 +43,7 @@ import {
   Search,
   Settings,
   Star,
+  StickyNote,
   Tag,
   Trash2,
 } from "lucide-react";
@@ -73,6 +75,17 @@ export function NoteSidebar({
   const view = useNotesStore((s) => s.view);
   const setView = useNotesStore((s) => s.setView);
   const createNote = useNotesStore((s) => s.createNote);
+  const stickyAdapter = useStickyAdapterStore((s) => s.adapter);
+
+  // Creates a fresh note (without stealing the main view) and opens it as a
+  // floating widget window. Only offered where the native adapter exists.
+  const handleNewSticky = () => {
+    createNote(null, { select: false })
+      .then((id) => stickyAdapter?.openSticky(id))
+      .catch(() => {
+        // Surfaced through saveStatus.
+      });
+  };
 
   const initials = vaultName ? vaultName.slice(0, 2).toUpperCase() : "ME";
 
@@ -205,6 +218,17 @@ export function NoteSidebar({
             "favorites",
             <Star aria-hidden="true" />,
             t("sidebar.favorites")
+          )}
+          {stickyAdapter && (
+            <SidebarMenuItem>
+              <SidebarMenuButton
+                onClick={handleNewSticky}
+                tooltip={t("sidebar.newSticky")}
+              >
+                <StickyNote aria-hidden="true" />
+                <span>{t("sidebar.newSticky")}</span>
+              </SidebarMenuButton>
+            </SidebarMenuItem>
           )}
           {viewItem(
             "recent",

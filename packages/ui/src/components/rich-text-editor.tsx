@@ -355,6 +355,8 @@ const editorPlugins = [
 interface RichTextEditorProps {
   "aria-label"?: string;
   className?: string;
+  /** Compact surfaces (e.g. sticky widgets) rely on slash commands only. */
+  hideToolbar?: boolean;
   initialValue?: RichTextValue;
   onChange?: (value: RichTextValue) => void;
   placeholder?: string;
@@ -364,6 +366,7 @@ interface RichTextEditorProps {
 export function RichTextEditor({
   "aria-label": ariaLabel,
   className,
+  hideToolbar = false,
   initialValue,
   onChange,
   placeholder = "Write a note...",
@@ -389,7 +392,7 @@ export function RichTextEditor({
           onValueChange={({ value }) => onChange?.(value)}
           readOnly={readOnly}
         >
-          <RichTextToolbar readOnly={readOnly} />
+          {!hideToolbar && <RichTextToolbar readOnly={readOnly} />}
           <EditorContainer>
             <Editor
               aria-label={ariaLabel}
