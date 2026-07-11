@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.9.1](https://github.com/metesahankurt/nolio/compare/v2.9.0...v2.9.1) (2026-07-11)
+
+
+### Bug Fixes
+
+* **notes:** resolve open GitHub issues ([1fdd6fe](https://github.com/metesahankurt/nolio/commit/1fdd6feddc9e6ff9697fdba93336d758f81c5135))
+
 ## [2.9.0](https://github.com/metesahankurt/nolio/compare/v2.8.0...v2.9.0) (2026-07-11)
 
 
