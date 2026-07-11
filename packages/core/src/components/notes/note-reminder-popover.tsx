@@ -24,7 +24,7 @@ import {
   SelectValue,
 } from "@workspace/ui/components/select";
 import { cn } from "@workspace/ui/lib/utils";
-import { Bell, BellOff } from "lucide-react";
+import { Bell, BellOff, Check } from "lucide-react";
 
 const WEEKDAYS = [1, 2, 3, 4, 5, 6, 0] as const;
 
@@ -51,6 +51,18 @@ export function NoteReminderPopover({ note }: { note: DecryptedNote }) {
   const reminder = note.reminder?.enabled ? note.reminder : null;
   const activeReminder = withReminderPatch(reminder, {});
   const isWeekly = activeReminder.frequency === "weekly";
+  const selectedDays = WEEKDAYS.filter((day) =>
+    activeReminder.daysOfWeek.includes(day)
+  );
+  const selectedDaysLabel = selectedDays
+    .map((day) => dayLabel(locale, day))
+    .join(", ");
+  const summary = isWeekly
+    ? t("reminders.weeklyAt", {
+        days: selectedDaysLabel || dayLabel(locale, new Date().getDay()),
+        time: activeReminder.resetTime,
+      })
+    : t("reminders.dailyAt", { time: activeReminder.resetTime });
 
   const setReminder = (patch: Partial<NoteReminder>) => {
     updateNoteReminder(note.id, withReminderPatch(activeReminder, patch));
@@ -86,6 +98,11 @@ export function NoteReminderPopover({ note }: { note: DecryptedNote }) {
             <p className="mt-1 text-muted-foreground text-xs">
               {t("reminders.description")}
             </p>
+            {reminder && (
+              <p className="mt-2 rounded-md bg-muted px-2 py-1 font-medium text-foreground text-xs">
+                {summary}
+              </p>
+            )}
           </div>
 
           <Label className="justify-between rounded-md border p-3">
@@ -142,19 +159,30 @@ export function NoteReminderPopover({ note }: { note: DecryptedNote }) {
           {isWeekly && (
             <div className="grid gap-2">
               <Label>{t("reminders.days")}</Label>
-              <div className="grid grid-cols-7 gap-1">
+              <div className="grid grid-cols-7 gap-1.5">
                 {WEEKDAYS.map((day) => {
                   const selected = activeReminder.daysOfWeek.includes(day);
                   return (
                     <Button
-                      className={cn("h-8 px-0", selected && "font-semibold")}
+                      aria-pressed={selected}
+                      className={cn(
+                        "relative h-9 px-0 text-xs",
+                        selected &&
+                          "border-primary bg-primary text-primary-foreground hover:bg-primary/90"
+                      )}
                       disabled={!reminder}
                       key={day}
                       onClick={() => toggleDay(day)}
                       size="sm"
                       type="button"
-                      variant={selected ? "secondary" : "outline"}
+                      variant="outline"
                     >
+                      {selected && (
+                        <Check
+                          aria-hidden="true"
+                          className="absolute top-0.5 right-0.5 size-3"
+                        />
+                      )}
                       {dayLabel(locale, day)}
                     </Button>
                   );

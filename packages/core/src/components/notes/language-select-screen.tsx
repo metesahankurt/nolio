@@ -1,5 +1,6 @@
 "use client";
 
+import { persistLocalePreference } from "@workspace/core/components/common/locale-preference-sync";
 import { useLanguageSwitcher } from "@workspace/core/hooks/use-language-switcher";
 import { useNotesSettingsStore } from "@workspace/core/stores/notes-settings-store";
 import { useLocale, useTranslations } from "@workspace/i18n";
@@ -32,6 +33,7 @@ export function LanguageSelectScreen() {
   const setLanguageChosen = useNotesSettingsStore((s) => s.setLanguageChosen);
 
   const choose = (code: string) => {
+    persistLocalePreference(code);
     if (code !== locale) {
       changeLanguage(code);
     }

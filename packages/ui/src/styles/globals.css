@@ -304,4 +304,10 @@ textarea,
   z-index: 50;
   display: block;
   height: 2rem;
+  cursor: grab;
+}
+
+[data-tauri-os="windows"] .titlebar-drag-strip:active,
+[data-tauri-os="linux"] .titlebar-drag-strip:active {
+  cursor: grabbing;
 }

@@ -1,3 +1,4 @@
+import { LocalePreferenceSync } from "@workspace/core/components/common/locale-preference-sync";
 import { ThemeInitializer } from "@workspace/core/components/common/theme-initializer";
 import { siteConfig } from "@workspace/core/config/site";
 import { ThemeProvider } from "@workspace/core/providers/theme-provider";
@@ -106,6 +107,7 @@ export default async function RootLayout({
               enableSystem={true}
             >
               <ThemeInitializer />
+              <LocalePreferenceSync />
               {children}
             </ThemeProvider>
           </NextIntlClientProvider>

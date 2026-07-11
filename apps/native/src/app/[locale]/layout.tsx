@@ -1,3 +1,4 @@
+import { LocalePreferenceSync } from "@workspace/core/components/common/locale-preference-sync";
 import { ThemeInitializer } from "@workspace/core/components/common/theme-initializer";
 import { UpdateDialog } from "@workspace/core/components/common/update-dialog";
 import { siteConfig } from "@workspace/core/config/site";
@@ -77,6 +78,7 @@ export default async function RootLayout({
             enableSystem={true}
           >
             <ThemeInitializer />
+            <LocalePreferenceSync />
             <UpdateChecker />
             <UpdateDialog />
             <NativeTitleBar />

@@ -116,10 +116,12 @@ export function StickyNoteWindow() {
       <header
         className="flex h-9 shrink-0 items-center gap-1 border-border border-b bg-muted/40 pr-1 pl-3"
         data-tauri-drag-region={true}
+        data-window-drag={true}
       >
         <input
           aria-label={t("header.titleLabel")}
           className="min-w-0 flex-1 bg-transparent font-medium text-foreground text-sm outline-none placeholder:text-muted-foreground"
+          data-no-drag={true}
           maxLength={200}
           onChange={(event) => sendTitle(event.target.value)}
           placeholder={t("untitled")}
@@ -129,6 +131,7 @@ export function StickyNoteWindow() {
           aria-label={pinned ? t("sticky.unpin") : t("sticky.pin")}
           aria-pressed={pinned}
           className={control}
+          data-no-drag={true}
           onClick={togglePin}
           size="icon-xs"
           type="button"
@@ -139,6 +142,7 @@ export function StickyNoteWindow() {
         <Button
           aria-label={t("sticky.close")}
           className="size-6 shrink-0 text-muted-foreground hover:bg-destructive hover:text-destructive-foreground"
+          data-no-drag={true}
           onClick={() => {
             getCurrentWebviewWindow().close().catch(ignore);
           }}

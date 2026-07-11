@@ -1487,10 +1487,13 @@ function TodoElement(props: PlateElementProps) {
       className="group/block relative m-0 flex gap-2 px-0 py-1"
     >
       <BlockHandle element={props.element} />
-      <span contentEditable={false}>
+      <label
+        className="-my-1 flex h-8 w-8 shrink-0 cursor-pointer items-start justify-center pt-1"
+        contentEditable={false}
+      >
         <input
           checked={checkboxProps.checked}
-          className="mt-1 size-4 rounded border border-input accent-primary"
+          className="size-5 cursor-pointer rounded border border-input accent-primary"
           disabled={readOnly}
           onChange={(event) =>
             checkboxProps.onCheckedChange(event.target.checked)
@@ -1498,7 +1501,7 @@ function TodoElement(props: PlateElementProps) {
           onMouseDown={checkboxProps.onMouseDown}
           type="checkbox"
         />
-      </span>
+      </label>
       <span
         className={cn(
           "min-w-0 flex-1",

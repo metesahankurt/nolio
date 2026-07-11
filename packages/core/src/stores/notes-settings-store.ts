@@ -1,4 +1,5 @@
 import { getStorageItem } from "@workspace/core/lib/storage-utils";
+import type { Locale } from "@workspace/i18n";
 import { create } from "zustand";
 import { createJSONStorage, persist } from "zustand/middleware";
 
@@ -20,8 +21,10 @@ interface NotesSettingsState {
    * first-run language screen. Persisted so the screen only shows once.
    */
   languageChosen: boolean;
+  selectedLocale: Locale | null;
   setAutoLockMinutes: (minutes: AutoLockMinutes) => void;
   setLanguageChosen: (chosen: boolean) => void;
+  setSelectedLocale: (locale: Locale) => void;
 }
 
 const persisted = getStorageItem<Partial<NotesSettingsState>>(
@@ -34,7 +37,9 @@ export const useNotesSettingsStore = create<NotesSettingsState>()(
     (set) => ({
       autoLockMinutes: persisted.autoLockMinutes ?? DEFAULT_AUTO_LOCK,
       languageChosen: persisted.languageChosen ?? false,
+      selectedLocale: persisted.selectedLocale ?? null,
       setAutoLockMinutes: (autoLockMinutes) => set({ autoLockMinutes }),
+      setSelectedLocale: (selectedLocale) => set({ selectedLocale }),
       setLanguageChosen: (languageChosen) => set({ languageChosen }),
     }),
     {

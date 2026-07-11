@@ -1,3 +1,4 @@
+import { persistLocalePreference } from "@workspace/core/components/common/locale-preference-sync";
 import { applyTheme, useThemeStore } from "@workspace/core/stores/theme-store";
 import { useLocale } from "@workspace/i18n";
 import { usePathname, useRouter } from "@workspace/i18n/navigation";
@@ -20,6 +21,7 @@ export function useLanguageSwitcher() {
   }, [isPending, selectedTheme]);
 
   const changeLanguage = (newLocale: string) => {
+    persistLocalePreference(newLocale);
     if (newLocale === locale || isPending) {
       return;
     }

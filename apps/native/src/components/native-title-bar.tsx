@@ -33,6 +33,8 @@ import { useEffect, useState } from "react";
 const INTERACTIVE_SELECTOR =
   "button, a, input, select, textarea, [contenteditable='true'], [role='button'], [role='menuitem'], [data-no-drag]";
 
+const DRAG_HANDLE_SELECTOR = "[data-window-drag]";
+
 // The WebView's native context menu (Look Up / Translate / Inspect…) only
 // makes sense where text is actually editable; on app chrome it exposes
 // browser internals, so it is suppressed there.
@@ -53,6 +55,19 @@ function onDragRegionMouseDown(event: MouseEvent) {
   }
   const target = event.target;
   if (!(target instanceof Element)) {
+    return;
+  }
+  const explicitDragHandle = target.closest(DRAG_HANDLE_SELECTOR);
+  if (explicitDragHandle && !target.closest("[data-no-drag]")) {
+    event.preventDefault();
+    const appWindow = getCurrentWindow();
+    const action =
+      event.detail === 2
+        ? appWindow.toggleMaximize()
+        : appWindow.startDragging();
+    action.catch(() => {
+      // Dragging is cosmetic; ignore missing permissions.
+    });
     return;
   }
   // Direct hits on the region are handled by Tauri's injected listener.
@@ -118,7 +133,7 @@ export function NativeTitleBar() {
     // title bar. Only set inside Tauri so a browser never picks up the rule.
     document.documentElement.dataset.tauriOs = detected;
 
-    if (isMain && (detected === "windows" || detected === "linux")) {
+    if (detected === "windows" || detected === "linux") {
       getCurrentWindow()
         .setDecorations(false)
         .catch(() => {

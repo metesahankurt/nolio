@@ -153,6 +153,7 @@ export function NoteSidebar({
           <SidebarMenuItem>
             <SidebarMenuButton
               className="data-[slot=sidebar-menu-button]:!p-1.5"
+              data-window-drag={true}
               tooltip="Nolio"
             >
               <Logo className="size-8 group-data-[collapsible=icon]:size-5!" />

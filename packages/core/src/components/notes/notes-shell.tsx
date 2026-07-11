@@ -110,7 +110,7 @@ export function NotesShell() {
           onOpenSettings={openSettings}
         />
 
-        <SidebarInset className="titlebar-win-pad min-w-0 overflow-hidden">
+        <SidebarInset className="titlebar-win-pad relative min-w-0 overflow-hidden">
           {/* Grab bar over the space titlebar-win-pad reserves for the
               Windows/Linux window controls (see globals.css). Inert on web
               and macOS. */}
