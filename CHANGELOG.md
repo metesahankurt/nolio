@@ -1,5 +1,17 @@
 # Changelog
 
+## [2.9.0](https://github.com/metesahankurt/nolio/compare/v2.8.0...v2.9.0) (2026-07-11)
+
+
+### Features
+
+* **notes:** add recurring reminders and sticky note actions ([0ec6030](https://github.com/metesahankurt/nolio/commit/0ec603043da4b8cc0c9824c99c49375393abccf8))
+
+
+### Documentation
+
+* expand README with comprehensive feature documentation, project structure, and developer guide ([ceac6e4](https://github.com/metesahankurt/nolio/commit/ceac6e4062ebd12cd5160a6751ce1f8f447a3ab2))
+
 ## [2.8.0](https://github.com/metesahankurt/nolio/compare/v2.7.0...v2.8.0) (2026-07-10)
 
 
