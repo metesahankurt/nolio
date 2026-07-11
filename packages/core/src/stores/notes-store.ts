@@ -1,6 +1,7 @@
 import type {
   DecryptedNote,
   NoteDocument,
+  NoteReminder,
 } from "@workspace/core/features/notes/domain/note-types";
 import {
   buildNewNote,
@@ -9,6 +10,10 @@ import {
   persistNote,
   removeNotePermanently,
 } from "@workspace/core/features/notes/services/notes-service";
+import {
+  applyReminderReset,
+  defaultReminder,
+} from "@workspace/core/features/notes/services/reminder-service";
 import {
   buildSearchIndex,
   removeSearchIndexEntry,
@@ -20,6 +25,7 @@ export type NotesView =
   | "note"
   | "all"
   | "favorites"
+  | "reminders"
   | "recent"
   | "trash"
   | "settings";
@@ -31,6 +37,7 @@ export interface WelcomeNoteSpec {
 }
 
 interface NotesState {
+  applyDueReminders(now?: Date): Promise<number>;
   bootstrapNewVault(welcome?: WelcomeNoteSpec): Promise<void>;
   corruptedCount: number;
   createNote(
@@ -53,6 +60,7 @@ interface NotesState {
   toggleFavorite(id: string): void;
   updateNoteContent(id: string, content: NoteDocument): void;
   updateNoteIcon(id: string, icon: string | undefined): void;
+  updateNoteReminder(id: string, reminder: NoteReminder | null): void;
   updateNoteTitle(id: string, title: string): void;
   view: NotesView;
 }
@@ -169,6 +177,7 @@ export const useNotesStore = create<NotesState>()((set, get) => {
         view: "note",
         saveStatus: "idle",
       });
+      await get().applyDueReminders();
     },
 
     async bootstrapNewVault(welcome?: WelcomeNoteSpec) {
@@ -209,6 +218,19 @@ export const useNotesStore = create<NotesState>()((set, get) => {
 
     updateNoteIcon(id, icon) {
       updateNote(id, { icon });
+    },
+
+    updateNoteReminder(id, reminder) {
+      updateNote(id, {
+        reminder: reminder
+          ? {
+              ...defaultReminder(),
+              ...reminder,
+              daysOfWeek:
+                reminder.frequency === "daily" ? [] : reminder.daysOfWeek,
+            }
+          : null,
+      });
     },
 
     toggleFavorite(id) {
@@ -309,6 +331,37 @@ export const useNotesStore = create<NotesState>()((set, get) => {
       if (ids.length > 0) {
         set({ saveStatus: "saved" });
       }
+    },
+
+    async applyDueReminders(now = new Date()) {
+      const updates: DecryptedNote[] = [];
+      for (const note of Object.values(get().notes)) {
+        if (note.deletedAt !== null) {
+          continue;
+        }
+        const updated = applyReminderReset(note, now);
+        if (updated) {
+          updates.push(updated);
+        }
+      }
+      if (updates.length === 0) {
+        return 0;
+      }
+      set((state) => {
+        const next = { ...state.notes };
+        for (const note of updates) {
+          next[note.id] = note;
+        }
+        return { notes: next, saveStatus: "saving" };
+      });
+      await Promise.all(
+        updates.map(async (note) => {
+          await persistNote(note);
+          updateSearchIndexEntry(note);
+        })
+      );
+      set({ saveStatus: "saved" });
+      return updates.length;
     },
 
     reset() {

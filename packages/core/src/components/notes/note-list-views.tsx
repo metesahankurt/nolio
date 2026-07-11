@@ -1,6 +1,7 @@
 "use client";
 
 import type { DecryptedNote } from "@workspace/core/features/notes/domain/note-types";
+import { useStickyAdapterStore } from "@workspace/core/features/notes/sticky/sticky-adapter";
 import type { NotesView } from "@workspace/core/stores/notes-store";
 import { useNotesStore } from "@workspace/core/stores/notes-store";
 import { useLocale, useTranslations } from "@workspace/i18n";
@@ -22,7 +23,13 @@ import {
   EmptyTitle,
 } from "@workspace/ui/components/empty";
 import { cn } from "@workspace/ui/lib/utils";
-import { ArchiveRestore, FileText, Trash2 } from "lucide-react";
+import {
+  ArchiveRestore,
+  Bell,
+  FileText,
+  StickyNote,
+  Trash2,
+} from "lucide-react";
 import { useState } from "react";
 import { toast } from "sonner";
 
@@ -42,6 +49,16 @@ function useViewNotes(
       return all
         .filter((n) => n.deletedAt === null && n.isFavorite)
         .sort((a, b) => b.updatedAt.localeCompare(a.updatedAt));
+    case "reminders":
+      return all
+        .filter((n) => n.deletedAt === null && n.reminder?.enabled)
+        .sort((a, b) => {
+          const left = a.reminder?.resetTime ?? "";
+          const right = b.reminder?.resetTime ?? "";
+          return (
+            left.localeCompare(right) || b.updatedAt.localeCompare(a.updatedAt)
+          );
+        });
     case "recent":
       return all
         .filter((n) => n.deletedAt === null)
@@ -54,6 +71,128 @@ function useViewNotes(
     default:
       return [];
   }
+}
+
+interface NoteListRowProps {
+  formatDate: (iso: string) => string;
+  formatReminder: (note: DecryptedNote) => string;
+  hasSelection: boolean;
+  isSelected: boolean;
+  note: DecryptedNote;
+  onDeleteForeverClick: (id: string) => void;
+  onRestore: (id: string) => void;
+  onSelect: (id: string) => void;
+  onToggleSelected: (id: string) => void;
+  view: Exclude<NotesView, "note" | "settings">;
+}
+
+function NoteListRow({
+  formatDate,
+  formatReminder,
+  hasSelection,
+  isSelected,
+  note,
+  onDeleteForeverClick,
+  onRestore,
+  onSelect,
+  onToggleSelected,
+  view,
+}: NoteListRowProps) {
+  const t = useTranslations("Notes");
+  const stickyAdapter = useStickyAdapterStore((s) => s.adapter);
+  const isTrash = view === "trash";
+
+  const icon = note.icon ? (
+    <span aria-hidden="true">{note.icon}</span>
+  ) : (
+    <FileText
+      aria-hidden="true"
+      className="size-4 shrink-0 text-muted-foreground"
+    />
+  );
+
+  return (
+    <li
+      className="group/note-row flex items-center gap-2 rounded-md border border-transparent px-2 py-1.5 hover:bg-muted"
+      key={note.id}
+    >
+      {view === "all" && (
+        <Checkbox
+          aria-label={t("list.selectNote")}
+          checked={isSelected}
+          className={cn(
+            "shrink-0 opacity-0 transition-opacity focus-visible:opacity-100 group-hover/note-row:opacity-100 data-[state=checked]:opacity-100",
+            hasSelection && "opacity-100"
+          )}
+          onCheckedChange={() => onToggleSelected(note.id)}
+        />
+      )}
+      {isTrash ? (
+        <span className="flex min-w-0 flex-1 items-center gap-2 text-sm">
+          {icon}
+          <span className="truncate">{note.title || t("untitled")}</span>
+        </span>
+      ) : (
+        <button
+          className="flex min-w-0 flex-1 items-center gap-2 rounded-sm text-left text-sm outline-none focus-visible:ring-2 focus-visible:ring-ring"
+          onClick={() => onSelect(note.id)}
+          type="button"
+        >
+          {icon}
+          <span className="truncate">{note.title || t("untitled")}</span>
+        </button>
+      )}
+      <span className="shrink-0 text-muted-foreground text-xs">
+        {view === "reminders"
+          ? formatReminder(note)
+          : formatDate(note.updatedAt)}
+      </span>
+      {view === "reminders" && (
+        <Bell
+          aria-hidden="true"
+          className="size-4 shrink-0 text-muted-foreground"
+        />
+      )}
+      {stickyAdapter && !isTrash && (
+        <Button
+          aria-label={t("header.openAsSticky")}
+          className="opacity-0 transition-opacity focus-visible:opacity-100 group-hover/note-row:opacity-100"
+          onClick={() => {
+            stickyAdapter.openSticky(note.id).catch(() => {
+              // Native window errors are non-fatal for the list.
+            });
+          }}
+          size="icon-xs"
+          type="button"
+          variant="ghost"
+        >
+          <StickyNote />
+        </Button>
+      )}
+      {isTrash && (
+        <span className="flex shrink-0 gap-1">
+          <Button
+            aria-label={t("trash.restore")}
+            onClick={() => onRestore(note.id)}
+            size="icon-xs"
+            type="button"
+            variant="ghost"
+          >
+            <ArchiveRestore />
+          </Button>
+          <Button
+            aria-label={t("trash.deleteForever")}
+            onClick={() => onDeleteForeverClick(note.id)}
+            size="icon-xs"
+            type="button"
+            variant="destructive"
+          >
+            <Trash2 />
+          </Button>
+        </span>
+      )}
+    </li>
+  );
 }
 
 export function NoteListView({
@@ -143,6 +282,7 @@ export function NoteListView({
   const titles = {
     all: t("sidebar.allNotes"),
     favorites: t("sidebar.favorites"),
+    reminders: t("sidebar.reminders"),
     recent: t("sidebar.recent"),
     trash: t("sidebar.trash"),
   } as const;
@@ -152,6 +292,27 @@ export function NoteListView({
       dateStyle: "medium",
       timeStyle: "short",
     }).format(new Date(iso));
+
+  const formatReminder = (note: DecryptedNote) => {
+    const reminder = note.reminder;
+    if (!reminder?.enabled) {
+      return "";
+    }
+    if (reminder.frequency === "daily") {
+      return t("reminders.dailyAt", { time: reminder.resetTime });
+    }
+    const days = reminder.daysOfWeek
+      .map((day) =>
+        new Intl.DateTimeFormat(locale, { weekday: "short" }).format(
+          new Date(2024, 0, day === 0 ? 7 : day)
+        )
+      )
+      .join(", ");
+    return t("reminders.weeklyAt", {
+      days,
+      time: reminder.resetTime,
+    });
+  };
 
   return (
     <div className="mx-auto flex w-full max-w-3xl flex-col gap-2 px-4 py-6 md:px-8">
@@ -193,80 +354,19 @@ export function NoteListView({
       ) : (
         <ul className="m-0 flex list-none flex-col gap-1 p-0">
           {listed.map((note) => (
-            <li
-              className="group/note-row flex items-center gap-2 rounded-md border border-transparent px-2 py-1.5 hover:bg-muted"
+            <NoteListRow
+              formatDate={formatDate}
+              formatReminder={formatReminder}
+              hasSelection={hasSelection}
+              isSelected={selected.has(note.id)}
               key={note.id}
-            >
-              {view === "all" && (
-                <Checkbox
-                  aria-label={t("list.selectNote")}
-                  checked={selected.has(note.id)}
-                  className={cn(
-                    "shrink-0 opacity-0 transition-opacity focus-visible:opacity-100 group-hover/note-row:opacity-100 data-[state=checked]:opacity-100",
-                    hasSelection && "opacity-100"
-                  )}
-                  onCheckedChange={() => toggleSelected(note.id)}
-                />
-              )}
-              {view === "trash" ? (
-                <span className="flex min-w-0 flex-1 items-center gap-2 text-sm">
-                  {note.icon ? (
-                    <span aria-hidden="true">{note.icon}</span>
-                  ) : (
-                    <FileText
-                      aria-hidden="true"
-                      className="size-4 shrink-0 text-muted-foreground"
-                    />
-                  )}
-                  <span className="truncate">
-                    {note.title || t("untitled")}
-                  </span>
-                </span>
-              ) : (
-                <button
-                  className="flex min-w-0 flex-1 items-center gap-2 rounded-sm text-left text-sm outline-none focus-visible:ring-2 focus-visible:ring-ring"
-                  onClick={() => selectNote(note.id)}
-                  type="button"
-                >
-                  {note.icon ? (
-                    <span aria-hidden="true">{note.icon}</span>
-                  ) : (
-                    <FileText
-                      aria-hidden="true"
-                      className="size-4 shrink-0 text-muted-foreground"
-                    />
-                  )}
-                  <span className="truncate">
-                    {note.title || t("untitled")}
-                  </span>
-                </button>
-              )}
-              <span className="shrink-0 text-muted-foreground text-xs">
-                {formatDate(note.updatedAt)}
-              </span>
-              {view === "trash" && (
-                <span className="flex shrink-0 gap-1">
-                  <Button
-                    aria-label={t("trash.restore")}
-                    onClick={() => restoreFromTrash(note.id)}
-                    size="icon-xs"
-                    type="button"
-                    variant="ghost"
-                  >
-                    <ArchiveRestore />
-                  </Button>
-                  <Button
-                    aria-label={t("trash.deleteForever")}
-                    onClick={() => setPendingDeleteId(note.id)}
-                    size="icon-xs"
-                    type="button"
-                    variant="destructive"
-                  >
-                    <Trash2 />
-                  </Button>
-                </span>
-              )}
-            </li>
+              note={note}
+              onDeleteForeverClick={setPendingDeleteId}
+              onRestore={restoreFromTrash}
+              onSelect={selectNote}
+              onToggleSelected={toggleSelected}
+              view={view}
+            />
           ))}
         </ul>
       )}

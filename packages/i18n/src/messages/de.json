@@ -202,7 +202,8 @@
       "lockVault": "Tresor sperren",
       "latestUpdates": "Neueste Updates",
       "localProfile": "Lokales Profil",
-      "newSticky": "Neue Haftnotiz"
+      "newSticky": "Neue Haftnotiz",
+      "reminders": "Erinnerungen"
     },
     "tree": {
       "expand": "Ausklappen",
@@ -220,7 +221,8 @@
       "removeFavorite": "Aus Favoriten entfernen",
       "addSubpage": "Unterseite erstellen",
       "moveToTrash": "In den Papierkorb verschieben",
-      "lastUpdated": "Zuletzt aktualisiert: {date}"
+      "lastUpdated": "Zuletzt aktualisiert: {date}",
+      "openAsSticky": "Als Haftnotiz öffnen"
     },
     "list": {
       "emptyTitle": "Hier ist noch nichts",
@@ -356,6 +358,20 @@
       "unpin": "Nicht mehr im Vordergrund",
       "close": "Schließen",
       "loading": "Wird geladen…"
+    },
+    "reminders": {
+      "title": "Erinnerungen",
+      "description": "To-dos in dieser Notiz werden im gewählten Rhythmus um 00:00 oder zur gewählten Zeit zurückgesetzt.",
+      "enabled": "Wiederholung aktivieren",
+      "frequency": "Wiederholung",
+      "daily": "Täglich",
+      "weekly": "Wöchentlich",
+      "resetTime": "Reset-Zeit",
+      "days": "Tage",
+      "lastReset": "Letzter Reset: {date}",
+      "dailyAt": "Täglich um {time}",
+      "weeklyAt": "{days} um {time}",
+      "configure": "Erinnerung konfigurieren"
     }
   },
   "Updater": {

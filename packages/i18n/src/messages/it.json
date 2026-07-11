@@ -202,7 +202,8 @@
       "lockVault": "Blocca vault",
       "latestUpdates": "Ultimi aggiornamenti",
       "localProfile": "Profilo locale",
-      "newSticky": "Nuova nota adesiva"
+      "newSticky": "Nuova nota adesiva",
+      "reminders": "Promemoria"
     },
     "tree": {
       "expand": "Espandi",
@@ -220,7 +221,8 @@
       "removeFavorite": "Rimuovi dai preferiti",
       "addSubpage": "Crea sottopagina",
       "moveToTrash": "Sposta nel cestino",
-      "lastUpdated": "Ultimo aggiornamento: {date}"
+      "lastUpdated": "Ultimo aggiornamento: {date}",
+      "openAsSticky": "Apri come nota adesiva"
     },
     "list": {
       "emptyTitle": "Ancora niente qui",
@@ -356,6 +358,20 @@
       "unpin": "Sblocca",
       "close": "Chiudi",
       "loading": "Caricamento…"
+    },
+    "reminders": {
+      "title": "Promemoria",
+      "description": "Le attività in questa nota si azzerano con il ritmo scelto alle 00:00 o all’orario indicato.",
+      "enabled": "Attiva ripetizione",
+      "frequency": "Ripetizione",
+      "daily": "Ogni giorno",
+      "weekly": "Settimanale",
+      "resetTime": "Ora di azzeramento",
+      "days": "Giorni",
+      "lastReset": "Ultimo azzeramento: {date}",
+      "dailyAt": "Ogni giorno alle {time}",
+      "weeklyAt": "{days} alle {time}",
+      "configure": "Configura promemoria"
     }
   },
   "Updater": {

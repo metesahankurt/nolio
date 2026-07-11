@@ -12,6 +12,16 @@ export interface NoteElementNode {
 export type NoteNode = NoteElementNode | NoteTextNode;
 export type NoteDocument = NoteElementNode[];
 
+export type NoteReminderFrequency = "daily" | "weekly";
+
+export interface NoteReminder {
+  daysOfWeek: number[];
+  enabled: boolean;
+  frequency: NoteReminderFrequency;
+  lastResetAt: string | null;
+  resetTime: string;
+}
+
 export interface DecryptedNote {
   content: NoteDocument;
   cover?: string;
@@ -22,6 +32,7 @@ export interface DecryptedNote {
   isArchived: boolean;
   isFavorite: boolean;
   parentId: string | null;
+  reminder?: NoteReminder | null;
   tags: string[];
   title: string;
   updatedAt: string;

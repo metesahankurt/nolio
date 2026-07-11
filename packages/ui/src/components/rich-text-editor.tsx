@@ -1288,7 +1288,7 @@ function EditorContainer({
 
 const editorVariants = cva(
   cn(
-    "group/editor relative size-full min-h-[460px] w-full cursor-text select-text overflow-x-hidden whitespace-break-spaces break-words px-4 py-4 text-base",
+    "group/editor relative size-full min-h-[460px] w-full cursor-text select-text overflow-x-hidden whitespace-break-spaces break-words py-4 pr-4 pl-10 text-base",
     "rounded-none ring-offset-background focus-visible:outline-none",
     "placeholder:text-muted-foreground/80 **:data-slate-placeholder:text-muted-foreground/80 **:data-slate-placeholder:opacity-100!",
     "[&_strong]:font-bold"
@@ -1396,7 +1396,7 @@ function BlockHandle({ element }: { element: PlateElementProps["element"] }) {
 
   return (
     <div
-      className="absolute top-1 -left-7 z-10 opacity-0 transition-opacity group-focus-within/block:opacity-100 group-hover/block:opacity-100"
+      className="absolute top-1 -left-8 z-30 opacity-0 transition-opacity group-focus-within/block:opacity-100 group-hover/block:opacity-100"
       contentEditable={false}
     >
       <DropdownMenu modal={false}>

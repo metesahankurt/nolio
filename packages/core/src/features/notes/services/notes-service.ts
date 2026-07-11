@@ -98,6 +98,7 @@ export function buildNewNote(
     tags: [],
     isFavorite: false,
     isArchived: false,
+    reminder: null,
     deletedAt: null,
     createdAt: now,
     updatedAt: now,

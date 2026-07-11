@@ -202,7 +202,8 @@
       "lockVault": "Bloquear cofre",
       "latestUpdates": "Últimas atualizações",
       "localProfile": "Perfil local",
-      "newSticky": "Nova nota adesiva"
+      "newSticky": "Nova nota adesiva",
+      "reminders": "Lembretes"
     },
     "tree": {
       "expand": "Expandir",
@@ -220,7 +221,8 @@
       "removeFavorite": "Remover dos favoritos",
       "addSubpage": "Criar subpágina",
       "moveToTrash": "Mover para o lixo",
-      "lastUpdated": "Última atualização: {date}"
+      "lastUpdated": "Última atualização: {date}",
+      "openAsSticky": "Abrir como nota adesiva"
     },
     "list": {
       "emptyTitle": "Ainda não há nada aqui",
@@ -356,6 +358,20 @@
       "unpin": "Desafixar",
       "close": "Fechar",
       "loading": "Carregando…"
+    },
+    "reminders": {
+      "title": "Lembretes",
+      "description": "As tarefas desta nota reiniciam no ritmo escolhido às 00:00 ou no horário definido.",
+      "enabled": "Ativar repetição",
+      "frequency": "Repetição",
+      "daily": "Todos os dias",
+      "weekly": "Semanal",
+      "resetTime": "Hora de reinício",
+      "days": "Dias",
+      "lastReset": "Último reinício: {date}",
+      "dailyAt": "Todos os dias às {time}",
+      "weeklyAt": "{days} às {time}",
+      "configure": "Configurar lembrete"
     }
   },
   "Updater": {

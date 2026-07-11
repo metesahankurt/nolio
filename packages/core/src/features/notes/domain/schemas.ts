@@ -1,6 +1,7 @@
 import type {
   EncryptedNotePayloadV1,
   EncryptedNoteRecord,
+  NoteReminder,
 } from "@workspace/core/features/notes/domain/note-types";
 import type {
   EncryptedVaultHeader,
@@ -78,6 +79,14 @@ export const noteElementSchema: z.ZodType<NoteElementShape> = z
   })
   .catchall(z.unknown());
 
+export const noteReminderSchema: z.ZodType<NoteReminder> = z.object({
+  enabled: z.boolean(),
+  frequency: z.union([z.literal("daily"), z.literal("weekly")]),
+  daysOfWeek: z.array(z.number().int().min(0).max(6)),
+  resetTime: z.string().regex(/^\d{2}:\d{2}$/),
+  lastResetAt: z.string().nullable(),
+});
+
 export const decryptedNoteSchema = z.object({
   id: z.string().min(1),
   title: z.string(),
@@ -88,6 +97,7 @@ export const decryptedNoteSchema = z.object({
   tags: z.array(z.string()),
   isFavorite: z.boolean(),
   isArchived: z.boolean(),
+  reminder: noteReminderSchema.nullish(),
   deletedAt: z.string().nullable(),
   createdAt: z.string(),
   updatedAt: z.string(),

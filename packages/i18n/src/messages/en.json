@@ -202,7 +202,8 @@
       "lockVault": "Lock vault",
       "latestUpdates": "Latest Updates",
       "localProfile": "Local Profile",
-      "newSticky": "New sticky note"
+      "newSticky": "New sticky note",
+      "reminders": "Reminders"
     },
     "tree": {
       "expand": "Expand",
@@ -220,7 +221,8 @@
       "removeFavorite": "Remove from favorites",
       "addSubpage": "Create subpage",
       "moveToTrash": "Move to trash",
-      "lastUpdated": "Last updated: {date}"
+      "lastUpdated": "Last updated: {date}",
+      "openAsSticky": "Open as sticky note"
     },
     "list": {
       "emptyTitle": "Nothing here yet",
@@ -356,6 +358,20 @@
       "unpin": "Unpin",
       "close": "Close",
       "loading": "Loading…"
+    },
+    "reminders": {
+      "title": "Reminders",
+      "description": "To-dos in this note reset on the selected rhythm at 00:00 or your chosen time.",
+      "enabled": "Enable repeat",
+      "frequency": "Repeat",
+      "daily": "Every day",
+      "weekly": "Weekly",
+      "resetTime": "Reset time",
+      "days": "Days",
+      "lastReset": "Last reset: {date}",
+      "dailyAt": "Every day at {time}",
+      "weeklyAt": "{days} at {time}",
+      "configure": "Configure reminder"
     }
   },
   "Updater": {

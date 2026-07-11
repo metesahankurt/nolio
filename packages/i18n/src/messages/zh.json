@@ -202,7 +202,8 @@
       "lockVault": "锁定保险库",
       "latestUpdates": "最新动态",
       "localProfile": "本地个人资料",
-      "newSticky": "新建便笺"
+      "newSticky": "新建便笺",
+      "reminders": "提醒"
     },
     "tree": {
       "expand": "展开",
@@ -220,7 +221,8 @@
       "removeFavorite": "从收藏中移除",
       "addSubpage": "创建子页面",
       "moveToTrash": "移至回收站",
-      "lastUpdated": "最后更新：{date}"
+      "lastUpdated": "最后更新：{date}",
+      "openAsSticky": "作为便签打开"
     },
     "list": {
       "emptyTitle": "这里还没有内容",
@@ -356,6 +358,20 @@
       "unpin": "取消置顶",
       "close": "关闭",
       "loading": "加载中…"
+    },
+    "reminders": {
+      "title": "提醒",
+      "description": "此笔记中的待办会按所选节奏在 00:00 或指定时间重置。",
+      "enabled": "启用重复",
+      "frequency": "重复",
+      "daily": "每天",
+      "weekly": "每周",
+      "resetTime": "重置时间",
+      "days": "日期",
+      "lastReset": "上次重置：{date}",
+      "dailyAt": "每天 {time}",
+      "weeklyAt": "{days} {time}",
+      "configure": "配置提醒"
     }
   },
   "Updater": {

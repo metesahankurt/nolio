@@ -1,7 +1,9 @@
 "use client";
 
+import { NoteReminderPopover } from "@workspace/core/components/notes/note-reminder-popover";
 import { SaveStatus } from "@workspace/core/components/notes/save-status";
 import type { DecryptedNote } from "@workspace/core/features/notes/domain/note-types";
+import { useStickyAdapterStore } from "@workspace/core/features/notes/sticky/sticky-adapter";
 import { useNotesStore } from "@workspace/core/stores/notes-store";
 import { useLocale, useTranslations } from "@workspace/i18n";
 import { Button } from "@workspace/ui/components/button";
@@ -23,6 +25,7 @@ import {
   MoreHorizontal,
   Star,
   StarOff,
+  StickyNote,
   Trash2,
 } from "lucide-react";
 import { toast } from "sonner";
@@ -74,6 +77,7 @@ export function NoteHeader({ note }: { note: DecryptedNote }) {
   const restoreFromTrash = useNotesStore((s) => s.restoreFromTrash);
   const createNote = useNotesStore((s) => s.createNote);
   const selectNote = useNotesStore((s) => s.selectNote);
+  const stickyAdapter = useStickyAdapterStore((s) => s.adapter);
 
   const breadcrumb = buildBreadcrumb(notes, note);
   const updatedLabel = new Intl.DateTimeFormat(locale, {
@@ -161,6 +165,24 @@ export function NoteHeader({ note }: { note: DecryptedNote }) {
           value={note.title}
         />
 
+        <NoteReminderPopover note={note} />
+
+        {stickyAdapter && (
+          <Button
+            aria-label={t("header.openAsSticky")}
+            onClick={() => {
+              stickyAdapter.openSticky(note.id).catch(() => {
+                // Native window errors are non-fatal for the main editor.
+              });
+            }}
+            size="icon"
+            type="button"
+            variant="ghost"
+          >
+            <StickyNote />
+          </Button>
+        )}
+
         <SaveStatus />
 
         <DropdownMenu>
@@ -191,6 +213,18 @@ export function NoteHeader({ note }: { note: DecryptedNote }) {
               <FilePlus2 />
               {t("header.addSubpage")}
             </DropdownMenuItem>
+            {stickyAdapter && (
+              <DropdownMenuItem
+                onClick={() => {
+                  stickyAdapter.openSticky(note.id).catch(() => {
+                    // Native window errors are non-fatal for the main editor.
+                  });
+                }}
+              >
+                <StickyNote />
+                {t("header.openAsSticky")}
+              </DropdownMenuItem>
+            )}
             <DropdownMenuSeparator />
             <DropdownMenuItem
               onClick={() => {

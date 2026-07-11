@@ -33,6 +33,7 @@ import {
   useSidebar,
 } from "@workspace/ui/components/sidebar";
 import {
+  Bell,
   ChevronsUpDown,
   Clock,
   ExternalLink,
@@ -218,6 +219,11 @@ export function NoteSidebar({
             "favorites",
             <Star aria-hidden="true" />,
             t("sidebar.favorites")
+          )}
+          {viewItem(
+            "reminders",
+            <Bell aria-hidden="true" />,
+            t("sidebar.reminders")
           )}
           {stickyAdapter && (
             <SidebarMenuItem>

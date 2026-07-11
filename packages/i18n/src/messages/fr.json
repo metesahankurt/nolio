@@ -202,7 +202,8 @@
       "lockVault": "Verrouiller le coffre",
       "latestUpdates": "Dernières mises à jour",
       "localProfile": "Profil local",
-      "newSticky": "Nouvelle note adhésive"
+      "newSticky": "Nouvelle note adhésive",
+      "reminders": "Rappels"
     },
     "tree": {
       "expand": "Déplier",
@@ -220,7 +221,8 @@
       "removeFavorite": "Retirer des favoris",
       "addSubpage": "Créer une sous-page",
       "moveToTrash": "Déplacer vers la corbeille",
-      "lastUpdated": "Dernière mise à jour : {date}"
+      "lastUpdated": "Dernière mise à jour : {date}",
+      "openAsSticky": "Ouvrir en note adhésive"
     },
     "list": {
       "emptyTitle": "Rien ici pour l'instant",
@@ -356,6 +358,20 @@
       "unpin": "Désépingler",
       "close": "Fermer",
       "loading": "Chargement…"
+    },
+    "reminders": {
+      "title": "Rappels",
+      "description": "Les tâches de cette note se réinitialisent au rythme choisi à 00:00 ou à l’heure indiquée.",
+      "enabled": "Activer la répétition",
+      "frequency": "Répétition",
+      "daily": "Chaque jour",
+      "weekly": "Hebdomadaire",
+      "resetTime": "Heure de réinitialisation",
+      "days": "Jours",
+      "lastReset": "Dernière réinitialisation : {date}",
+      "dailyAt": "Chaque jour à {time}",
+      "weeklyAt": "{days} à {time}",
+      "configure": "Configurer le rappel"
     }
   },
   "Updater": {

@@ -42,6 +42,7 @@ export function NotesShell() {
   const notes = useNotesStore((s) => s.notes);
   const selectedNoteId = useNotesStore((s) => s.selectedNoteId);
   const corruptedCount = useNotesStore((s) => s.corruptedCount);
+  const applyDueReminders = useNotesStore((s) => s.applyDueReminders);
 
   const [commandOpen, setCommandOpen] = useState(false);
 
@@ -64,6 +65,18 @@ export function NotesShell() {
       window.scrollTo({ top: 0, left: 0 });
     }
   }, [view]);
+
+  useEffect(() => {
+    applyDueReminders().catch(() => {
+      // Reminder reset failures surface through the save status.
+    });
+    const interval = window.setInterval(() => {
+      applyDueReminders().catch(() => {
+        // Reminder reset failures surface through the save status.
+      });
+    }, 60_000);
+    return () => window.clearInterval(interval);
+  }, [applyDueReminders]);
 
   useHotkeys(
     "mod+k",

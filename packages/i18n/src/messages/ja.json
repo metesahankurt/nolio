@@ -202,7 +202,8 @@
       "lockVault": "保管庫をロック",
       "latestUpdates": "最新の更新",
       "localProfile": "ローカルプロファイル",
-      "newSticky": "新しい付箋"
+      "newSticky": "新しい付箋",
+      "reminders": "リマインダー"
     },
     "tree": {
       "expand": "展開",
@@ -220,7 +221,8 @@
       "removeFavorite": "お気に入りから削除",
       "addSubpage": "サブページを作成",
       "moveToTrash": "ゴミ箱へ移動",
-      "lastUpdated": "最終更新：{date}"
+      "lastUpdated": "最終更新：{date}",
+      "openAsSticky": "付箋として開く"
     },
     "list": {
       "emptyTitle": "まだ何もありません",
@@ -356,6 +358,20 @@
       "unpin": "固定を解除",
       "close": "閉じる",
       "loading": "読み込み中…"
+    },
+    "reminders": {
+      "title": "リマインダー",
+      "description": "このノートのTo-doは、選択した周期で00:00または指定時刻にリセットされます。",
+      "enabled": "繰り返しを有効化",
+      "frequency": "繰り返し",
+      "daily": "毎日",
+      "weekly": "毎週",
+      "resetTime": "リセット時刻",
+      "days": "曜日",
+      "lastReset": "最終リセット: {date}",
+      "dailyAt": "毎日 {time}",
+      "weeklyAt": "{days} {time}",
+      "configure": "リマインダーを設定"
     }
   },
   "Updater": {

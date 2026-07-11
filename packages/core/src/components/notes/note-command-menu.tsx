@@ -17,6 +17,7 @@ import {
   CommandSeparator,
 } from "@workspace/ui/components/command";
 import {
+  Bell,
   Clock,
   FilePlus2,
   FileStack,
@@ -143,6 +144,10 @@ export function NoteCommandMenu({
             <CommandItem onSelect={goView("favorites")}>
               <Star />
               {t("sidebar.favorites")}
+            </CommandItem>
+            <CommandItem onSelect={goView("reminders")}>
+              <Bell />
+              {t("sidebar.reminders")}
             </CommandItem>
             <CommandItem onSelect={goView("recent")}>
               <Clock />

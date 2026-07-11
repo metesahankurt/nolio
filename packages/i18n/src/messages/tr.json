@@ -202,7 +202,8 @@
       "lockVault": "Kasayı kilitle",
       "latestUpdates": "Son Güncellemeler",
       "localProfile": "Yerel Profil",
-      "newSticky": "Yeni yapışkan not"
+      "newSticky": "Yeni yapışkan not",
+      "reminders": "Hatırlatıcılar"
     },
     "tree": {
       "expand": "Genişlet",
@@ -220,7 +221,8 @@
       "removeFavorite": "Favorilerden çıkar",
       "addSubpage": "Alt sayfa oluştur",
       "moveToTrash": "Çöp kutusuna taşı",
-      "lastUpdated": "Son güncelleme: {date}"
+      "lastUpdated": "Son güncelleme: {date}",
+      "openAsSticky": "Yapışkan not olarak aç"
     },
     "list": {
       "emptyTitle": "Burada henüz bir şey yok",
@@ -356,6 +358,20 @@
       "unpin": "Sabitlemeyi kaldır",
       "close": "Kapat",
       "loading": "Yükleniyor…"
+    },
+    "reminders": {
+      "title": "Hatırlatıcılar",
+      "description": "Bu nottaki yapılacaklar seçilen düzende 00:00 veya belirlediğiniz saatte temizlenir.",
+      "enabled": "Tekrarı etkinleştir",
+      "frequency": "Tekrar",
+      "daily": "Her gün",
+      "weekly": "Haftalık",
+      "resetTime": "Sıfırlama saati",
+      "days": "Günler",
+      "lastReset": "Son sıfırlama: {date}",
+      "dailyAt": "Her gün {time}",
+      "weeklyAt": "{days} {time}",
+      "configure": "Hatırlatıcıyı ayarla"
     }
   },
   "Updater": {
