@@ -1,6 +1,8 @@
 "use client";
 
+import { invoke } from "@tauri-apps/api/core";
 import { getCurrentWindow } from "@tauri-apps/api/window";
+import { exit } from "@tauri-apps/plugin-process";
 import { Minus, Square, X } from "lucide-react";
 import { useEffect, useState } from "react";
 
@@ -110,6 +112,31 @@ function detectOs(): DesktopOs {
   return "other";
 }
 
+function minimizeMainWindow() {
+  invoke("minimize_main_window")
+    .catch(() => getCurrentWindow().minimize())
+    .catch(() => {
+      // The native command is authoritative; the WebView API is a fallback
+      // for development sessions that have not restarted their Rust process.
+    });
+}
+
+function toggleMainWindowMaximized() {
+  invoke("toggle_main_window_maximized")
+    .catch(() => getCurrentWindow().toggleMaximize())
+    .catch(() => {
+      // Keep the title bar usable while a stale development backend reloads.
+    });
+}
+
+function exitApplication() {
+  invoke("exit_application")
+    .catch(() => exit(0))
+    .catch(() => {
+      // If the native command succeeds the process exits before this settles.
+    });
+}
+
 export function NativeTitleBar() {
   const [os, setOs] = useState<DesktopOs>("other");
   const [isTauri, setIsTauri] = useState(false);
@@ -157,7 +184,6 @@ export function NativeTitleBar() {
     return null;
   }
 
-  const appWindow = getCurrentWindow();
   const control =
     "flex h-8 w-11 cursor-pointer items-center justify-center text-muted-foreground outline-none transition-colors hover:bg-muted hover:text-foreground";
 
@@ -167,7 +193,7 @@ export function NativeTitleBar() {
         aria-label="Minimize"
         className={control}
         data-no-drag={true}
-        onClick={() => appWindow.minimize()}
+        onClick={minimizeMainWindow}
         onMouseDown={(event) => event.stopPropagation()}
         type="button"
       >
@@ -177,7 +203,7 @@ export function NativeTitleBar() {
         aria-label="Maximize"
         className={control}
         data-no-drag={true}
-        onClick={() => appWindow.toggleMaximize()}
+        onClick={toggleMainWindowMaximized}
         onMouseDown={(event) => event.stopPropagation()}
         type="button"
       >
@@ -187,7 +213,7 @@ export function NativeTitleBar() {
         aria-label="Close"
         className="flex h-8 w-11 cursor-pointer items-center justify-center text-muted-foreground outline-none transition-colors hover:bg-destructive hover:text-destructive-foreground"
         data-no-drag={true}
-        onClick={() => appWindow.close()}
+        onClick={exitApplication}
         onMouseDown={(event) => event.stopPropagation()}
         type="button"
       >
