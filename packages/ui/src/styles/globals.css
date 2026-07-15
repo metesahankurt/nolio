@@ -290,17 +290,27 @@ textarea,
 /*
  * Invisible grab bar over the room `.titlebar-win-pad` reserves at the top
  * of the main content. Carries data-tauri-drag-region so the whole strip
- * moves the window; sits below the floating window controls (z-60) so
- * min/max/close stay clickable. Hidden outside the Windows/Linux app.
+ * moves the window. Its right edge stops before the window controls instead
+ * of merely relying on stacking order, so WebView2 cannot route their pointer
+ * events into the native drag handler. Hidden outside Windows/Linux.
  */
 .titlebar-drag-strip {
   display: none;
 }
 
+.titlebar-window-controls {
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 60;
+  display: flex;
+  pointer-events: auto;
+}
+
 [data-tauri-os="windows"] .titlebar-drag-strip,
 [data-tauri-os="linux"] .titlebar-drag-strip {
   position: absolute;
-  inset: 0 0 auto 0;
+  inset: 0 8.25rem auto 0;
   z-index: 50;
   display: block;
   height: 2rem;
