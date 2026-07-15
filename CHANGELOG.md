@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.9.3](https://github.com/metesahankurt/nolio/compare/v2.9.2...v2.9.3) (2026-07-15)
+
+
+### Bug Fixes
+
+* **native:** keep window controls clickable ([#23](https://github.com/metesahankurt/nolio/issues/23)) ([a021e12](https://github.com/metesahankurt/nolio/commit/a021e12d59e8cd47b15c5d66b3ee3bc7ac431fe1))
+
 ## [2.9.2](https://github.com/metesahankurt/nolio/compare/v2.9.1...v2.9.2) (2026-07-15)
 
 
