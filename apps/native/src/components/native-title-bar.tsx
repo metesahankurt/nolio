@@ -162,11 +162,13 @@ export function NativeTitleBar() {
     "flex h-8 w-11 cursor-pointer items-center justify-center text-muted-foreground outline-none transition-colors hover:bg-muted hover:text-foreground";
 
   return (
-    <div className="fixed top-0 right-0 z-[60] flex">
+    <div className="titlebar-window-controls" data-no-drag={true}>
       <button
         aria-label="Minimize"
         className={control}
+        data-no-drag={true}
         onClick={() => appWindow.minimize()}
+        onMouseDown={(event) => event.stopPropagation()}
         type="button"
       >
         <Minus className="size-4" />
@@ -174,7 +176,9 @@ export function NativeTitleBar() {
       <button
         aria-label="Maximize"
         className={control}
+        data-no-drag={true}
         onClick={() => appWindow.toggleMaximize()}
+        onMouseDown={(event) => event.stopPropagation()}
         type="button"
       >
         <Square className="size-3.5" />
@@ -182,7 +186,9 @@ export function NativeTitleBar() {
       <button
         aria-label="Close"
         className="flex h-8 w-11 cursor-pointer items-center justify-center text-muted-foreground outline-none transition-colors hover:bg-destructive hover:text-destructive-foreground"
+        data-no-drag={true}
         onClick={() => appWindow.close()}
+        onMouseDown={(event) => event.stopPropagation()}
         type="button"
       >
         <X className="size-4" />
