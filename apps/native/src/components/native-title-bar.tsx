@@ -15,10 +15,12 @@ import { useEffect, useState } from "react";
  *   traffic lights floating over the top-left of the sidebar. The sidebar
  *   header reserves vertical room for them (see the `.titlebar-mac-pad`
  *   rule in globals.css). This component renders nothing on macOS.
- * - Windows/Linux: there is no overlay mode, so the native (theme-colored)
- *   decorations are dropped at runtime and we draw our own controls in the
- *   top-right corner. The main content reserves room for them
- *   (`.titlebar-win-pad`).
+ * - Windows: `tauri.windows.conf.json` creates the main window without native
+ *   decorations, so there is never a native control layer over the WebView.
+ *   We draw our own controls in the top-right corner instead.
+ * - Linux: there is no overlay mode, so native decorations are dropped at
+ *   runtime and the same custom controls are used. The main content reserves
+ *   room for them (`.titlebar-win-pad`).
  *
  * The window is dragged via the app chrome (sidebar/note headers carry
  * `data-tauri-drag-region`). Tauri's built-in drag-region listener only
@@ -133,7 +135,7 @@ export function NativeTitleBar() {
     // title bar. Only set inside Tauri so a browser never picks up the rule.
     document.documentElement.dataset.tauriOs = detected;
 
-    if (detected === "windows" || detected === "linux") {
+    if (detected === "linux") {
       getCurrentWindow()
         .setDecorations(false)
         .catch(() => {
