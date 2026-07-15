@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.9.2](https://github.com/metesahankurt/nolio/compare/v2.9.1...v2.9.2) (2026-07-15)
+
+
+### Bug Fixes
+
+* **native:** use frameless Windows controls ([#21](https://github.com/metesahankurt/nolio/issues/21)) ([58bbab5](https://github.com/metesahankurt/nolio/commit/58bbab55988f05dc65ceb4dc0818adfbb1d12847))
+
 ## [2.9.1](https://github.com/metesahankurt/nolio/compare/v2.9.0...v2.9.1) (2026-07-11)
 
 
