@@ -1,6 +1,6 @@
 [package]
 name = "nolio"
-version = "2.9.3"
+version = "2.9.4"
 description = "Encrypted local-first notes app"
 authors = ["metesahankurt"]
 edition = "2021"

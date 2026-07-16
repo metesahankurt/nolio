@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.9.4](https://github.com/metesahankurt/nolio/compare/v2.9.3...v2.9.4) (2026-07-16)
+
+
+### Bug Fixes
+
+* **native:** handle window controls in Rust ([#25](https://github.com/metesahankurt/nolio/issues/25)) ([09486aa](https://github.com/metesahankurt/nolio/commit/09486aaacca25241cc1e16b0938968d3fe77a2a3))
+
 ## [2.9.3](https://github.com/metesahankurt/nolio/compare/v2.9.2...v2.9.3) (2026-07-15)
 
 
